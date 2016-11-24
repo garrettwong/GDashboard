@@ -1,0 +1,23 @@
+<div style="overflow-x:hidden;" class="scrollpartner">
+  
+  <!--{{$ctrl.dates}}-->
+  
+  <!-- this WIDTH needs to be in sync with the top container width... -->
+  <div style="position: relative; width:{{$ctrl.width}}px; " class="length">
+    <span ng-repeat="milestone in $ctrl.milestones" 
+          style="position: absolute; width: {{milestone.end-milestone.start}}%; left: {{milestone.start}}%" class="length {{$ctrl.getColorClass(milestone.start)}}">
+          <!--class="length {{$ctrl.getColorClass($ctrl.age)}}">-->
+      {{$ctrl.age}}
+    </span>
+  </div>
+
+  <!-- single -->
+  <!--<div class="length {{$ctrl.getColorClass($ctrl.age)}}" style="width: {{$ctrl.age}}%;">
+    {{$ctrl.age}}
+  </div>-->
+
+  <!-- date based? -->
+  <!--<div class="length {{$ctrl.getColorClass($ctrl.age)}}" style="width: {{$ctrl.dates.length*10}}">
+    {{$ctrl.age}}
+  </div>-->
+</div>

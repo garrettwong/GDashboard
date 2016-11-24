@@ -1,0 +1,73 @@
+<div>
+  <!-- form -->
+  <input ng-model="yeartoadd" placeholder="Year" />
+  <input ng-model="monthtoadd" placeholder="Month" />
+  <input ng-model="datetoadd" placeholder="Day" />
+
+  <button ng-click="model.addDate(yeartoadd, monthtoadd, datetoadd)">Add Date</button>
+  <button ng-click="model.removeDate()">Remove Date</button>
+
+  <input ng-model="searchText" placeholder="Filter" />
+
+  <!--table -->
+  <table class="testeffort">
+    <thead>
+      <tr>
+        <th>{{model.title}}</th>
+        <th>Name</th>
+        <th>Start</th>
+        <th>End</th>
+        <th></th>
+
+        <th class="flipped">
+          
+          <div style="overflow-x: scroll; white-space: nowrap; max-width:500px;" scrolly>
+
+            <div class="flipped" style="width: {{model.width}}px">
+              
+              <div class="today-line" style="left: {{model.todayAdjustment}}"></div>
+
+              <div ng-repeat="block in model.fullDateRange"
+                  style="display: inline-block; border: 2px solid #ccc; color: #333;padding:6px;background: #f2f2f2;">
+                {{ model.formatDate(block.date) }}
+              </div>
+              
+              <!--<div style="width: 10%; float: left;">0</div>
+              <div style="width: 10%; float: right;">100</div>-->
+
+              <div class="clear:both;"></div>
+            <div>
+          </div>
+        </th>
+        
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="row in model.rows | filter:searchText">
+        <td>
+            <a ui-sref="testEffortDashboard.testEffortDashboardResult({testEffortId: row.index})">{{row.name}}</a>
+        </td>
+
+        <td>  
+          <a ui-sref-active="active" 
+             ui-sref="testEffortTable.testefforttableresults({testEffortId: row.index})">About</a>
+        </td>
+        <td>
+          {{ row.birthdate | mmddyyyy}}
+        </td>
+        <td>
+          {{ row.birthdate | mmddyyyy}}
+        </td>
+
+        <td>
+          <img src="{{row.picture}}" />
+        </td>
+
+        <td class="noPadding" style="max-width: 500px; overflow-x: hidden;">
+          <ganntdates dates=model.dates age=row.age milestones=row.milestones width=model.width></ganntdates>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

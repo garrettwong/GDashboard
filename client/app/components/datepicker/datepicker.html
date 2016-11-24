@@ -1,0 +1,14 @@
+<div>
+
+  <div style="display:inline-block; min-height:290px;">
+    <div uib-datepicker ng-model="model.dt" class="well well-sm" datepicker-options="model.options"></div>
+  </div>
+
+  <hr />
+  <button type="button" class="btn btn-sm btn-info" ng-click="model.today()">Today</button>
+  <button type="button" class="btn btn-sm btn-default" ng-click="model.setDate(2009, 7, 24)">2009-08-24</button>
+  <button type="button" class="btn btn-sm btn-danger" ng-click="model.clear()">Clear</button>
+  <button type="button" class="btn btn-sm btn-default" ng-click="model.toggleMin()" uib-tooltip="After today restriction">Min date</button>
+
+  <button type="button" class="btn btn-primary" ng-click="model.getValue()" uib-tooltip="Get Value">Get Value Test</button>
+</div>

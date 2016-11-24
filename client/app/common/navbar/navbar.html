@@ -1,0 +1,44 @@
+<div class="container">
+	<div class="navbar-header">
+		<!-- The mobile navbar-toggle button can be safely removed since you do not need it in a non-responsive implementation -->
+		<a class="navbar-brand" href="#">NG-Agile Mockups</a>
+	</div>
+	<!-- Note that the .navbar-collapse and .collapse classes have been removed from the #navbar -->
+	<div id="navbar">
+		<ul class="nav navbar-nav">
+			<li class="active">
+        <a ui-sref="home">Home</a>
+      </li>
+
+			<li>
+				<a ui-sref="about">About</a>
+			</li>
+			
+			<li class="dropdown">
+        <span uib-dropdown on-toggle="toggled(open)">
+            <a href id="simple-dropdown" uib-dropdown-toggle>
+								Visualizations
+            </a>
+
+            <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+              <li ng-repeat="choice in $ctrl.visualizations">
+                <a ui-sref="{{choice.sref}}">{{choice.name}}</a>
+              </li>
+            </ul>
+        </span>
+			</li>
+		</ul>
+
+		<form class="navbar-form navbar-left">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="#">Login / Register</a></li>
+		</ul>
+	</div>
+	<!--/.nav-collapse -->
+</div>

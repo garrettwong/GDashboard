@@ -1,0 +1,55 @@
+<h4 class="col-sm-offset-2">Edit Form</h4>
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="" class="col-sm-2 control-label">Guid</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" ng-model="$ctrl.testEffort.guid" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="" class="col-sm-2 control-label">Index</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" ng-model="$ctrl.testEffort.index" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="" class="col-sm-2 control-label">D Program</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" ng-model="$ctrl.testEffort.name" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="" class="col-sm-2 control-label">Start Date</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" ng-model="startDate" />
+
+      <div uib-datepicker ng-model="startDate" class="well well-sm" datepicker-options="options"></div>
+    </div>
+    
+    <label for="" class="col-sm-2 control-label">End Date</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" ng-model="endDate" />
+
+      <div uib-datepicker ng-model="endDate" class="well well-sm" datepicker-options="options"></div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="" class="col-sm-2 control-label"></label>
+    <div class="col-sm-10">
+      <button class="btn btn-primary" ng-click="save()">Save</button>
+    </div>
+  </div>
+</form>
+
+
+<div class="container-fluid typeahead-demo ng-scope" ng-controller="TypeaheadCtrl">
+	<h4>Type Ahead</h4>
+	<input type="text" 
+         ng-model="selected" 
+         uib-typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control ng-valid ng-not-empty ng-dirty ng-touched ng-valid-editable"
+		     aria-autocomplete="list" 
+         aria-expanded="false" 
+         aria-owns="typeahead-80-37" 
+         style="">
+</div>
