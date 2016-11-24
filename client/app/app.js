@@ -13,6 +13,7 @@ import angularUi from 'angular-ui-bootstrap';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
+import 'angular-drag-and-drop-lists/angular-drag-and-drop-lists';
 
 // styles
 // import 'https://fonts.googleapis.com/css?family=Droid+Sans';
@@ -34,6 +35,7 @@ angular.module('app', [
   uiRouter,
   angularUi,
 
+  'dndLists',
   Common,
   Components
 ])

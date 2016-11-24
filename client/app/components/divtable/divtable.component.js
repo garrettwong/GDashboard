@@ -4,9 +4,11 @@ import './divtable.styl';
 
 let divtableComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+
+  },
   template,
-  controller
+  controller: ['$scope', controller]
 };
 
 export default divtableComponent;
