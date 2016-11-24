@@ -1,7 +1,25 @@
-<!-- Place all UI elements intended to be present across all routes in this file -->
-<div class="app">
-  <navbar></navbar>
+<div class="app-container">
+  <div class="row content-container">
+    
+    <!-- navbar component -->
+    <navbar></navbar>
   
-  <div ui-view></div>
-</div>
+  
+    <div class="container-fluid">
+      <div class="side-body">
+        <div class="page-title">
 
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+
+            <!-- ui-view -->
+            <div ui-view></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
