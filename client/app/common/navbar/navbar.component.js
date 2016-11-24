@@ -5,7 +5,9 @@ import './navbar.styl';
 
 let navbarComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+    navbarSideExpanded: '=',
+  },
   template,
   controller: [controller]
 };

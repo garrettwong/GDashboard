@@ -16,8 +16,9 @@ class NavbarController {
       isopen: false
     };
 
-    this.toggled = function (open) {
-      $log.log('Dropdown is now: ', open);
+    this.toggle = function (open) {
+        this.navbarSideExpanded = this.navbarSideExpanded !== 'expanded' ? 'expanded' : '';
+        this.rotateClass = this.rotateClass !== 'fa-rotate-90' ? 'fa-rotate-90' : '';
     };
 
     this.toggleDropdown = function ($event) {

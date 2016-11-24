@@ -1,9 +1,14 @@
 import $ from 'jquery/dist/jquery';
 import jQuery from 'jquery/dist/jquery';
+import bootstrap from 'bootstrap/dist/js/bootstrap';
+// import chartjs from 'Chart.js/Chart';
+// import bootstrapSwitch from 'bootstrap-switch/dist/js/boostrap-switch';
+import matchHeight from 'matchHeight/jquery.matchHeight';
+
 
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import uiDropdown from 'angular-ui-bootstrap/src/dropdown';
+import angularUi from 'angular-ui-bootstrap';
 
 import Common from './common/common';
 import Components from './components/components';
@@ -26,12 +31,12 @@ import './styles/style.css';
 import './styles/theme.css';
 
 angular.module('app', [
-    uiRouter,
-    uiDropdown,
+  uiRouter,
+  angularUi,
 
-    Common,
-    Components
-  ])
+  Common,
+  Components
+])
   .config(($locationProvider) => {
     "ngInject";
     // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
