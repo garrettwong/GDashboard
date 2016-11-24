@@ -1,17 +1,27 @@
 var path    = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
   entry: {},
+  resolve: {
+      alias: [
+        {'angular-chart': '../angular-chart.js'}
+      ],
+      extensions: ['', '.js', '.css'],
+      modulesDirectories: ['web_modules', 'node_modules', 'bower_components']
+  },
   module: {
     loaders: [
        { test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: 'ng-annotate!babel' },
        { test: /\.html$/, loader: 'raw' },
        { test: /\.(ttf|eot|svg|woff(2)?)(\?v=[0-9]\.[0-9]\.[0-9]|\?[a-z0-9]+)?$/, loader: 'url-loader' },
        { test: /\.styl$/, loader: 'style!css!stylus' },
-       { test: /\.css$/, loader: 'style!css' }
+       { test: /\.css$/, loader: 'style!css' }, 
+       { test: /\.(jpe?g|png|gif|mp3)$/, loader: 'url?limit=25000' },
+       { test: /\.json$/, loader:'json'}
     ]
   },
   externals: {
@@ -35,6 +45,40 @@ module.exports = {
       minChunks: function (module, count) {
         return module.resource && module.resource.indexOf(path.resolve(__dirname, 'client')) === -1;
       }
-    })
+    }),
+
+    
+
+    // For bower
+    new webpack.ResolverPlugin(
+        new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('.bower.json', ['main'])
+    ),
+
+    // for third party libraries that require jquery
+    new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery"
+    }), 
+
+    // copies over static assets(json, images, etc) to static folder
+    new CopyWebpackPlugin([
+            // Copy directory contents to {output}/to/directory/
+            { from: 'client/**/*', to: 'static/', flatten: true },
+        ], {
+            ignore: [
+                // Doesn't copy any files with the following extensions    
+                '*.txt',
+                '*.js',
+                '*.html',
+                '*.css',
+                '*.styl'
+            ],
+            // By default, we only copy modified files during
+            // a watch or webpack-dev-server build. Setting this
+            // to `true` copies all files.
+            copyUnmodified: true,
+
+        })
+        
   ]
 };
