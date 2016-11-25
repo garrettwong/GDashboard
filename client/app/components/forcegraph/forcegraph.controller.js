@@ -2,34 +2,51 @@ import * as d3 from 'd3';
 import { event as currentEvent } from 'd3';
 
 class ForcegraphController {
-  constructor() {
-    console.log(d3);
+  constructor($uibModal) {
+    this.config = {
+      radius: 10,
 
-    this.count = 10;
-    console.log(this.count);
+      useImages: true,
+
+      imageDefaults: {
+        width: '64px',
+        height: '64px'
+      }
+    };
+
+    this.$uibModal = $uibModal;
 
     this.init();
   }
 
   init() {
-    console.log(this);
-    var radius = this.count;
+    // set radius to default, 10
+    var radius = this.config.radius;
 
     // https://bl.ocks.org/mbostock/4600693
     var svg = d3.select("svg"),
       width = +svg.attr("width"),
       height = +svg.attr("height");
 
+    // clear all elements
     svg.selectAll("*").remove()
-    
+
+    // set color
     var color = d3.scaleOrdinal(d3.schemeCategory20);
 
-    var simulation = d3.forceSimulation()
+    this.simulation = d3.forceSimulation()
       .force("link", d3.forceLink().distance(10).strength(0.5))
       .force("charge", d3.forceManyBody())
       .force("center", d3.forceCenter(width / 2, height / 2));
 
+    console.log(this.simulation);
+
+    let self = this;  // create reference to this
+
+    // get data from miserables
     d3.json("./miserables.json", function (error, graph) {
+      console.log(graph);
+
       if (error) throw error;
 
       var nodes = graph.nodes,
@@ -51,25 +68,17 @@ class ForcegraphController {
         .enter().append("path")
         .attr("class", "link");
 
-      var node = svg.selectAll(".node")
-        .data(nodes.filter(function (d) { return d.id; }))
-        .enter().append("circle")
-        .attr("class", "node")
-        .attr("r", radius)
-        .attr("fill", function (d) { return color(d.group); })
-        .call(d3.drag()
-          .on("start", dragstarted)
-          .on("drag", dragged)
-          .on("end", dragended));
+      var node = self.getNodes(svg, nodes, color);
+
 
       node.append("title")
         .text(function (d) { return d.id; });
 
-      simulation
+      self.simulation
         .nodes(nodes)
         .on("tick", ticked);
 
-      simulation.force("link")
+      self.simulation.force("link")
         .links(links);
 
       function ticked() {
@@ -87,26 +96,106 @@ class ForcegraphController {
     function positionNode(d) {
       return "translate(" + d.x + "," + d.y + ")";
     }
-
-    function dragstarted(d) {
-      if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-      d.fx = d.x, d.fy = d.y;
-    }
-
-    function dragged(d) {
-      d.fx = d3.event.x, d.fy = d3.event.y;
-    }
-
-    function dragended(d) {
-      if (!d3.event.active) simulation.alphaTarget(0);
-      d.fx = null, d.fy = null;
-    }
   }
 
   update() {
-    console.log(this.count);
-
     this.init();
+  }
+
+  getNodes(svg, nodes, color) {
+    let self = this;
+
+    if (this.config.useImages) {
+      let node = svg.selectAll(".node")
+        .data(nodes.filter(function (d) { return d.id; }))
+        .enter()
+        .append('svg:image')
+        .attr('xlink:href', (d, i) => {
+          console.log(d, i);
+          let groupNum = 1 + ((parseInt(d.group) * i) % 30);
+          return `images/forcegraph/${groupNum}.jpg`;
+        })
+        .attr('x', '-8px')
+        .attr('y', '-8px')
+        .attr('width', this.config.imageDefaults.width)
+        .attr('height', this.config.imageDefaults.height)
+
+        .attr("class", "node")
+        .attr("r", this.config.radius)
+        .attr("fill", function (d) { return color(d.group); });
+      node
+        .call(d3.drag()
+          .on("start", this.dragstarted.bind(this))
+          .on("drag", this.dragged.bind(this))
+          .on("end", this.dragended.bind(this)));
+      node
+        .on('click', function () {
+          d3.select(this).transition()
+            .attr('width', '768px')
+            .attr('height', '768px')
+            .attr('x', '-120px')
+            .attr('y', '-120px');
+
+            self.openComponentModal();
+        });
+
+      return node;
+    } else {
+      let node = svg.selectAll(".node")
+        .data(nodes.filter(function (d) { return d.id; }))
+        .enter()
+        .append("circle")
+        .attr("class", "node")
+        .attr("r", this.config.radius)
+        .attr("fill", function (d) { return color(d.group); });
+
+      node
+        .call(d3.drag()
+          .on("start", this.dragstarted.bind(this))
+          .on("drag", this.dragged.bind(this))
+          .on("end", this.dragended.bind(this)));
+
+      node
+        .on('click', function () {
+          d3.select(this).transition()
+            .attr('r', '75px');
+        });
+      return node;
+    }
+  }
+
+  openComponentModal() {
+    console.log(this);
+
+    var modalInstance = this.$uibModal.open({
+      animation: true,
+      component: 'modalComponent',
+      resolve: {
+        items: function () {
+          return [];
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      let a = selectedItem
+    }, function () {
+
+    });
+  }
+
+  dragstarted(d) {
+    if (!d3.event.active) this.simulation.alphaTarget(0.3).restart();
+    d.fx = d.x, d.fy = d.y;
+  }
+
+  dragged(d) {
+    d.fx = d3.event.x, d.fy = d3.event.y;
+  }
+
+  dragended(d) {
+    if (!d3.event.active) this.simulation.alphaTarget(0);
+    d.fx = null, d.fy = null;
   }
 }
 

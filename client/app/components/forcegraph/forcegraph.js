@@ -1,11 +1,12 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import uiModal from 'angular-ui-bootstrap/src/modal';
 import forcegraphComponent from './forcegraph.component';
 
 let forcegraphModule = angular.module('forcegraph', [
-  uiRouter
+  uiRouter,
+  uiModal
 ])
-
 
 .config(($stateProvider) => {
   "ngInject";

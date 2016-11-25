@@ -7,7 +7,7 @@
 			</button>
 
 			<ol class="breadcrumb navbar-breadcrumb">
-				<li class="active">Dashboard</li>
+				<li class="active">GDashboard</li>
 			</ol>
 
 			<button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
@@ -22,39 +22,30 @@
 
 
 			<li class="active">
-				<a ui-sref="home">Home</a>
+				<a ui-sref="home"><i class="fa fa-home"></i> Home</a>
 			</li>
 
 			<li>
-				<a ui-sref="about">About</a>
+				<a ui-sref="about"><i class="fa fa-quote-left"></i> About</a>
 			</li>
 
 			<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
 				<a href id="simple-dropdown" uib-dropdown-toggle>
-								Visualizations
+					<i class="fa fa-line-chart"></i> Visualizations <span class="caret"></span>
             </a>
 
-				<ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
-					<li ng-repeat="choice in $ctrl.visualizations">
+				<ul class="dropdown-menu animated fadeInDown" uib-dropdown-menu aria-labelledby="simple-dropdown">
+					<li class="title">
+						Visualizations
+					</li>
+					<li ng-repeat="choice in $ctrl.visualizations" class="message">
 						<a ui-sref="{{choice.sref}}">{{choice.name}}</a>
 					</li>
 				</ul>
 			</li>
 
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
-				<ul class="dropdown-menu animated fadeInDown">
-					<li class="title">
-						Notification <span class="badge pull-right">0</span>
-					</li>
-					<li class="message">
-						No new notification
-					</li>
-				</ul>
-			</li>
-
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i> 4</a>
 				<ul class="dropdown-menu  animated fadeInDown">
 					<li class="title">
 						Notification <span class="badge pull-right">4</span>
@@ -90,7 +81,7 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Garrett W <span class="caret"></span></a>
 				<ul class="dropdown-menu animated fadeInDown">
 					<li class="profile-img">
-						<img src="../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
+						<img src="../../images/garrett.jpg" class="profile-img">
 					</li>
 					<li>
 						<div class="profile-info">
@@ -112,8 +103,8 @@
 		<div class="side-menu-container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">
-					<div class="icon fa fa-bicycle"></div>
-					<div class="title">Droid Admin</div>
+					<div class="icon fa fa-grav"></div>
+					<div class="title">G - Admin</div>
 				</a>
 				<button type="button" class="navbar-expand-toggle pull-right visible-xs">
                                 <i class="fa fa-times icon"></i>
@@ -124,32 +115,13 @@
 			<ul class="nav navbar-nav">
 				<li class="active">
 					<a href="index.html">
-						<span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
+						<span class="icon fa fa-bandcamp"></span><span class="title">Dashboard</span>
 					</a>
-				</li>
-
-				<li class="panel panel-default dropdown">
-					<a data-toggle="collapse" href="#admin">
-							<span class="icon fa fa-cogs"></span>
-							<span class="title">Admin</span>
-					</a>
-
-					<!-- Dropdown level 1 -->
-					<div id="admin" class="panel-collapse collapse">
-						<div class="panel-body">
-							<ul class="nav navbar-nav">
-								<li><a href="ui-kits/theming.html">Theming</a>
-								</li>
-								<li><a href="ui-kits/grid.html">Grid</a>
-								</li>
-							</ul>
-						</div>
-					</div>
 				</li>
 
 				<li class="panel panel-default dropdown">
 					<a data-toggle="collapse" href="#dropdown-table">
-						<span class="icon fa fa-table"></span><span class="title">Table</span>
+						<span class="icon fa fa-thermometer-full"></span><span class="title">Table</span>
 					</a>
 					<!-- Dropdown level 1 -->
 					<div id="dropdown-table" class="panel-collapse collapse">
@@ -164,11 +136,10 @@
 					</div>
 				</li>
 				
-				
 				<!-- Dropdown-->
 				<li class="panel panel-default dropdown">
 					<a data-toggle="collapse" href="#dropdown-example">
-						<span class="icon fa fa-slack"></span><span class="title">Page Example</span>
+						<span class="icon fa fa-slack"></span><span class="title">Admin</span>
 					</a>
 					<!-- Dropdown level 1 -->
 					<div id="dropdown-example" class="panel-collapse collapse">

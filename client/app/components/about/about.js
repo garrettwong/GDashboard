@@ -2,9 +2,9 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import uiModal from 'angular-ui-bootstrap/src/modal';
 
+import aboutModalController from './aboutModal/aboutModal.controller';
+import aboutModalComponent from './aboutModal/aboutModal.component';
 import aboutComponent from './about.component';
-import aboutModalController from './about.modal';
-
 
 let aboutModule = angular.module('about', [
   uiRouter,
@@ -21,33 +21,7 @@ let aboutModule = angular.module('about', [
 })
 
 .controller('AboutModalController', ['$uibModalInstance', 'items', aboutModalController])
-.component('modalComponent', {
-  templateUrl: 'myModalContent.html',
-  bindings: {
-    resolve: '<',
-    close: '&',
-    dismiss: '&'
-  },
-  controllerAs: 'model',
-  controller: function () {
-    var model = this;
-
-    model.$onInit = function () {
-      model.items = model.resolve.items;
-      model.selected = {
-        item: model.items[0]
-      };
-    };
-
-    model.ok = function () {
-      model.close({$value: model.selected.item});
-    };
-
-    model.cancel = function () {
-      model.dismiss({$value: 'cancel'});
-    };
-  }
-})
+.component('modalComponent', aboutModalComponent)
 .component('about', aboutComponent)
   
 .name;
