@@ -10,24 +10,26 @@ let aboutModalComponent = {
     dismiss: '&'
   },
 
-  controllerAs: 'model',
+  controllerAs: '$ctrl',
 
   controller: function () {
-    var model = this;
+    var $ctrl = this;
 
-    model.$onInit = function () {
-      model.items = model.resolve.items;
-      model.selected = {
-        item: model.items[0]
+    $ctrl.$onInit = function () {
+      $ctrl.items = $ctrl.resolve.items;
+      $ctrl.selected = {
+        item: $ctrl.items[0]
       };
+
+      console.log('aboutModal', $ctrl);
     };
 
-    model.ok = function () {
-      model.close({$value: model.selected.item});
+    $ctrl.ok = function () {
+      $ctrl.close({$value: $ctrl.selected.item});
     };
 
-    model.cancel = function () {
-      model.dismiss({$value: 'cancel'});
+    $ctrl.cancel = function () {
+      $ctrl.dismiss({$value: 'cancel'});
     };
   }
 }

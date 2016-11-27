@@ -84,6 +84,7 @@ scroll event
       method: 'GET',
       url: './testdata.json'
     }).then(function successCallback(response) {
+      
         // this callback will be called asynchronously
         // when the response is available
         model.rows = response.data;
@@ -100,6 +101,8 @@ scroll event
 
           }
         }
+
+        console.log(model.rows);
 
       }, function errorCallback(response) {
         // called asynchronously if an error occurs

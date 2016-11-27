@@ -131,12 +131,13 @@ class ForcegraphController {
       node
         .on('click', function () {
           d3.select(this).transition()
-            .attr('width', '768px')
-            .attr('height', '768px')
+            .attr('width', '68px')
+            .attr('height', '68px')
             .attr('x', '-120px')
             .attr('y', '-120px');
 
-            self.openComponentModal();
+          let imgUrl = d3.select(this).attr('xlink:href');
+          self.openComponentModal(imgUrl);
         });
 
       return node;
@@ -164,15 +165,16 @@ class ForcegraphController {
     }
   }
 
-  openComponentModal() {
+  openComponentModal(ref) {
     console.log(this);
 
     var modalInstance = this.$uibModal.open({
       animation: true,
       component: 'modalComponent',
+      windowClass: 'modal-max-width',
       resolve: {
         items: function () {
-          return [];
+          return ref;
         }
       }
     });
