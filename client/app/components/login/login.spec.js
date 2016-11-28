@@ -1,16 +1,16 @@
-import StretchedtreemapModule from './stretchedtreemap'
-import StretchedtreemapController from './stretchedtreemap.controller';
-import StretchedtreemapComponent from './stretchedtreemap.component';
-import StretchedtreemapTemplate from './stretchedtreemap.html';
+import LoginModule from './login'
+import LoginController from './login.controller';
+import LoginComponent from './login.component';
+import LoginTemplate from './login.html';
 
-describe('Stretchedtreemap', () => {
+describe('Login', () => {
   let $rootScope, makeController;
 
-  beforeEach(window.module(StretchedtreemapModule));
+  beforeEach(window.module(LoginModule));
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
     makeController = () => {
-      return new StretchedtreemapController();
+      return new LoginController();
     };
   }));
 
@@ -30,20 +30,20 @@ describe('Stretchedtreemap', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
     it('has name in template [REMOVE]', () => {
-      expect(StretchedtreemapTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
+      expect(LoginTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
     });
   });
 
   describe('Component', () => {
       // component/directive specs
-      let component = StretchedtreemapComponent;
+      let component = LoginComponent;
 
       it('includes the intended template',() => {
-        expect(component.template).to.equal(StretchedtreemapTemplate);
+        expect(component.template).to.equal(LoginTemplate);
       });
 
       it('invokes the right controller', () => {
-        expect(component.controller).to.equal(StretchedtreemapController);
+        expect(component.controller).to.equal(LoginController);
       });
   });
 });

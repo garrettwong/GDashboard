@@ -2,6 +2,7 @@ import angular from 'angular';
 
 import Home from './home/home';
 import About from './about/about';
+import Login from './login/login';
 
 import Speech from './speech/speech';
 import DatePicker from './datepicker/datepicker';
@@ -15,15 +16,17 @@ import DivTable from './divtable/divtable';
 import Tree from './tree/tree';
 import ForceGraph from './forcegraph/forcegraph';
 import ForceDirectedTree from './forcedirectedtree/forcedirectedtree';
-import StretchedTreeMap from './stretchedtreemap/stretchedtreemap';
+import BranchedRandomWalk from './branchedrandomwalk/branchedrandomwalk';
 import TreeMap from './treemap/treemap';
 import CollapsibleTree from './collapsibleTree/collapsibleTree';
 import SortableBarChart from './sortableBarChart/sortableBarChart';
+import SlideAndZoomAreaGraph from './slideandzoomareagraph/slideandzoomareagraph';
 
 let componentModule = angular.module('app.components', [
   //pages
   Home,
   About,
+  Login,
 
   // small components
   Speech,
@@ -40,10 +43,11 @@ let componentModule = angular.module('app.components', [
   Tree,
   ForceGraph,
   ForceDirectedTree,
-  StretchedTreeMap,
+  BranchedRandomWalk,
   TreeMap,
   CollapsibleTree,
-  SortableBarChart
+  SortableBarChart,
+  SlideAndZoomAreaGraph
 ])
   
 .name;

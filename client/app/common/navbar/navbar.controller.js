@@ -8,7 +8,7 @@ class NavbarController {
       { name: 'Force Graph', sref: 'forcegraph' },
       { name: 'Tree', sref: 'tree' },
       { name: 'Tree Map', sref: 'treemap' },
-      { name: 'Tree Stretched', sref: 'stretchedtreemap' },
+      { name: 'Branched Random Walk', sref: 'branchedrandomwalk' },
       { name: 'Collapsible Tree', sref: 'collapsibletree' }
     ];
 
