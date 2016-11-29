@@ -10,7 +10,7 @@ describe('Divtable', () => {
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
     makeController = () => {
-      return new DivtableController();
+      return new DivtableController($rootScope.$new());
     };
   }));
 
@@ -20,30 +20,18 @@ describe('Divtable', () => {
 
   describe('Controller', () => {
     // controller specs
-    it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
-      let controller = makeController();
-      expect(controller).to.have.property('name');
-    });
+    
   });
 
   describe('Template', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
-    it('has name in template [REMOVE]', () => {
-      expect(DivtableTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
-    });
+    
   });
 
   describe('Component', () => {
       // component/directive specs
       let component = DivtableComponent;
-
-      it('includes the intended template',() => {
-        expect(component.template).to.equal(DivtableTemplate);
-      });
-
-      it('invokes the right controller', () => {
-        expect(component.controller).to.equal(DivtableController);
-      });
+      
   });
 });

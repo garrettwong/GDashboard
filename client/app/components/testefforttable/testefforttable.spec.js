@@ -4,13 +4,15 @@ import TestefforttableComponent from './testefforttable.component';
 import TestefforttableTemplate from './testefforttable.html';
 
 describe('Testefforttable', () => {
-  let $rootScope, makeController;
+  let $rootScope, $http, makeController;
 
   beforeEach(window.module(TestefforttableModule));
-  beforeEach(inject((_$rootScope_) => {
+  beforeEach(inject((_$rootScope_, _$http_) => {
     $rootScope = _$rootScope_;
+    $http = _$http_;
+
     makeController = () => {
-      return new TestefforttableController();
+      return new TestefforttableController($http);
     };
   }));
 
@@ -20,18 +22,13 @@ describe('Testefforttable', () => {
 
   describe('Controller', () => {
     // controller specs
-    it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
-      let controller = makeController();
-      expect(controller).to.have.property('name');
-    });
+    
   });
 
   describe('Template', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
-    it('has name in template [REMOVE]', () => {
-      expect(TestefforttableTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
-    });
+    
   });
 
   describe('Component', () => {
@@ -42,8 +39,5 @@ describe('Testefforttable', () => {
         expect(component.template).to.equal(TestefforttableTemplate);
       });
 
-      it('invokes the right controller', () => {
-        expect(component.controller).to.equal(TestefforttableController);
-      });
   });
 });
