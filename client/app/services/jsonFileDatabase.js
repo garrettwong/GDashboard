@@ -44,7 +44,7 @@ let JsonFileDatabaseFactory = function ($http) {
 };
 
 
-let jsonFileDatabase = angular.module('jsonFileDatabase', [])
+let jsonFileDatabase = angular.module('JsonFileDatabase', [])
 
 .factory('JsonFileDatabase', ['$http', JsonFileDatabaseFactory])
   

@@ -1,6 +1,8 @@
 class AboutController {
-  constructor($uibModal, JsonFileDatabase) {
+  constructor($uibModal, SweetAlert, JsonFileDatabase) {
     var model = this;
+
+    this.SweetAlert = SweetAlert;
 
     console.log($uibModal);
 
@@ -59,7 +61,8 @@ class AboutController {
   }
 
   sayHello() {
-    alert(`Hello ${this.phrase}`);
+
+    this.SweetAlert.swal('Error', `${this.phrase}`, 'error');
   }
 }
 

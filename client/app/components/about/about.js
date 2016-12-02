@@ -6,6 +6,8 @@ import aboutModalController from './aboutModal/aboutModal.controller';
 import aboutModalComponent from './aboutModal/aboutModal.component';
 import aboutComponent from './about.component';
 
+
+
 let aboutModule = angular.module('about', [
   uiRouter,
   uiModal
@@ -27,3 +29,7 @@ let aboutModule = angular.module('about', [
 .name;
 
 export default aboutModule;
+
+
+
+

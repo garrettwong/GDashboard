@@ -13,6 +13,8 @@ import angularUi from 'angular-ui-bootstrap';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
+import Services from './services/services';
+
 import 'angular-drag-and-drop-lists/angular-drag-and-drop-lists';
 
 // styles
@@ -37,7 +39,8 @@ angular.module('app', [
 
   'dndLists',
   Common,
-  Components
+  Components,
+  Services
 ])
   .config(($locationProvider) => {
     "ngInject";
