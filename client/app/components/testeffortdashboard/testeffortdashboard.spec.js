@@ -33,8 +33,7 @@ describe('Testeffortdashboard', () => {
       // component/directive specs
       let component = TesteffortdashboardComponent;
 
-      console.log('testeffortdashboard', component)
-      it('includes the intended template',() => {
+      it('includes the intended template', () => {
         expect(component.template).to.equal(TesteffortdashboardTemplate);
       });
   });

@@ -9,7 +9,6 @@ import DatePicker from './datepicker/datepicker';
 
 import TestEffortTable from './testefforttable/testefforttable';
 import GanntDates from './GanntDates/GanntDates';
-import TestEffortTableResults from './TestEffortTableResults/TestEffortTableResults';
 import TestEffortDashboard from './TestEffortDashboard/TestEffortDashboard';
 
 import DivTable from './divtable/divtable';
@@ -35,7 +34,6 @@ let componentModule = angular.module('app.components', [
   // test efforts
   TestEffortTable,
   GanntDates,
-  TestEffortTableResults,
   TestEffortDashboard,
   
   // visualization
