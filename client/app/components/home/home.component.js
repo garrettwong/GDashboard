@@ -6,7 +6,7 @@ let homeComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller: ['JsonFileDatabase', controller]
+  controller: ['$scope', 'JsonFileDatabase', controller]
 };
 
 export default homeComponent;

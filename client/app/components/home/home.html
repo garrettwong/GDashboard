@@ -19,4 +19,18 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-sm-12">
+
+      <button ng-click="update()">Randomize</button>
+
+      <button ng-click="minimizer()">Minimize</button>
+      
+      <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options"
+        chart-dataset-override="datasetOverride" chart-click="onClick" </canvas>
+
+
+    </div>
+  </div>
+
 </main>

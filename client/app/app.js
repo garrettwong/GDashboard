@@ -5,17 +5,19 @@ import bootstrap from 'bootstrap/dist/js/bootstrap';
 // import bootstrapSwitch from 'bootstrap-switch/dist/js/boostrap-switch';
 import matchHeight from 'matchHeight/jquery.matchHeight';
 
-
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import angularUi from 'angular-ui-bootstrap';
+import 'chart.js/dist/Chart.min';
+import 'angular-chart.js/dist/angular-chart.min';
+import 'angular-drag-and-drop-lists/angular-drag-and-drop-lists';
+
 
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
 import Services from './services/services';
 
-import 'angular-drag-and-drop-lists/angular-drag-and-drop-lists';
 
 // styles
 // import 'https://fonts.googleapis.com/css?family=Droid+Sans';
@@ -37,7 +39,9 @@ angular.module('app', [
   uiRouter,
   angularUi,
 
+  'chart.js',
   'dndLists',
+
   Common,
   Components,
   Services

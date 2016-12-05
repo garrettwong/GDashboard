@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "angular": "^1.5.0",
+    "angular-chart.js": "^1.0.3",
     "angular-drag-and-drop-lists": "^1.4.0",
     "angular-ui-bootstrap": "^2.2.0",
     "angular-ui-router": "^1.0.0-beta.1",
@@ -23,6 +24,7 @@
     "ng-js-tree": "0.0.10",
     "nodemon": "^1.11.0",
     "normalize.css": "^3.0.3",
+    "sweetalert2": "^6.2.0",
     "url-loader": "^0.5.7"
   },
   "devDependencies": {
