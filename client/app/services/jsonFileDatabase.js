@@ -1,55 +1,95 @@
-import angular from 'angular';
+// import angular from 'angular';
 
-let JsonFileDatabaseFactory = function ($http) {
-  let baseUrl = `http://localhost:3000`;
-  let getAll = (apiName) => {
-    let route = `${baseUrl}/api/${apiName}`;
-  
-    return $http.get(route);
+// let JsonFileDatabaseFactory = function ($http) {
+//   let baseUrl = `http://localhost:3000`;
+//   let getAll = (apiName) => {
+//     let route = `${baseUrl}/api/${apiName}`;
+
+//     return $http.get(route);
+//   };
+
+//   let get = (apiName, id) => {
+//     let route = `${baseUrl}/api/${apiName}/${id}`;
+
+//     console.log(route);
+//     return $http.get(route);
+//   };
+
+//   let post = (apiName, data) => {
+
+//     let route = `${baseUrl}/api/${apiName}`;
+
+//     return $http.post(route, data);
+//   };
+
+//   let put = (apiName, id, data) => {
+
+//     let route = `${baseUrl}/api/${apiName}/${id}`;
+
+//     return $http.put(route, data);
+//   };
+
+//   let remove = (apiName, id) => {
+
+//     let route = `${baseUrl}/api/${apiName}/${id}`;
+
+//     return $http.delete(route);
+//   };
+
+//   let test = () => {
+//     console.log('testing completed');
+//   };
+
+//   return { getAll, get, post, put, remove, test };
+// };
+
+
+// let jsonFileDatabase = angular.module('JsonFileDatabase', [])
+
+//   .factory('JsonFileDatabase', ['$http', JsonFileDatabaseFactory])
+
+//   .name;
+
+// export default jsonFileDatabase;
+
+
+export default class JsonFileDatabase {
+  constructor($http) {
+    this.$http = $http;
+    this.baseUrl = `http://localhost:3000`;
+  }
+
+  static getClassName() { return 'JsonFileDatabase'; }
+  getClassName() { return JsonFileDatabase.getClassName(); }
+
+  getAll(apiName) {
+    let route = `${this.baseUrl}/api/${apiName}`;
+
+    return this.$http.get(route);
   };
 
-  let get = (apiName, id) => {
-    let route = `${baseUrl}/api/${apiName}/${id}`;
+  get(apiName, id) {
+    let route = `${this.baseUrl}/api/${apiName}/${id}`;
 
     console.log(route);
-    return $http.get(route);
+    return this.$http.get(route);
   };
 
-  let post = (apiName, data) => {
+  post(apiName, data) {
+    let route = `${this.baseUrl}/api/${apiName}`;
 
-    let route = `${baseUrl}/api/${apiName}`;
-
-    return $http.post(route, data);
-  };
-  
-  let put = (apiName, id, data) => {
-
-    let route = `${baseUrl}/api/${apiName}/${id}`;
-
-    return $http.put(route, data);
+    return this.$http.post(route, data);
   };
 
-  let remove = (apiName, id) => {
+  put(apiName, id, data) {
+    let route = `${this.baseUrl}/api/${apiName}/${id}`;
 
-    let route = `${baseUrl}/api/${apiName}/${id}`;
-
-    return $http.delete(route);
+    return this.$http.put(route, data);
   };
 
-  let test = () => {
-    console.log('testing completed');
+  remove(apiName, id) {
+    let route = `${this.baseUrl}/api/${apiName}/${id}`;
+
+    return this.$http.delete(route);
   };
-  
-  return { getAll, get, post, put, remove, test };
-};
-
-
-let jsonFileDatabase = angular.module('JsonFileDatabase', [])
-
-.factory('JsonFileDatabase', ['$http', JsonFileDatabaseFactory])
-  
-.name;
-
-export default jsonFileDatabase;
-
-
+}

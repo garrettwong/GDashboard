@@ -5,7 +5,7 @@ module.exports = function (config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha', 'chai', 'sinon-stub-promise', 'sinon-chai'],
 
     // list of files/patterns to load in the browser
     files: [{ pattern: 'spec.bundle.js', watched: false }],
@@ -14,8 +14,12 @@ module.exports = function (config) {
     exclude: [],
 
     plugins: [
+      require("karma-sinon"),
       require("karma-chai"),
       require("karma-chrome-launcher"),
+      require("karma-sinon-chai"),
+      require("karma-sinon-stub-promise"),
+
       require("karma-mocha"),
       require("karma-mocha-reporter"),
       require("karma-sourcemap-loader"),
@@ -33,7 +37,8 @@ module.exports = function (config) {
           { test: /\.js/, exclude: [/app\/lib/, /node_modules/], loader: 'babel' },
           { test: /\.html/, loader: 'raw' },
           { test: /\.styl$/, loader: 'style!css!stylus' },
-          { test: /\.css$/, loader: 'style!css' }
+          { test: /\.css$/, loader: 'style!css' },
+          { test: /\.json$/, loader:'json'}
         ]
       }
     },

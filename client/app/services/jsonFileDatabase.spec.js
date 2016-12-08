@@ -1,12 +1,12 @@
 import angular from 'angular';
-import AppCommon from '../common/common';
+import Services from '../services/services';
 
 describe('JsonFileDatabase', () => {
 
 	var JsonFileDatabase;
 	var $httpBackend;
 
-	beforeEach(window.module(AppCommon));
+	beforeEach(window.module(Services));
 
 	beforeEach(inject(function(_JsonFileDatabase_, _$httpBackend_) {
 		JsonFileDatabase = _JsonFileDatabase_;

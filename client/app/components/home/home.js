@@ -1,9 +1,11 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import homeComponent from './home.component';
+import Services from '../../services/services';
 
 let homeModule = angular.module('home', [
-  uiRouter
+  uiRouter,
+  Services
 ])
 
 .config(($stateProvider, $urlRouterProvider) => {
@@ -17,7 +19,7 @@ let homeModule = angular.module('home', [
       component: 'home'
     });
 
-    
+  
 })
 
 .component('home', homeComponent)

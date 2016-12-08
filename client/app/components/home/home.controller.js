@@ -32,6 +32,7 @@ class HomeController {
         return b;
       }
     }
+
     $scope.minimizer = function() {
       setInterval(() => {
         for (let i = 0; i <  $scope.data.length; i++) {
@@ -94,6 +95,8 @@ class HomeController {
       }
     };
   }
+
+  
 }
 
 export default HomeController;
