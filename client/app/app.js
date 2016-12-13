@@ -6,6 +6,7 @@ import bootstrap from 'bootstrap/dist/js/bootstrap';
 import matchHeight from 'matchHeight/jquery.matchHeight';
 
 import angular from 'angular';
+import ngSanitize from 'angular-sanitize';
 import uiRouter from 'angular-ui-router';
 import angularUi from 'angular-ui-bootstrap';
 import 'chart.js/dist/Chart.min';
@@ -37,6 +38,7 @@ import './styles/theme.css';
 
 angular.module('app', [
   uiRouter,
+  ngSanitize,
   angularUi,
 
   'chart.js',

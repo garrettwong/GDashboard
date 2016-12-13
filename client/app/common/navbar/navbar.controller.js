@@ -9,7 +9,8 @@ class NavbarController {
       { name: 'Tree', sref: 'tree' },
       { name: 'Tree Map', sref: 'treemap' },
       { name: 'Branched Random Walk', sref: 'branchedrandomwalk' },
-      { name: 'Collapsible Tree', sref: 'collapsibletree' }
+      { name: 'Collapsible Tree', sref: 'collapsibletree' },
+      { name: 'Salary Graph', sref: 'salarygraph' }
     ];
 
     this.status = {

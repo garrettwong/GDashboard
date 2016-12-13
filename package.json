@@ -1,12 +1,13 @@
 {
-  "name": "ng6-starter",
+  "name": "gdashboard",
   "version": "0.0.1",
-  "description": "Starter for Angular + ES6 + (Webpack or JSPM)",
+  "description": "Angular Dashboard with Angular, ES6, Webpack",
   "main": "index.js",
   "dependencies": {
     "angular": "^1.5.0",
     "angular-chart.js": "^1.0.3",
     "angular-drag-and-drop-lists": "^1.4.0",
+    "angular-sanitize": "^1.6.0",
     "angular-ui-bootstrap": "^2.2.0",
     "angular-ui-router": "^1.0.0-beta.1",
     "body-parser": "^1.15.2",
@@ -27,6 +28,7 @@
     "normalize.css": "^3.0.3",
     "sinon": "^1.17.6",
     "sweetalert2": "^6.2.0",
+    "ui-select": "^0.19.6",
     "url-loader": "^0.5.7"
   },
   "devDependencies": {

@@ -21,6 +21,9 @@ import CollapsibleTree from './collapsibleTree/collapsibleTree';
 import SortableBarChart from './sortableBarChart/sortableBarChart';
 import SlideAndZoomAreaGraph from './slideandzoomareagraph/slideandzoomareagraph';
 
+import SalaryGraph from './salarygraph/salarygraph';
+import DynamicGraph from './dynamicgraph/dynamicgraph';
+
 let componentModule = angular.module('app.components', [
   //pages
   Home,
@@ -45,7 +48,10 @@ let componentModule = angular.module('app.components', [
   TreeMap,
   CollapsibleTree,
   SortableBarChart,
-  SlideAndZoomAreaGraph
+  SlideAndZoomAreaGraph,
+  
+  SalaryGraph,
+  DynamicGraph
 ])
   
 .name;
