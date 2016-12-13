@@ -23,6 +23,14 @@ class DynamicgraphController {
                         display: true,
                         position: 'right'
                     }
+                ],
+                xAxes: [
+                    {
+                        //http://www.chartjs.org/docs/#scales
+                        // ticks: {
+                        //     autoSkip: false
+                        // }
+                    }
                 ]
             },
         };

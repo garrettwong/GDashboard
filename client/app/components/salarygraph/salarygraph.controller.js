@@ -18,6 +18,15 @@ class SalarygraphController {
 
   updateGraph(){
     console.log('Selected Y:', this.selectedY);
+    console.log('data to format', this.data);
+
+    // sort data by X
+    this.data.sort((a, b) => {
+      let x = this.selectedKey[0]; // get x key
+      if (a[x] > b[x]) return 1;
+      else if (a[x] < b[x]) return -1;
+      else return 0;
+    });
 
     // reset values
     this.labels = [];
@@ -26,30 +35,40 @@ class SalarygraphController {
     // foreach parsed data object
     for (let j = 0; j < this.selectedY.length; j++) {
       let arr = [];
-      let selectedIndex = this.selectedY[j];
+
+      // xIndex will be a string denoting the x lookup 'key'
+      let xIndex = this.selectedKey[0];
+      // selectedIndex will be a string denoting the y lookup 'key'
+      let yIndex = this.selectedY[j];
+      
+      // iterate through the graph data array
       this.data.forEach((data, i) => {
-        // console.log('data', data[selectedIndex]);
-
         // get selected index
-        let dataEl = data[selectedIndex];
+        let labelVal = data[xIndex];
+        let dataVal = data[yIndex];
 
-        if (dataEl) { 
-          let val = parseInt(dataEl.replace('$', '').replace(',', ''));
-          if (isNaN(val)) val = 0;
+        // if data is valid:
+        if (dataVal) { 
+          let valToInsert = parseInt(dataVal.replace('$', '').replace(',', ''));
+          if (isNaN(valToInsert)) valToInsert = 0;
 
           // only push if valid value
-          if(val !== 0 && val !== null) {
-            arr.push(val);
-            
-            this.labels.push(i); // push label position
+          if(valToInsert !== 0 && valToInsert !== null) {
+            // this.labels.push(i); // push index val
+            this.labels.push(labelVal);
+
+            arr.push(valToInsert);
           }
         }
       });
+
+      // add to graphData
       this.graphData.push(arr);
       arr = [];
     }
 
-    console.log(this.graphData);
+    console.log('graphLabels', this.labels);
+    console.log('graphData', this.graphData);
   }
 
   get() {
