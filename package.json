@@ -16,6 +16,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "csurf": "^1.9.0",
     "d3": "^4.3.0",
+    "dsv-loader": "^1.1.0",
     "errorhandler": "^1.4.3",
     "express": "^4.14.0",
     "express-session": "^1.14.2",

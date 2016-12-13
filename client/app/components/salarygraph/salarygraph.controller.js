@@ -72,7 +72,7 @@ class SalarygraphController {
   }
 
   get() {
-    this.$http.get('./static/ngaio2016.csv').then((response) => {
+    this.$http.get('./static/ngaio2016.tsv').then((response) => {
       
       // response.data = cleanMoneyFormats(response.data);
 
@@ -97,7 +97,7 @@ class SalarygraphController {
   parseCsvToHeaders(data) {
     let rows = data.split('\r\n');
 
-    let headersRow = rows[0].split(',');
+    let headersRow = rows[0].split('\t');
 
     return headersRow;
   }
@@ -110,15 +110,18 @@ class SalarygraphController {
 
     // start at 1 because to skip the headers row
     for (let i = 1; i < rows.length; i++) {
-      let curRow = rows[i].split(',');
+      let curRow = rows[i].split('\t');
       console.log(curRow.length, headers.length);
 
       let obj = {};
 
       for (let curPropIdx = 0; curPropIdx < curRow.length; curPropIdx++) {
+        let headerKey = headers[curPropIdx];
         let val = curRow[curPropIdx];
+        
+        console.log(headerKey, val);
 
-        obj[headers[curPropIdx]] = val;
+        obj[headerKey] = val;
       }
 
       // console.log('obj', obj);

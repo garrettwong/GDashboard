@@ -21,7 +21,9 @@ module.exports = {
        { test: /\.styl$/, loader: 'style!css!stylus' },
        { test: /\.css$/, loader: 'style!css' }, 
        { test: /\.(jpe?g|png|gif|mp3)$/, loader: 'url?limit=25000' },
-       { test: /\.json$/, loader:'json'}
+       { test: /\.json$/, loader:'json'},
+       { test: /\.csv$/, loader:'csv'},
+       { test: /\.txt$/, loader:'dsv-loader'}
     ]
   },
   externals: {

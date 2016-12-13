@@ -3,8 +3,16 @@
 
   <button ng-click="$ctrl.refresh()">Refresh</button>
 
-  <canvas id="line" class="chart chart-line" chart-data="$ctrl.data" 
-    chart-labels="$ctrl.labels" chart-series="$ctrl.series" chart-options="$ctrl.options"
-    chart-dataset-override="$ctrl.datasetOverride" chart-click="$ctrl.onClick" </canvas>
+  <button ng-click="$ctrl.chartToggle();">Toggle Type</button>
+
+  <div ng-if="$ctrl.chartType === 'chart-line'">
+    <canvas id="line" class="chart chart-line" chart-data="$ctrl.data" chart-labels="$ctrl.labels" chart-series="$ctrl.series"
+      chart-options="$ctrl.options" chart-dataset-override="$ctrl.datasetOverride" chart-click="$ctrl.onClick"></canvas>
+  </div>
+
+  <div ng-if="$ctrl.chartType === 'chart-bar'">
+    <canvas id="line" class="chart chart-bar" chart-data="$ctrl.data" chart-labels="$ctrl.labels" chart-series="$ctrl.series"
+      chart-options="$ctrl.options" chart-dataset-override="$ctrl.datasetOverride" chart-click="$ctrl.onClick"></canvas>
+  </div>
 
 </div>

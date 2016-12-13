@@ -6,6 +6,7 @@ class DynamicgraphController {
             [65, 59, 80, 81, 56, 55, 40]
         ];
 
+        this.chartType = 'chart-line'; //'chart-bar';
         this.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
 
         this.options = {
@@ -35,19 +36,20 @@ class DynamicgraphController {
             },
         };
 
-        this.name = 'wditrgraph';
+        this.name = 'dynamicgraph';
+    }
+
+    chartToggle() {
+        this.chartType = (this.chartType === 'chart-line' ? 'chart-bar' : 'chart-line');
     }
 
     $doCheck() {
-        console.log('$doCheck');
-        
         // let's update graphData
         this.update();
-        
     }
-    
+
     $onChanges(val) {
-      console.log('$onChanges', val);
+        console.log('$onChanges', val);
     }
 
     onClick(points, evt) {
@@ -69,9 +71,9 @@ class DynamicgraphController {
     }
 
     update() {
-      if (!angular.equals(this.data, this.graphData)) {
-        this.data = this.graphData;
-      }
+        if (!angular.equals(this.data, this.graphData)) {
+            this.data = this.graphData;
+        }
     }
 }
 
