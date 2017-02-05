@@ -56,7 +56,7 @@
 export default class JsonFileDatabase {
   constructor($http) {
     this.$http = $http;
-    this.baseUrl = `http://localhost:3000`;
+    this.baseUrl = `http://localhost:3001`;
   }
 
   static getClassName() { return 'JsonFileDatabase'; }

@@ -2,6 +2,11 @@
 class NavbarController {
   constructor() {
 
+    this.forms = [
+      { name: 'About', sref: 'about' },
+      { name: 'Login', sref: 'login' }
+    ];
+
     this.visualizations = [
       { name: 'DivTable', sref: 'divtable' },
       { name: 'Force Directed Tree', sref: 'forcedirectedtree' },

@@ -13,7 +13,7 @@ let aboutComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller: ['$uibModal', SweetAlert.getClassName(), JsonFileDatabase, controller]
+  controller: ['$uibModal', SweetAlert.getClassName(), JsonFileDatabase.getClassName(), controller]
 };
 
 export default aboutComponent;

@@ -1,0 +1,92 @@
+<div class="container-fluid">
+  
+  <div class="row">
+    <div class="col-sm-12">
+      Filters:
+
+      <div style="display: inline-block; margin-left:24px;">
+        <label>By Name:</label>
+
+        <select name="Selection" id="" style="display: inline-block">
+          <option value="limlam8"></option>
+          <option value="limlam8">Bryan Lim</option>
+        </select>
+      </div>
+
+
+      <div style="display: inline-block; margin-left:24px;">
+        <label>Location:</label>
+
+        <select name="Selection" id="" style="display: inline-block">
+          <option value=""></option>
+          <option value="taiwan">Taiwan</option>
+          <option value="japan">Japan</option>
+          <option value="singapore">Singapore</option>
+        </select>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="box">
+        <h4>Efficiency</h4>
+
+        <branchedrandomwalk></branchedrandomwalk>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="box">
+        <h4>Rate of Candidate Turnover</h4>
+
+        <slideandzoomareagraph></slideandzoomareagraph>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="box">
+        <piechart></piechart>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="box">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>User Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th><i class="fa fa-rocket"></i></th>
+              <th>Efficiency</th>
+              <th>Refs</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+                Bryan Lim <i class="fa fa-eye"></i>
+              </td>
+              <td>limlam8@gmail.com</td>
+              <td>123-456-7890</td>
+              <td>
+                <a ui-sref="profile/limlam8"><i class="fa fa-user-md"></i></a>
+              </td>
+              <td>36/100 (36%)</td>
+              <td>
+                <a ui-sref="profile/limlam8"><i class="fa fa-phone"></i></a>
+                <a ui-sref="profile/limlam8"><i class="fa fa-bar-chart"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

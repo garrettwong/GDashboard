@@ -2,20 +2,37 @@
 
     <div class="row">
         <div class="col-xs-6">
-            <h3>Basic Angular Input</h3>
+            <h3>About</h3>
 
             <form class="form">
                 <div class="form-group">
-                    <label for="" class="col-xs-2 col-xs-offset-2">Input Phrase</label>
+                    <label for="" class="col-xs-4">What is your name?</label>
+
                     <div class="col-xs-8">
                         <input type="text" class="form-control" ng-model="$ctrl.phrase">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="" class="col-xs-2 col-xs-offset-2">Say Phrase</label>
+                    <label for="" class="col-xs-4">Click to see a random quote</label>
+                    
                     <div class="col-xs-8">
-                        <button class="btn btn-info" ng-click="$ctrl.sayHello()">Speak Phrase</button>
+                        <button class="btn btn-warning" 
+                            ng-click="$ctrl.getQuote()">Get Quote</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="col-xs-4">Options:</label>
+                    
+                    <div class="col-xs-4">
+                        <input type="radio" ng-model="$ctrl.selectedRadio" value="Red Pill"> Red
+                        <input type="radio" ng-model="$ctrl.selectedRadio" value="Blue Pill"> Blue
+                        <input type="radio" ng-model="$ctrl.selectedRadio" value="No Pill"> No
+                    </div>
+
+                    <div class="col-xs-4">
+                        {{$ctrl.selectedRadio}}
                     </div>
                 </div>
             </form>

@@ -3,6 +3,7 @@ import angular from 'angular';
 import Home from './home/home';
 import About from './about/about';
 import Login from './login/login';
+import Profile from './profile/profile';
 
 import Speech from './speech/speech';
 import DatePicker from './datepicker/datepicker';
@@ -23,12 +24,17 @@ import SlideAndZoomAreaGraph from './slideandzoomareagraph/slideandzoomareagraph
 
 import SalaryGraph from './salarygraph/salarygraph';
 import DynamicGraph from './dynamicgraph/dynamicgraph';
+import BarGraph from './bargraph/bargraph';
+import PieChart from './piechart/piechart';
 
 let componentModule = angular.module('app.components', [
   //pages
   Home,
+
+  // forms
   About,
   Login,
+  Profile,
 
   // small components
   Speech,
@@ -51,7 +57,10 @@ let componentModule = angular.module('app.components', [
   SlideAndZoomAreaGraph,
   
   SalaryGraph,
-  DynamicGraph
+  DynamicGraph,
+  
+  BarGraph,
+  PieChart
 ])
   
 .name;
