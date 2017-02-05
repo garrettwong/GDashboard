@@ -1,5 +1,5 @@
 
-# GDashboard [![Demo](https://facebook.com)](https://facebook.com)
+# GDashboard
 
 > A dashboard of angular 1.5.x components.  Inspired by a fork from the [NG6-Starter](https://github.com/AngularClass/NG6-Starter), using [ES6](https://git.io/es6features), and [Webpack](http://webpack.github.io/)
 
