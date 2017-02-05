@@ -41,6 +41,22 @@
 				</ul>
 			</li>
 
+
+			<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+				<a href id="simple-dropdown" uib-dropdown-toggle>
+					<i class="fa fa-list-ul"></i> Lists <span class="caret"></span>
+				</a>
+
+				<ul class="dropdown-menu animated fadeInDown" uib-dropdown-menu aria-labelledby="simple-dropdown">
+					<li class="title">
+						Lists
+					</li>
+					<li ng-repeat="choice in $ctrl.lists" class="message">
+						<a ui-sref="{{choice.sref}}">{{choice.name}}</a>
+					</li>
+				</ul>
+			</li>
+
 			<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
 				<a href id="simple-dropdown" uib-dropdown-toggle>
 					<i class="fa fa-line-chart"></i> Visualizations <span class="caret"></span>

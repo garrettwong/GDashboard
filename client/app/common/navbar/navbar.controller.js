@@ -7,6 +7,10 @@ class NavbarController {
       { name: 'Login', sref: 'login' }
     ];
 
+    this.lists = [
+      { name: 'List Examples', sref: 'listbullets' }
+    ];
+
     this.visualizations = [
       { name: 'DivTable', sref: 'divtable' },
       { name: 'Force Directed Tree', sref: 'forcedirectedtree' },

@@ -1,6 +1,6 @@
 <div class="container-fluid">
   
-  <div class="row">
+  <div class="row sidecannon">
     <div class="col-sm-12">
       Filters:
 
@@ -28,20 +28,38 @@
     </div>
   </div>
 
+  <dashboardgrid></dashboardgrid>
+
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12">
       <div class="box">
-        <h4>Efficiency</h4>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="row">
+              <div class="col-sm-6">
 
-        
-      </div>
-    </div>
+                <h4>Rate of Candidate Turnover</h4>
+              </div>
+              <div class="col-sm-6">
+                <div class="pull-right">
+                  <input type="date" class="form-control" />
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
 
-    <div class="col-sm-6">
-      <div class="box">
-        <h4>Rate of Candidate Turnover</h4>
-
-        <slideandzoomareagraph></slideandzoomareagraph>
+        <div class="row">
+          <div class="col-sm-9">
+            <slideandzoomareagraph></slideandzoomareagraph>
+          </div>
+          <div class="col-sm-3">
+            <h4>Bryan Lim</h4>
+            
+            <listbullets></listbullets>
+          </div>
+        </div>
       </div>
     </div>
   </div>
