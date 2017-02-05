@@ -1,0 +1,37 @@
+/*
+http://stackoverflow.com/questions/29932657/how-can-i-make-a-list-style-image-scale-with-the-lists-font-size-when-we-cant
+*/
+
+ul.listbullets {
+    list-style: none;
+}
+
+.listbullets li {
+    position: relative;
+}
+
+.listbullets li:before {
+    /*
+    The desired width gets defined in two places: The element width, and background size.
+    The height only gets defined once, in background size.
+    */
+    position: absolute;
+    display: block;
+    content: '\2022'; /* bullet point, for screen readers */
+    text-indent: -999999px; /* move the bullet point out of sight */
+    left: -.75em;
+    width: .4em; /* desired width of the image */
+    height: 1em; /* unrelated to image height; this is so it gets snipped */
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI4cHgiIGhlaWdodD0iMTRweCIgdmlld0JveD0iMCAwIDggMTQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDggMTQiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGZpbGw9IiM2NjY2NjYiIGQ9Ik0wLjM3LDEyLjYzOGw1LjcyNi01LjU2NUwwLjUzMSwxLjM0N0MwLjI1MiwxLjA1OSwwLjI2MSwwLjYwMSwwLjU0NywwLjMyMWMwLjI4OS0wLjI3OSwwLjc0Ni0wLjI3MiwxLjAyNiwwLjAxNmw2LjA2Miw2LjI0YzAsMC4wMDIsMC4wMDYsMC4wMDQsMC4wMDgsMC4wMDZjMC4wNjgsMC4wNywwLjExOSwwLjE1NiwwLjE1NiwwLjI0NEM3LjkwMiw3LjA4OCw3Ljg0Niw3LjM5OSw3LjYzMSw3LjYxYy0wLjAwMiwwLjAwNC0wLjAwNiwwLjAwNC0wLjAxLDAuMDA2bC02LjIzOCw2LjA2M2MtMC4xNDMsMC4xNDEtMC4zMzEsMC4yMDktMC41MTQsMC4yMDVjLTAuMTg3LTAuMDA2LTAuMzcyLTAuMDc4LTAuNTExLTAuMjIxQzAuMDc2LDEzLjM3NiwwLjA4MywxMi45MTksMC4zNywxMi42MzgiLz48L3N2Zz4=');
+    background-size: .4em .7em;
+    background-position: 0 .3em;
+}
+
+.listbullets.small-list {
+    font-size: 85%;
+}
+
+.listbullets.large-list {
+    font-size: 150%;
+}

@@ -5,6 +5,8 @@ import About from './about/about';
 import Login from './login/login';
 import Profile from './profile/profile';
 
+import ListBullets from './listbullets/listbullets';
+
 import Speech from './speech/speech';
 import DatePicker from './datepicker/datepicker';
 
@@ -35,6 +37,9 @@ let componentModule = angular.module('app.components', [
   About,
   Login,
   Profile,
+
+  // lists
+  ListBullets,
 
   // small components
   Speech,
