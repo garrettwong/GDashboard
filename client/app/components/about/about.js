@@ -29,7 +29,3 @@ let aboutModule = angular.module('about', [
 .name;
 
 export default aboutModule;
-
-
-
-

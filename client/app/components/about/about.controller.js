@@ -10,6 +10,10 @@ class AboutController {
 
     model.animationsEnabled = true;
 
+    /*
+     * @function open
+     * @description opens modal via controller method
+     */
     model.open = function (size, parentSelector) {
       var parentElem = parentSelector ?
         angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
@@ -20,7 +24,7 @@ class AboutController {
         animation: model.animationsEnabled,
         ariaLabelledBy: 'modal-title',
         ariaDescribedBy: 'modal-body',
-        templateUrl: 'myModalContent.html',
+        templateUrl: 'controllerModal.html',
         controller: 'AboutModalController',
         controllerAs: 'model',
         size: size,
