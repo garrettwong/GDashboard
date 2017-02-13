@@ -20,6 +20,7 @@ class TestefforttableController {
         dat.setDate(dat.getDate() + days);
         return dat;
     };
+
     model.formatDate = function(date) {
       var year = date.getFullYear();
       var month = (1 + date.getMonth()).toString();
@@ -28,11 +29,12 @@ class TestefforttableController {
       day = day.length > 1 ? day : '0' + day;
       return month + '/' + day + '/' + year.toString().substr(2);
     };
+
     model.stringToDate = function(dateStr) {
       return moment(dateStr).format('MM/DD/YYYY');
     };
 
-    var intervals = 20;
+    var intervals = 5;
     for(let i = 0; i < intervals; i++) {
       model.dates.push(new Date());
 
@@ -55,13 +57,15 @@ class TestefforttableController {
         max = fullDateRange[i].calc;
       }
     }
+
     var diff = max - min;
     // now scale to 0 - 100
     function scaleTo100(val) {
+      console.log(val, min, diff);
       var scaledValue = (val - min)*100 / (diff); // scale
-
       return scaledValue < 0 ? 0 : scaledValue;
     }
+
     model.fullDateRange = fullDateRange;
     model.scale = scaleTo100;
 
@@ -70,7 +74,7 @@ class TestefforttableController {
     var today = new Date();
     model.todayAdjustment = model.scale(today.getTime()) + '%';
     model.width = 72 * intervals;// 72 is the width of a block
-
+    console.log(model.width, 'width');
 /* End Test Code */
 
 /*
@@ -96,9 +100,10 @@ scroll event
             var startTime = (new Date(row.milestones[mIdx].startDate)).getTime();
             var endTime = (new Date(row.milestones[mIdx].endDate)).getTime();
             
-            row.milestones[mIdx].start = model.scale(startTime);
-            row.milestones[mIdx].end = model.scale(endTime);
+            // row.milestones[mIdx].start = model.scale(startTime);
+            // row.milestones[mIdx].end = model.scale(endTime);
 
+            console.log(row.milestones, 'mileson');
           }
         }
 

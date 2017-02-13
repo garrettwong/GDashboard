@@ -5,6 +5,8 @@ import About from './about/about';
 import Login from './login/login';
 import Profile from './profile/profile';
 import DashboardGrid from './dashboardgrid/dashboardgrid';
+import Tiles from './tiles/tiles';
+import IconList from './iconlist/iconlist';
 
 import ListBullets from './listbullets/listbullets';
 
@@ -39,6 +41,8 @@ let componentModule = angular.module('app.components', [
   Login,
   Profile,
   DashboardGrid,
+  Tiles,
+  IconList,
 
   // lists
   ListBullets,

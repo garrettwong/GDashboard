@@ -14,10 +14,8 @@
     <thead>
       <tr>
         <th>{{model.title}}</th>
-        <th>Name</th>
         <th>Start</th>
         <th>End</th>
-        <th></th>
 
         <th class="flipped">
           
@@ -49,19 +47,11 @@
             <a ui-sref="testEffortDashboard.testEffortDashboardResult({testEffortId: row.index})">{{row.name}}</a>
         </td>
 
-        <td>  
-          <a ui-sref-active="active" 
-             ui-sref="testEffortTable.testefforttableresults({testEffortId: row.index})">About</a>
-        </td>
         <td>
           {{ row.birthdate | mmddyyyy}}
         </td>
         <td>
           {{ row.birthdate | mmddyyyy}}
-        </td>
-
-        <td>
-          <img src="{{row.picture}}" />
         </td>
 
         <td class="noPadding" style="max-width: 500px; overflow-x: hidden;">

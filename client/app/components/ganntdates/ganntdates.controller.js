@@ -2,8 +2,6 @@ class GanntdatesController {
   constructor() {
     this.name = 'ganntdates';
 
-    // this.milestones (binding)
-
     this.getColor = function(c) {
       if (c > 80) return '#4488ff';
       if (c > 60) return '#2222ff';

@@ -1,0 +1,10 @@
+<div class="row top_tiles">
+  <div class="animated flipInY {{$ctrl.tileColumnClasses}}" ng-repeat="tile in $ctrl.tiles">
+    <div class="tile-stats">
+      <div class="icon"><i class="fa {{tile.icon}}"></i></div>
+      <div class="count">{{tile.value}}</div>
+      <h3>{{tile.name}}</h3>
+      <p>{{tile.desc}}</p>
+    </div>
+  </div>
+</div>
