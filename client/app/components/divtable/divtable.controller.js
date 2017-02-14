@@ -7,7 +7,7 @@ class DivtableController {
     };
 
     // Generate initial model
-    for (var i = 1; i <= 3; ++i) {
+    for (var i = 1; i <= 20; ++i) {
         $scope.models.lists.A.push({label: "Item A" + i});
         $scope.models.lists.B.push({label: "Item B" + i});
     }
@@ -20,7 +20,15 @@ class DivtableController {
 
     console.log(this);
     angular.extend(this, $scope);
+  }
 
+  remove(row) {
+      console.log('removing ', row.label, 
+      this.models.lists.A.indexOf(row));
+
+      let indexToRemove = this.models.lists.A.indexOf(row);
+      
+      this.models.lists.A.splice(indexToRemove, 1);
   }
 }
 

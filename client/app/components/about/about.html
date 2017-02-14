@@ -62,6 +62,43 @@
                     <input class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
                 </div>
             </div>
+
+            <div class="form-group">    
+                <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
+
+                <h4>Popup</h4>
+                <div class="row">
+                <div class="col-md-6">
+                    <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="{{$ctrl.format}}" ng-model="dt" is-open="$ctrl.popup1.opened" datepicker-options="$ctrl.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="$ctrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                    </p>
+                </div>
+
+                <div class="col-md-6">
+                    <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="$ctrl.popup2.opened" datepicker-options="$ctrl.dateOptions" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="$ctrl.open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                    </p>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-6">
+                    <label>Format: <span class="muted-text">(manual alternate <em>{{altInputFormats[0]}}</em>)</span></label> <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>
+                </div>
+                </div>
+
+                <hr />
+                <button type="button" class="btn btn-sm btn-info" ng-click="$ctrl.today()">Today</button>
+                <button type="button" class="btn btn-sm btn-default" ng-click="ctrl.setDate(2009, 7, 24)">2009-08-24</button>
+                <button type="button" class="btn btn-sm btn-danger" ng-click="ctrl.clear()">Clear</button>
+                <button type="button" class="btn btn-sm btn-default" ng-click="ctrl.toggleMin()" uib-tooltip="After today restriction">Min date</button>
+            </div>
+
             <div class="ln_solid"></div>
             <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">

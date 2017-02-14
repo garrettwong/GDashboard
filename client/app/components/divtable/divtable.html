@@ -1,19 +1,22 @@
 <div class="simpleDemo">
-  
-  
-  <ul dnd-list="$ctrl.models.lists['A']">
-      <!-- The dnd-draggable directive makes an element draggable and will
+
+    <h4>Drag and Drop Me</h4>
+
+    <ul dnd-list="$ctrl.models.lists['A']">
+        <!-- The dnd-draggable directive makes an element draggable and will
           transfer the object that was assigned to it. If an element was
           dragged away, you have to remove it from the original list
           yourself using the dnd-moved attribute -->
-      <li ng-repeat="item in $ctrl.models.lists['A']"
-          dnd-draggable="item"
-           dnd-moved="$ctrl.models.lists['A'].splice($index, 1)"
-          dnd-effect-allowed="move"
-          dnd-selected="$ctrl.models.selected = item"
-          ng-class="{'selected': $ctrl.models.selected === item}"
-          >
-          {{item.label}}
-      </li>
-  </ul>
+        <li ng-repeat="item in $ctrl.models.lists['A']" dnd-draggable="item" dnd-moved="$ctrl.models.lists['A'].splice($index, 1)"
+            dnd-effect-allowed="move" dnd-selected="$ctrl.models.selected = item" ng-class="{'selected': $ctrl.models.selected === item}">
+            <span>
+              {{item.label}}
+            </span>
+            <div class="pull-right">
+                <a class="text-danger" ng-click="$ctrl.remove(item)">
+                    <i class="fa fa-remove"></i>    
+                </a>
+            </div>
+        </li>
+    </ul>
 </div>

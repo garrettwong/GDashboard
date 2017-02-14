@@ -8,11 +8,11 @@ class NavbarController {
     ];
 
     this.lists = [
-      { name: 'List Examples', sref: 'listbullets' }
+      { name: 'List Examples', sref: 'listbullets' },
+      { name: 'Drag And Drop List', sref: 'divtable' },
     ];
 
     this.visualizations = [
-      { name: 'DivTable', sref: 'divtable' },
       { name: 'Force Directed Tree', sref: 'forcedirectedtree' },
       { name: 'Force Graph', sref: 'forcegraph' },
       { name: 'Tree', sref: 'tree' },
