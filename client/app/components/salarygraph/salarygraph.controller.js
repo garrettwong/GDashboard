@@ -1,7 +1,11 @@
 class SalarygraphController {
-  
+
   constructor($http) {
     this.name = 'salarygraph';
+
+    // this.carriageReturn = '\r\n';
+    this.carriageReturn = '\n';
+
     this.keys = []; // track header names
     this.data = []; // track data fields
     this.selectedKey; // selected key
@@ -16,11 +20,18 @@ class SalarygraphController {
     this.get();
   }
 
-  updateGraph(){
+
+  /*
+   * @function updateGraph()
+   * @description updates the graph on ui-select change
+   */
+  updateGraph() {
     console.log('Selected Y:', this.selectedY);
     console.log('data to format', this.data);
 
-    // sort data by X
+    // sort data by the selectedKey
+    console.log('sorting data by ', this.selectedKey[0]);
+
     this.data.sort((a, b) => {
       let x = this.selectedKey[0]; // get x key
       if (a[x] > b[x]) return 1;
@@ -37,23 +48,30 @@ class SalarygraphController {
       let arr = [];
 
       // xIndex will be a string denoting the x lookup 'key'
-      let xIndex = this.selectedKey[0];
+      let xProperty = this.selectedKey[0];
       // selectedIndex will be a string denoting the y lookup 'key'
-      let yIndex = this.selectedY[j];
-      
+      let yProperty = this.selectedY[j];
+
+      console.log('looking up properties:', xProperty, yProperty, this.data[11][xProperty], this.data[11][yProperty]);
+
       // iterate through the graph data array
       this.data.forEach((data, i) => {
         // get selected index
-        let labelVal = data[xIndex];
-        let dataVal = data[yIndex];
+        let labelVal = data[xProperty];
+        let dataVal = data[yProperty];
 
         // if data is valid:
-        if (dataVal) { 
+        if (dataVal) {
           let valToInsert = parseInt(dataVal.replace('$', '').replace(',', ''));
-          if (isNaN(valToInsert)) valToInsert = 0;
+          
+          if (isNaN(valToInsert)) {
+            // if the val is inherently not a number
+            //valToInsert = 0;
+            valToInsert = dataVal;
+          }
 
           // only push if valid value
-          if(valToInsert !== 0 && valToInsert !== null) {
+          if (valToInsert !== 0 && valToInsert !== null) {
             // this.labels.push(i); // push index val
             this.labels.push(labelVal);
 
@@ -63,7 +81,10 @@ class SalarygraphController {
       });
 
       // add to graphData
-      this.graphData.push(arr);
+      if (arr.length > 0) {
+        this.graphData.push(arr);
+      }
+
       arr = [];
     }
 
@@ -71,16 +92,23 @@ class SalarygraphController {
     console.log('graphData', this.graphData);
   }
 
+  /*
+   * @function get
+   * @description gets values from the tsv
+   */
   get() {
     this.$http.get('./static/ngaio2016.tsv').then((response) => {
-      
-      // response.data = cleanMoneyFormats(response.data);
+      console.log('result of ngaio2016', response);
 
       let headersRow = this.parseCsvToHeaders(response.data);
       this.keys = headersRow;
 
+      console.log(headersRow);
+
       let objectsArr = this.parseCsvToJsonArray(response.data, this.keys);
       this.data = objectsArr;
+
+      console.log(this.data);
 
       // set default selections
       this.selectedKey = ['Company Name'];
@@ -95,7 +123,7 @@ class SalarygraphController {
   }
 
   parseCsvToHeaders(data) {
-    let rows = data.split('\r\n');
+    let rows = data.split(this.carriageReturn);
 
     let headersRow = rows[0].split('\t');
 
@@ -103,23 +131,24 @@ class SalarygraphController {
   }
 
   parseCsvToJsonArray(data, headers) {
-    let rows = data.split('\r\n');
+    let rows = data.split(this.carriageReturn);
 
     // now parse into objects
     let objectsArr = [];
 
-    // start at 1 because to skip the headers row
+    // start at row index 1 to skip the csv headers row
     for (let i = 1; i < rows.length; i++) {
       let curRow = rows[i].split('\t');
-      console.log(curRow.length, headers.length);
+      //console.log(curRow.length, headers.length);
 
       let obj = {};
+
 
       for (let curPropIdx = 0; curPropIdx < curRow.length; curPropIdx++) {
         let headerKey = headers[curPropIdx];
         let val = curRow[curPropIdx];
-        
-        console.log(headerKey, val);
+
+        //console.log(headerKey, val);
 
         obj[headerKey] = val;
       }

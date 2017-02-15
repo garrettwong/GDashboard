@@ -7,34 +7,78 @@
     </select>
   </div>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Target Keys</label>
-    <label class="col-sm-2 control-label">X: {{$ctrl.selectedKey[0]}}</label>
-    
-    <div class="col-sm-8">
-      <ui-select multiple ng-model="$ctrl.selectedY" theme="bootstrap" sortable="true" close-on-select="true" ng-change="$ctrl.updateGraph()">
-        <ui-select-match placeholder="Select key ...">{{$item}}</ui-select-match>
-        
-        <ui-select-choices repeat="key in $ctrl.keys">
-          <div ng-bind-html="key | highlight: $select.search"></div>
-          <small>
-          {{$sce.trustAsHtml(key)}} 
-        </small>
-        </ui-select-choices>
-      </ui-select>
+  <!-- dashboard view -->
+  <div class="row dashboardPanel">
+    <div class="col-sm-9">
 
-    </div>
-  </div>
+      <div class="row x_title">
+        <div class="col-md-6" style="padding-top:5px;">
+          <h4 class="iconTitle">Salary Graph <small>( {{$ctrl.selectedKey[0]}}, {{$ctrl.selectedY}} )</small></h4>
+        </div>
+
+        <div class="col-md-6" style="padding-top:10px;">
+
+          <ui-select multiple ng-model="$ctrl.selectedY" theme="bootstrap" sortable="true" close-on-select="true" ng-change="$ctrl.updateGraph()">
+            <ui-select-match placeholder="Select key ...">{{$item}}</ui-select-match>
+
+            <ui-select-choices repeat="key in $ctrl.keys track by $index">
+              <div ng-bind-html="key | highlight: $select.search"></div>
+              <small>
+            {{$sce.trustAsHtml(key)}} 
+          </small>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+      </div>
 
 
-  <!-- graph -->
-  <div class="row">
-    <div class="col-sm-12">
-
+      <!-- graph -->
       <dynamicgraph graph-data="$ctrl.graphData" labels="$ctrl.labels"></dynamicgraph>
+    </div>
+
+    <div class="col-sm-3">
+      <h4 class="iconTitle">Legend</h4>
+
+      <iconlist class="ng-isolate-scope"></iconlist>
+    </div>
+  </div>
+
+
+  <div class="row dashboardPanel">
+    <div class="col-sm-9">
+      <h4 class="iconTitle">Compute Table <small>( {{$ctrl.selectedKey[0]}}, {{$ctrl.selectedY}} )</small></h4>
+
+      <input type="text" ng-model="searchFilter" class="form-control" />
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Company Name</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="gLabel in $ctrl.labels track by $index">
+            <td>{{gLabel}}</th>
+            <td>
+              <div ng-if="$ctrl.graphData.length > 0">
+                
+                {{$ctrl.graphData[0][$index]}}
+            </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="col-sm-3">
+
 
     </div>
   </div>
+
 
 
 </div>
