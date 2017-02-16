@@ -7,12 +7,16 @@
 
   <div ng-if="$ctrl.chartType === 'chart-line'">
     <canvas id="line" class="chart chart-line" chart-data="$ctrl.data" chart-labels="$ctrl.labels" chart-series="$ctrl.series"
-      chart-options="$ctrl.options" chart-dataset-override="$ctrl.datasetOverride" chart-click="$ctrl.onClick"></canvas>
+      chart-options="$ctrl.options" 
+      chart-colors="$ctrl.colors"
+      chart-dataset-override="$ctrl.datasetOverride" chart-click="$ctrl.onClick"></canvas>
   </div>
 
   <div ng-if="$ctrl.chartType === 'chart-bar'">
     <canvas id="line" class="chart chart-bar" chart-data="$ctrl.data" chart-labels="$ctrl.labels" chart-series="$ctrl.series"
-      chart-options="$ctrl.options" chart-dataset-override="$ctrl.datasetOverride" chart-click="$ctrl.onClick"></canvas>
+      chart-options="$ctrl.options" 
+      chart-colors="$ctrl.colors"
+      chart-dataset-override="$ctrl.datasetOverride" chart-click="$ctrl.onClick"></canvas>
   </div>
 
 </div>

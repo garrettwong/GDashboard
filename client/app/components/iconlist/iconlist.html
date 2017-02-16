@@ -1,57 +1,17 @@
 <ul class="list-unstyled top_profiles scroll-view">
-  <li class="media event">
-    <a class="pull-left border-aero profile_thumb">
-      <i class="fa fa-user aero"></i>
+  
+  <button>Go</button>
+  <li class="media event" ng-repeat="listElement in $ctrl.listData">
+    <a class="pull-left border-{{listElement.color}} profile_thumb">
+      <i class="fa fa-user {{listElement.color}}"></i>
     </a>
+
     <div class="media-body">
-      <a class="title" href="#">Ms. Mary Jane</a>
-      <p><strong>$2300. </strong> Agent Avarage Sales </p>
-      <p> <small>12 Sales Today</small>
+      <a class="title" href="#" ng-click="$ctrl.setSelected(listElement)">{{listElement.title}}</a>
+      <p><strong>${{listElement.value}}. </strong> {{listElement.category}} </p>
+      <p> <small>{{listElement.sales}} Sales Today</small>
       </p>
     </div>
   </li>
-  <li class="media event">
-    <a class="pull-left border-green profile_thumb">
-      <i class="fa fa-user green"></i>
-    </a>
-    <div class="media-body">
-      <a class="title" href="#">Ms. Mary Jane</a>
-      <p><strong>$2300. </strong> Agent Avarage Sales </p>
-      <p> <small>12 Sales Today</small>
-      </p>
-    </div>
-  </li>
-  <li class="media event">
-    <a class="pull-left border-blue profile_thumb">
-      <i class="fa fa-user blue"></i>
-    </a>
-    <div class="media-body">
-      <a class="title" href="#">Ms. Mary Jane</a>
-      <p><strong>$2300. </strong> Agent Avarage Sales </p>
-      <p> <small>12 Sales Today</small>
-      </p>
-    </div>
-  </li>
-  <li class="media event">
-    <a class="pull-left border-aero profile_thumb">
-      <i class="fa fa-user aero"></i>
-    </a>
-    <div class="media-body">
-      <a class="title" href="#">Ms. Mary Jane</a>
-      <p><strong>$2300. </strong> Agent Avarage Sales </p>
-      <p> <small>12 Sales Today</small>
-      </p>
-    </div>
-  </li>
-  <li class="media event">
-    <a class="pull-left border-green profile_thumb">
-      <i class="fa fa-user green"></i>
-    </a>
-    <div class="media-body">
-      <a class="title" href="#">Ms. Mary Jane</a>
-      <p><strong>$2300. </strong> Agent Avarage Sales </p>
-      <p> <small>12 Sales Today</small>
-      </p>
-    </div>
-  </li>
+  
 </ul>

@@ -31,15 +31,19 @@
         </div>
       </div>
 
+      {{$ctrl.selectedListData}}
 
       <!-- graph -->
       <dynamicgraph graph-data="$ctrl.graphData" labels="$ctrl.labels"></dynamicgraph>
     </div>
 
     <div class="col-sm-3">
-      <h4 class="iconTitle">Legend</h4>
+      <h4 class="iconTitle">Views</h4>
 
-      <iconlist class="ng-isolate-scope"></iconlist>
+      <iconlist class="ng-isolate-scope" 
+        list-data="$ctrl.listData"
+        selected-list-data="$ctrl.selectedListData"
+        on-click="$ctrl.onClickListElement($ctrl.selectedListData)"></iconlist>
     </div>
   </div>
 
@@ -48,7 +52,7 @@
     <div class="col-sm-9">
       <h4 class="iconTitle">Compute Table <small>( {{$ctrl.selectedKey[0]}}, {{$ctrl.selectedY}} )</small></h4>
 
-      <input type="text" ng-model="searchFilter" class="form-control" />
+      <input type="text" ng-model="$ctrl.selectedListData.title" class="form-control" />
 
       <table class="table">
         <thead>
@@ -59,7 +63,8 @@
         </thead>
 
         <tbody>
-          <tr ng-repeat="gLabel in $ctrl.labels track by $index">
+          <tr ng-repeat="gLabel in $ctrl.labels | filter:$ctrl.selectedListData.title track by $index">
+            
             <td>{{gLabel}}</th>
             <td>
               <div ng-if="$ctrl.graphData.length > 0">

@@ -12,12 +12,58 @@ class SalarygraphController {
 
     this.labels = [];
     this.graphData = [
-      [65, 59, 80, 81, 56, 55, 40]
+      [65, 59, 80, 81, 56, 55, 40],
+      [135, 159, 80, 31, 50, 55, 23],
     ];
+    this.listData = [
+      {
+        title: 'Google',
+        value: 2300,
+        category: 'Hello',
+        sales: 23,
+        color: 'aero'
+      },
+      {
+        title: 'Facebook',
+        value: 59,
+        category: 'Jason',
+        sales: 11,
+        color: 'green'
+      },
+      {
+        title: 'LinkedIn',
+        value: 25,
+        category: 'Hello',
+        sales: 19,
+        color: 'blue'
+      },
+      {
+        title: 'Mr. Jane',
+        value: 350,
+        category: 'Terernce Kennedy',
+        sales: 35,
+        color: 'aero'
+      },
+      {
+        title: 'Mr. Jane',
+        value: 470,
+        category: 'Garretts',
+        sales: 47,
+        color: 'blue'
+      }
+    ]
 
     this.$http = $http;
 
     this.get();
+  }
+
+  onClickListElement(a) {
+    console.log('a', a, 'selected', this.selectedListData);
+    
+    if (!a) return;
+
+    this.searchFilter = a.title;
   }
 
 

@@ -4,7 +4,11 @@ import './iconlist.styl';
 
 let iconlistComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+    listData: '<',
+    selectedListData: '=',
+    onClick: '&'
+  },
   template,
   controller
 };
