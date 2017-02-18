@@ -1,5 +1,4 @@
-<table class="list-unstyled top_profiles scroll-view">
-  
+<table class="list-unstyled graph_analytics scroll-view">
   <thead> 
     <tr>
       <th>
@@ -14,15 +13,20 @@
 
   <tbody>
     <tr>
-      <td ng-repeat="listElement in $ctrl.listData">
+      
+      <td>
+        {{$ctrl.stats.max}}
+        at
+        {{$ctrl.labels[$ctrl.stats.maxIndex]}}
+      </td>
 
-        <div class="media-body">
-          <a class="title" href="#">{{listElement.title}}</a>
-          <p><strong>${{listElement.value}}. </strong> </p>
-        </div>
-        
+      <td>
+        {{$ctrl.stats.min}}
+        at 
+        {{$ctrl.labels[$ctrl.stats.minIndex]}}
       </td>
     </tr>
   </tbody>
-  
 </table>
+
+<button ng-click="$ctrl.refresh()">Refresh Data</button>

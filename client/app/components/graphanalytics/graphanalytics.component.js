@@ -5,7 +5,7 @@ import './graphanalytics.styl';
 let graphanalyticsComponent = {
   restrict: 'E',
   bindings: {
-    listData: '=',
+    labels: '=',
     graphData: '='
   },
   template,

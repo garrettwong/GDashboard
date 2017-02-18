@@ -8,6 +8,7 @@ import DashboardGrid from './dashboardgrid/dashboardgrid';
 import Tiles from './tiles/tiles';
 import IconList from './iconlist/iconlist';
 import GraphAnalytics from './graphanalytics/graphanalytics';
+import PieChartAjs from './piechartAjs/piechartAjs';
 
 import ListBullets from './listbullets/listbullets';
 
@@ -45,6 +46,7 @@ let componentModule = angular.module('app.components', [
   Tiles,
   IconList,
   GraphAnalytics,
+  PieChartAjs,
 
   // lists
   ListBullets,
