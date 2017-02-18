@@ -1,7 +1,11 @@
 class SalarygraphController {
 
-  constructor($http) {
+  constructor($http, $timeout) {
     this.name = 'salarygraph';
+
+    // assign reference parameters
+    this.$http = $http;
+    this.$timeout = $timeout;
 
     // this.carriageReturn = '\r\n';
     this.carriageReturn = '\n';
@@ -10,60 +14,63 @@ class SalarygraphController {
     this.data = []; // track data fields
     this.selectedKey; // selected key
 
+    // default graph data
     this.labels = [];
     this.graphData = [
       [65, 59, 80, 81, 56, 55, 40],
-      [135, 159, 80, 31, 50, 55, 23],
+      [135, 159, 80, 31, 50, 55, 23]
     ];
+    
+    this.graphDataObjects = []
+
+    // side bar - graph view data
     this.listData = [
       {
         title: 'Google',
         value: 2300,
-        category: 'Hello',
+        category: 'Tech',
         sales: 23,
         color: 'aero'
       },
       {
         title: 'Facebook',
         value: 59,
-        category: 'Jason',
+        category: 'Tech',
         sales: 11,
         color: 'green'
       },
       {
-        title: 'LinkedIn',
+        title: 'Apple',
         value: 25,
-        category: 'Hello',
+        category: 'Tech',
         sales: 19,
         color: 'blue'
       },
       {
-        title: 'Mr. Jane',
+        title: 'Microsoft',
         value: 350,
-        category: 'Terernce Kennedy',
+        category: 'Tech',
         sales: 35,
         color: 'aero'
       },
       {
-        title: 'Mr. Jane',
+        title: 'Amazon',
         value: 470,
-        category: 'Garretts',
+        category: 'Tech',
         sales: 47,
         color: 'blue'
       }
-    ]
-
-    this.$http = $http;
+    ];
 
     this.get();
   }
 
-  onClickListElement(a) {
-    console.log('a', a, 'selected', this.selectedListData);
-    
-    if (!a) return;
+  onClickListElement() {    
+    this.$timeout(() => {
+      console.log(this.selectedListData, 'waiting for model to update post digest');
 
-    this.searchFilter = a.title;
+      this.updateGraph(this.selectedListData.title);
+    }, 0);
   }
 
 
@@ -71,7 +78,7 @@ class SalarygraphController {
    * @function updateGraph()
    * @description updates the graph on ui-select change
    */
-  updateGraph() {
+  updateGraph(filter) {
     console.log('Selected Y:', this.selectedY);
     console.log('data to format', this.data);
 
@@ -134,7 +141,29 @@ class SalarygraphController {
       arr = [];
     }
 
-    console.log('graphLabels', this.labels);
+    console.log('graphData', this.graphData);
+
+    // construct graph data objects
+    this.graphDataObjects = [];
+    this.graphData[0].forEach((d, i) => {
+      this.graphDataObjects.push({
+        label: this.labels[i],
+        value: d
+      });
+    });
+
+    // apply filters
+    if (filter && filter !== '') {
+      this.graphDataObjects = this.graphDataObjects.filter((d) => {
+        return d.label.toLowerCase() === filter.toLowerCase();
+      });
+      this.labels = this.graphDataObjects.map((d) => {
+        return d.label;
+      });
+      this.graphData = this.graphDataObjects.map((d) => {
+        return d.value;
+      });
+    }
     console.log('graphData', this.graphData);
   }
 

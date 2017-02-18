@@ -25,7 +25,7 @@ describe('JsonFileDatabase', () => {
 			'title': 'Awesome Object'
 		};
 		let testApiName = '__test';
-		let baseUrl = `http://localhost:3000/api/${testApiName}`;
+		let baseUrl = `http://localhost:3001/api/${testApiName}`;
 		
 		$httpBackend.expectPOST(baseUrl, expectedData)
 			.respond(201);
@@ -38,7 +38,7 @@ describe('JsonFileDatabase', () => {
 	it('should get object by id', function() {
 		let testApiName = '__test';
 		let id = '1';
-		let baseUrl = `http://localhost:3000/api/${testApiName}/${id}`;
+		let baseUrl = `http://localhost:3001/api/${testApiName}/${id}`;
 		
 		$httpBackend.expectGET(baseUrl)
 			.respond(200, {id: id});
@@ -63,7 +63,7 @@ describe('JsonFileDatabase', () => {
 
 		let testApiName = '__test';
 		let id = '1';
-		let baseUrl = `http://localhost:3000/api/${testApiName}/${id}`;
+		let baseUrl = `http://localhost:3001/api/${testApiName}/${id}`;
 
     	var matchAny = /.*/;
 

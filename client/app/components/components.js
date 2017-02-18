@@ -7,6 +7,7 @@ import Profile from './profile/profile';
 import DashboardGrid from './dashboardgrid/dashboardgrid';
 import Tiles from './tiles/tiles';
 import IconList from './iconlist/iconlist';
+import GraphAnalytics from './graphanalytics/graphanalytics';
 
 import ListBullets from './listbullets/listbullets';
 
@@ -43,6 +44,7 @@ let componentModule = angular.module('app.components', [
   DashboardGrid,
   Tiles,
   IconList,
+  GraphAnalytics,
 
   // lists
   ListBullets,

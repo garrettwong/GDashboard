@@ -6,7 +6,7 @@ let salarygraphComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller: ['$http', controller]
+  controller: ['$http', '$timeout', controller]
 };
 
 export default salarygraphComponent;

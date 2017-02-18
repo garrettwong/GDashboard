@@ -1,9 +1,13 @@
 import * as d3 from 'd3';
 
+/*
+ * @function BranchedrandomwalkController
+ * @description 
+ */
 class BranchedrandomwalkController {
   constructor() {
     this.canvas = document.querySelector("canvas"),
-      this.context = this.canvas.getContext("2d"),
+      this.context = this.canhvas.getContext("2d"),
       this.width = this.canvas.width,
       this.height = this.canvas.height,
       this.color = d3.scaleSequential(d3.interpolateRainbow).domain([0, 1000]),

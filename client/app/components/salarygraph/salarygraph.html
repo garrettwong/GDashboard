@@ -43,7 +43,14 @@
       <iconlist class="ng-isolate-scope" 
         list-data="$ctrl.listData"
         selected-list-data="$ctrl.selectedListData"
-        on-click="$ctrl.onClickListElement($ctrl.selectedListData)"></iconlist>
+        on-click="$ctrl.onClickListElement()"></iconlist>
+
+
+      <h4 class="iconTitle">Graph Analytics</h4>
+
+      <graphanalytics class="ng-isolate-scope" 
+        list-data="$ctrl.listData"
+        graph-data="$ctrl.graphData"></graphanalytics>
     </div>
   </div>
 
@@ -63,9 +70,9 @@
         </thead>
 
         <tbody>
-          <tr ng-repeat="gLabel in $ctrl.labels | filter:$ctrl.selectedListData.title track by $index">
+          <tr ng-repeat="gLabel in $ctrl.graphDataObjects | filter:$ctrl.selectedListData.title track by $index">
             
-            <td>{{gLabel}}</th>
+            <td>{{gLabel.label}}</th>
             <td>
               <div ng-if="$ctrl.graphData.length > 0">
                 
