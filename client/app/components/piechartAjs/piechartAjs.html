@@ -1,3 +1,8 @@
 <div>
-  <h1>{{ $ctrl.name }}</h1>
+  <canvas id="pie" class="chart chart-pie" chart-data="$ctrl.data" chart-labels="$ctrl.labels" chart-options="$ctrl.options"
+  chart-colors="$ctrl.colors">
+  </canvas>
+
+  <button ng-click="$ctrl.update()">Update</button>
+  <button ng-click="$ctrl.destroy()">Destroy</button>
 </div>

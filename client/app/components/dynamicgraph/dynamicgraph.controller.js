@@ -91,40 +91,46 @@ class DynamicgraphController {
     addLine() {
         console.log(this.data, this.graphData);
 
-        var n = this.data.length;
-        var sumX = 0;
-        var sumY = 0;
-        var sumXY = 0;
-        var sumXSquared = 0;
-        var sumYSquared = 0;
-        this.data[0].forEach((d, i) => {
-            if (isNaN(d)) d = 0;
+        // http://www.statisticshowto.com/how-to-find-a-linear-regression-equation/
 
-            sumX += i;
-            sumY += parseInt(d);
-            sumXY += (parseInt(d)*i);
-            sumXSquared += (i*i);
-            sumYSquared += (parseInt(d)*parseInt(d));
+        // sanitize input
+        this.data[0] = this.data[0].map((d,i) => {
+            if (isNaN(d)) return 0;
+            
+            return d;
         });
 
-        console.log(n, sumX, sumY, sumXY, sumXSquared, sumYSquared);
+        // map to [{x: x, y: y}]
+        var inputArrKvp = this.data[0].map((d,i) => {
+            return {
+                x: i,
+                y: d
+            };
+        });
         
-        var a = ((sumY*sumXSquared) - (sumX*sumXY)) / ((n*sumXSquared) - (sumXSquared*sumXSquared));
-        var b = ((sumXY) - (sumX*sumY)) / ((n*sumXSquared) - (sumXSquared*sumXSquared));
-        console.log('line of regression', a, b); // y=a+bx
+        let formula = this.getLineOfRegressionFormula(inputArrKvp);
 
-        function formula(a,b,x) {
-            return a + b*x;
-        }
-
-        // generate random set of 7 points
+        // generate random set of length points
         let arr = [];
         for(let i = 0; i < this.data[0].length; i++) {
-            arr.push(formula(a,b,i));
+            arr.push(formula(i));
         }
         this.data.push(arr);
 
         this.update();
+
+
+
+        // line of regression working to get formula
+        var inputArr = [
+            { x: 43, y: 99},
+            { x: 21, y: 65},
+            { x: 25, y: 79},
+            { x: 42, y: 75},
+            { x: 57, y: 87},
+            { x: 59, y: 81}
+        ];
+        let f = this.getLineOfRegressionFormula(inputArr);
     }
 
     /*
@@ -144,6 +150,7 @@ class DynamicgraphController {
         this.data.push(arr);
 
         this.update();
+
     }
 
     /*
@@ -162,6 +169,55 @@ class DynamicgraphController {
         if (!angular.equals(this.data, this.graphData)) {
             this.data = this.graphData;
         }
+    }
+
+    /*
+     * @function getLineOfRegressionFormula
+     * @description returns the formula for line of regression given an input set
+     * @param array of objects with x and y properties [{x:1, y:10}, {x:2, y:20}]
+     */
+    getLineOfRegressionFormula(inputArr) {
+        var tableOfValues = {};
+
+        for(var i = 0; i < inputArr.length; i++) {
+            var cur = inputArr[i];
+
+            var row = {};
+            row.x = cur.x;
+            row.y = cur.y;
+            row.xy = cur.x*cur.y;
+            row.xSquared = cur.x*cur.x;
+            row.ySquared = cur.y*cur.y;
+            
+            tableOfValues[i+1] = row;
+        }
+
+        // compute summations
+        var summations = {x: 0, y: 0, xy: 0, xSquared: 0, ySquared: 0};
+
+        for(var key in tableOfValues) {
+            var curRow = tableOfValues[key];
+            
+            summations.x += curRow.x;
+            summations.y += curRow.y;
+            summations.xy += curRow.xy;
+            summations.xSquared += curRow.xSquared;
+            summations.ySquared += curRow.ySquared;
+        }
+
+        console.log(tableOfValues, summations);
+
+        // find a and b
+        var a = ((summations.y * summations.xSquared) - (summations.x * summations.xy)) /  
+            ((inputArr.length*summations.xSquared) - (summations.x*summations.x));
+        var b = ((inputArr.length*summations.xy)-(summations.x*summations.y)) /
+            ((inputArr.length*summations.xSquared) - (summations.x*summations.x));
+        
+        console.log(a,b);
+
+        return function(x) {
+            return a + b*x;
+        };
     }
 }
 

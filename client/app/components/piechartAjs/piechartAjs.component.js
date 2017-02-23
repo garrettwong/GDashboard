@@ -6,7 +6,7 @@ let piechartAjsComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller
+  controller: ['$scope', controller]
 };
 
 export default piechartAjsComponent;

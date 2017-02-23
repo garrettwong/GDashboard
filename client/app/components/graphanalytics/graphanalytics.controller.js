@@ -18,7 +18,7 @@ class GraphanalyticsController {
         minIndex = -1,
         max = Number.MIN_VALUE,
         maxIndex = -1;
-
+    
     for (let dataSetIndex = 0; dataSetIndex < this.graphData.length; dataSetIndex++) {
       let curDataSet = this.graphData[dataSetIndex];
 
