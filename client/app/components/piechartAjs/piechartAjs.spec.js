@@ -25,9 +25,5 @@ describe('PiechartAjs', () => {
       it('includes the intended template',() => {
         expect(component.template).to.equal(PiechartAjsTemplate);
       });
-
-      it('invokes the right controller', () => {
-        expect(component.controller).to.equal(PiechartAjsController);
-      });
   });
 });

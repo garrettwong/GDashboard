@@ -7,7 +7,7 @@ var express = require('express'),
 app = express();
 
 // app.set('views', __dirname + '/views');
-// app.set('view engine', 'pug');
+app.set('view engine', 'html');
 app.use(session({
     secret: 'asdf',
     saveUninitialized: true,
