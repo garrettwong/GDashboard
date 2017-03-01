@@ -1,6 +1,10 @@
+/*
+ * @class SalarygraphController
+ * @description parses the ngaio2016.csv salaries data set
+ */
 class SalarygraphController {
 
-  constructor($http, $timeout) {
+  constructor($http, $timeout, SalaryGraphService) {
     this.name = 'salarygraph';
 
     // assign reference parameters
@@ -16,52 +20,14 @@ class SalarygraphController {
 
     // default graph data
     this.labels = [];
-    this.graphData = [
-      [65, 59, 80, 81, 56, 55, 40],
-      [135, 159, 80, 31, 50, 55, 23]
-    ];
-    
-    this.graphDataObjects = []
+    this.graphDataObjects = [];
+
+    this.graphData = SalaryGraphService.getDefaultGraphData();
 
     // side bar - graph view data
-    this.listData = [
-      {
-        title: 'Google',
-        value: 2300,
-        category: 'Tech',
-        sales: 23,
-        color: 'aero'
-      },
-      {
-        title: 'Facebook',
-        value: 59,
-        category: 'Tech',
-        sales: 11,
-        color: 'green'
-      },
-      {
-        title: 'Apple',
-        value: 25,
-        category: 'Tech',
-        sales: 19,
-        color: 'blue'
-      },
-      {
-        title: 'Microsoft',
-        value: 350,
-        category: 'Tech',
-        sales: 35,
-        color: 'aero'
-      },
-      {
-        title: 'Amazon',
-        value: 470,
-        category: 'Tech',
-        sales: 47,
-        color: 'blue'
-      }
-    ];
+    this.listData = SalaryGraphService.getFilterListData();
 
+    // get other stuff
     this.get();
   }
 
@@ -81,7 +47,6 @@ class SalarygraphController {
   updateGraph(filter) {
     console.log('Selected Y:', this.selectedY);
     console.log('data to format', this.data);
-
     // sort data by the selectedKey
     console.log('sorting data by ', this.selectedKey[0]);
 
