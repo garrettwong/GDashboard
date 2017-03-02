@@ -5,12 +5,16 @@ import 'ui-select/dist/select.css';
 
 import salarygraphComponent from './salarygraph.component';
 import SalaryGraphService from './salarygraph.service';
+import SalaryGraphParser from './salarygraph.parser';
+import SalaryGraphDataConverter from './salarygraph.dataconverter';
 
 let salarygraphModule = angular.module('salarygraph', [
   uiRouter,
   uiSelect
 ])
 .service(SalaryGraphService.getClassName(), SalaryGraphService)
+.service(SalaryGraphParser.getClassName(), SalaryGraphParser)
+.service(SalaryGraphDataConverter.getClassName(), SalaryGraphDataConverter)
 
 .config(($stateProvider) => {
   "ngInject";

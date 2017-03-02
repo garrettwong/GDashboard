@@ -4,15 +4,15 @@
  */
 class SalarygraphController {
 
-  constructor($http, $timeout, SalaryGraphService) {
+  constructor($http, $timeout, SalaryGraphService, SalaryGraphParser, SalaryGraphDataConverter) {
     this.name = 'salarygraph';
 
     // assign reference parameters
     this.$http = $http;
     this.$timeout = $timeout;
-
-    // this.carriageReturn = '\r\n';
-    this.carriageReturn = '\n';
+    this._salaryGraphService = SalaryGraphService;
+    this._salaryGraphParser = SalaryGraphParser;
+    this._salaryGraphDataConverter = SalaryGraphDataConverter;
 
     this.keys = []; // track header names
     this.data = []; // track data fields
@@ -20,96 +20,195 @@ class SalarygraphController {
 
     // default graph data
     this.labels = [];
-    this.graphDataObjects = [];
-
     this.graphData = SalaryGraphService.getDefaultGraphData();
+    this.series = [];
+    this.graphDataObjects = [];
 
     // side bar - graph view data
     this.listData = SalaryGraphService.getFilterListData();
-
-    // get other stuff
-    this.get();
+    
+    // initial call to kick off getting data
+    this.httpGET_inputFile('./static/ngaio2016.tsv');
   }
 
+  /*
+   * @function httpGET_inputFile
+   * @description makes a HTTP GET call to a data input file
+   * the callback handler processes the result set 
+   */
+  httpGET_inputFile(pathToDataFile) {
+    this.$http.get(pathToDataFile).then((response) => {
+      console.log(`result of ${pathToDataFile}`, response);
+
+      let parsedResult = this._salaryGraphParser.parseData(response.data, 'tsv');
+      console.log(parsedResult);
+
+      // set controller values
+      this.keys = parsedResult.headers;
+      this.data = this._salaryGraphDataConverter
+                        .arrayOfStringArraysToArrayOfObjectsBasedOnProperties(parsedResult.dataRows, parsedResult.headers);
+
+      // set default selections
+      this.selectedKey = ['Company Name'];
+      this.selectedY = [];
+    });
+  }
+
+  /*
+   * @function onClickListElement
+   * @description on click handler which updates the graph on screen
+   */
   onClickListElement() {    
     this.$timeout(() => {
-      console.log(this.selectedListData, 'waiting for model to update post digest');
-
+      console.log('calling updateGraph() with ', this.selectedListData);
       this.updateGraph(this.selectedListData.title);
     }, 0);
   }
 
+  /*
+   * @function sortBySelectedKey
+   * @description simple sort utility to sort by the controller's selectedKey at index 0
+   * @param a first object to compare
+   * @param b second object to compare
+   * returns -1 if a is less than b, 1 if a is greater than b and 0 if both are equal
+   */
+  sortBySelectedKey(a, b) {
+    let x = this.selectedKey[0]; // get x key
+    if (a[x] > b[x]) return 1;
+    else if (a[x] < b[x]) return -1;
+    else return 0;
+  }
 
   /*
-   * @function updateGraph()
-   * @description updates the graph on ui-select change
+   * @function updateGraph
+   * @description updates the graph on ui-select change.  the goal of this function is to update internal this parameters
+   * which will be reflected on the user interface.  this.labels and this.graphData are the primary ones
+   * @param filter 
    */
   updateGraph(filter) {
     console.log('Selected Y:', this.selectedY);
     console.log('data to format', this.data);
-    // sort data by the selectedKey
     console.log('sorting data by ', this.selectedKey[0]);
 
-    this.data.sort((a, b) => {
-      let x = this.selectedKey[0]; // get x key
-      if (a[x] > b[x]) return 1;
-      else if (a[x] < b[x]) return -1;
-      else return 0;
-    });
+    this.data.sort((a,b) => this.sortBySelectedKey);
 
     // reset values
+    this.resetGraph();
+
+    // get the formatted graph data
+    let formattedGraphData = this.getFormattedGraphData();
+
+    // set values
+    this.labels = formattedGraphData.labels;
+    this.graphData = formattedGraphData.graphData;
+    this.series = formattedGraphData.series;
+
+    this.updateGraphDataByFilters(filter);
+  }
+
+  /*
+   * @function resetGraph
+   * @description resets the parameters which will reset the graph ui
+   */
+  resetGraph() {
     this.labels = [];
     this.graphData = [];
+  }
+
+  /*
+   * @function getFormattedGraphData
+   * @description formats and returns the graph data based on the selected x and y properties
+   * @return an object containing the values for labels and graphData
+      { 
+        labels: ['label1', 'label2'],
+        graphData: [
+          [1, 2, 3],
+          [2, 3, 4]
+        ]
+      }
+   */
+  getFormattedGraphData() {
+    let labels = [];
+    let graphData = [];
+    let series = [];
+
+    // the keyArr map will store the yProperty key name and contain arrays for each of these keys
+    // { 'AnnualizedBaseSalary': [], 'Company Base': [] }
+    let keyArr = {};
 
     // foreach parsed data object
     for (let j = 0; j < this.selectedY.length; j++) {
-      let arr = [];
-
-      // xIndex will be a string denoting the x lookup 'key'
-      let xProperty = this.selectedKey[0];
-      // selectedIndex will be a string denoting the y lookup 'key'
       let yProperty = this.selectedY[j];
+      keyArr[yProperty] = [];
+    }
+  
+    let arr = [];
 
-      console.log('looking up properties:', xProperty, yProperty, this.data[11][xProperty], this.data[11][yProperty]);
+    // get the x-axis and y-axis properties
+    let xProperty = this.selectedKey[0];
 
-      // iterate through the graph data array
-      this.data.forEach((data, i) => {
-        // get selected index
-        let labelVal = data[xProperty];
+    // iterate through the graph data array
+    this.data.forEach((data, i) => {
+      console.log('data element', data);
+
+      // get selected index
+      let labelVal = data[xProperty];
+
+      // add labels
+      labels.push(labelVal);
+
+      // iterate and process yValues
+      for (let j = 0; j < this.selectedY.length; j++) {
+        let yProperty = this.selectedY[j];
+
+        let valToInsert = 0;
+
+        // if the data value is not null or undefined
         let dataVal = data[yProperty];
 
-        // if data is valid:
         if (dataVal) {
-          let valToInsert = parseInt(dataVal.replace('$', '').replace(',', ''));
+          valToInsert = parseInt(dataVal.replace('$', '').replace(',', ''));
           
           if (isNaN(valToInsert)) {
-            // if the val is inherently not a number
-            //valToInsert = 0;
             valToInsert = dataVal;
           }
-
-          // only push if valid value
-          if (valToInsert !== 0 && valToInsert !== null) {
-            // this.labels.push(i); // push index val
-            this.labels.push(labelVal);
-
-            arr.push(valToInsert);
-          }
         }
-      });
 
-      // add to graphData
-      if (arr.length > 0) {
-        this.graphData.push(arr);
+        // add values (to multiple arrays)
+        keyArr[yProperty].push(valToInsert);
       }
+    });
 
-      arr = [];
+    // add arrays to graphData as multiple entries
+    for (let j = 0; j < this.selectedY.length; j++) {
+      let yProperty = this.selectedY[j];
+      
+      if (keyArr[yProperty].length > 0) {
+        graphData.push(keyArr[yProperty]);
+        series.push(yProperty);
+      }
     }
 
-    console.log('graphData', this.graphData);
+    return {
+      labels,
+      graphData,
+      series
+    };
+  }
 
-    // construct graph data objects
+
+  /*
+   * @function updateGraphDataByFilters
+   * @description filters out data that doesn't meet the search condition
+   * @param filter a string that is compared to the graphDataObjects[0].label property
+   */
+  updateGraphDataByFilters(filter) {
+    // map graph data array of array ints to an array of objects based on the x-property
+    // [{"label":"Quora","value":10416},{"label":"AT&T","value":3813}]
+    // labels and graphData should be in-sync in terms of index positional value
     this.graphDataObjects = [];
+
+    // graphData[0] is the first key used... we woud like to extend this to support all keys
     this.graphData[0].forEach((d, i) => {
       this.graphDataObjects.push({
         label: this.labels[i],
@@ -117,87 +216,28 @@ class SalarygraphController {
       });
     });
 
-    // apply filters
     if (filter && filter !== '') {
+      // apply filter
       this.graphDataObjects = this.graphDataObjects.filter((d) => {
         return d.label.toLowerCase() === filter.toLowerCase();
       });
+
+      // update labels and graphData based on the graphDataObjects array which has been filtered
       this.labels = this.graphDataObjects.map((d) => {
         return d.label;
       });
+
       this.graphData = this.graphDataObjects.map((d) => {
         return d.value;
       });
     }
-    console.log('graphData', this.graphData);
+    
+    console.log('post filtering', this.labels, this.graphData, this.graphDataObjects);
   }
 
-  /*
-   * @function get
-   * @description gets values from the tsv
-   */
-  get() {
-    this.$http.get('./static/ngaio2016.tsv').then((response) => {
-      console.log('result of ngaio2016', response);
-
-      let headersRow = this.parseCsvToHeaders(response.data);
-      this.keys = headersRow;
-
-      console.log(headersRow);
-
-      let objectsArr = this.parseCsvToJsonArray(response.data, this.keys);
-      this.data = objectsArr;
-
-      console.log(this.data);
-
-      // set default selections
-      this.selectedKey = ['Company Name'];
-      this.selectedY = [];
-
-      // we can create a data array that looks like [[]]
-    });
-  }
   // cleans $100,000 the comma and the $
   cleanMoneyFormats(data) {
     return data.replace(/\"\$(\d+,*\d*,*)*\"/, )
-  }
-
-  parseCsvToHeaders(data) {
-    let rows = data.split(this.carriageReturn);
-
-    let headersRow = rows[0].split('\t');
-
-    return headersRow;
-  }
-
-  parseCsvToJsonArray(data, headers) {
-    let rows = data.split(this.carriageReturn);
-
-    // now parse into objects
-    let objectsArr = [];
-
-    // start at row index 1 to skip the csv headers row
-    for (let i = 1; i < rows.length; i++) {
-      let curRow = rows[i].split('\t');
-      //console.log(curRow.length, headers.length);
-
-      let obj = {};
-
-
-      for (let curPropIdx = 0; curPropIdx < curRow.length; curPropIdx++) {
-        let headerKey = headers[curPropIdx];
-        let val = curRow[curPropIdx];
-
-        //console.log(headerKey, val);
-
-        obj[headerKey] = val;
-      }
-
-      // console.log('obj', obj);
-      objectsArr.push(obj);
-    }
-
-    return objectsArr;
   }
 }
 

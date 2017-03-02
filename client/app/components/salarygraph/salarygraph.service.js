@@ -16,6 +16,7 @@ export default class SalaryGraphService {
       [135, 159, 80, 31, 50, 55, 23]
     ];
   }
+
   getFilterListData() {
     let data = [
       {
@@ -56,7 +57,5 @@ export default class SalaryGraphService {
     ];
 
     return data;
-
-
   }
 }

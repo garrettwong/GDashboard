@@ -6,7 +6,8 @@ let dynamicgraphComponent = {
   restrict: 'E',
   bindings: {
     labels: '=',
-    graphData: '<'
+    graphData: '<',
+    series: '<'
   },
   template,
   controller: ['$scope', controller]

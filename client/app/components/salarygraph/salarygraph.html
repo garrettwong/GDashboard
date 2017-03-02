@@ -68,20 +68,15 @@
         <thead>
           <tr>
             <th>Company Name</th>
-            <th>Value</th>
+            <th ng-repeat="series in $ctrl.series">{{series}}</th>
           </tr>
         </thead>
 
         <tbody>
           <tr ng-repeat="gLabel in $ctrl.graphDataObjects | filter:$ctrl.selectedListData.title track by $index">
+            <td>{{gLabel.label}}</td>
             
-            <td>{{gLabel.label}}</th>
-            <td>
-              <div ng-if="$ctrl.graphData.length > 0">
-                
-                {{$ctrl.graphData[0][$index]}}
-            </div>
-            </td>
+            <td>{{gLabel.value}}</td>
           </tr>
         </tbody>
       </table>
