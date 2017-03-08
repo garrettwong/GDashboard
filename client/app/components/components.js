@@ -2,6 +2,7 @@ import angular from 'angular';
 
 import Home from './home/home';
 import About from './about/about';
+import RegistrationForm from './registrationForm/registrationForm';
 import Login from './login/login';
 import Profile from './profile/profile';
 import DashboardGrid from './dashboardgrid/dashboardgrid';
@@ -40,6 +41,7 @@ let componentModule = angular.module('app.components', [
 
   // forms
   About,
+  RegistrationForm,
   Login,
   Profile,
   DashboardGrid,

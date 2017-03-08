@@ -9,17 +9,17 @@ class NavbarController {
 
     this.lists = [
       { name: 'List Examples', sref: 'listbullets' },
-      { name: 'Drag And Drop List', sref: 'divtable' },
+      { name: 'Drag And Drop List', sref: 'divtable' }
     ];
 
     this.visualizations = [
+      { name: 'Salary Graph', sref: 'salarygraph' },
       { name: 'Force Directed Tree', sref: 'forcedirectedtree' },
       { name: 'Force Graph', sref: 'forcegraph' },
       { name: 'Tree', sref: 'tree' },
       { name: 'Tree Map', sref: 'treemap' },
       { name: 'Branched Random Walk', sref: 'branchedrandomwalk' },
-      { name: 'Collapsible Tree', sref: 'collapsibletree' },
-      { name: 'Salary Graph', sref: 'salarygraph' }
+      { name: 'Collapsible Tree', sref: 'collapsibletree' }
     ];
 
     this.status = {
