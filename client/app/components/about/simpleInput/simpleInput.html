@@ -1,0 +1,37 @@
+<div class="form-group simple-input">
+  <div class="simple-input-wrapper">
+    <h4>Gender</h4>
+
+    <div id="gender" class="btn-group" data-toggle="buttons">
+        <div>
+          <input 
+              type="radio" 
+              name="gender" 
+              ng-model="$ctrl.gender" 
+              ng-click="$ctrl.update('Male')" />
+
+          <label class="adjustMargin" for="gender" data-toggle-passive-class="btn-default">
+            Male
+          </label>
+        </div>
+
+        <div>
+          <input 
+              type="radio" 
+              name="gender"
+              ng-model="$ctrl.gender" 
+              ng-click="$ctrl.update('Female')" />
+
+          <label class="adjustMargin" for="gender" data-toggle-passive-class="btn-default">
+            Female
+          </label>
+        </div>
+    </div>
+
+    <div>
+      <label>Selected Value:</label>
+      {{$ctrl.gender}}
+    </div>
+    
+  </div>
+</div>

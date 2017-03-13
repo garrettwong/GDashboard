@@ -5,12 +5,16 @@ import uiModal from 'angular-ui-bootstrap/src/modal';
 import aboutModalController from './aboutModal/aboutModal.controller';
 import aboutModalComponent from './aboutModal/aboutModal.component';
 import aboutComponent from './about.component';
-
-
+import simpleInput from './simpleInput/simpleInput';
+import formSamples from './formSamples/formSamples';
 
 let aboutModule = angular.module('about', [
   uiRouter,
-  uiModal
+  uiModal,
+
+  // subcomponents
+  simpleInput,
+  formSamples
 ])
 
 .config(($stateProvider) => {
@@ -23,6 +27,7 @@ let aboutModule = angular.module('about', [
 })
 
 .controller('AboutModalController', ['$uibModalInstance', 'items', aboutModalController])
+
 .component('modalComponent', aboutModalComponent)
 .component('about', aboutComponent)
   
