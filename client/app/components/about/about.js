@@ -7,6 +7,7 @@ import aboutModalComponent from './aboutModal/aboutModal.component';
 import aboutComponent from './about.component';
 import simpleInput from './simpleInput/simpleInput';
 import formSamples from './formSamples/formSamples';
+import quoteInput from './quoteInput/quoteInput';
 
 let aboutModule = angular.module('about', [
   uiRouter,
@@ -14,7 +15,8 @@ let aboutModule = angular.module('about', [
 
   // subcomponents
   simpleInput,
-  formSamples
+  formSamples,
+  quoteInput
 ])
 
 .config(($stateProvider) => {
