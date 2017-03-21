@@ -131,8 +131,8 @@
 		<div class="side-menu-container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">
-					<div class="icon fa fa-grav"></div>
-					<div class="title">G - Admin</div>
+					<div class="icon fa fa-user-circle-o"></div>
+					<div class="title">GAdmin</div>
 				</a>
 				<button type="button" class="navbar-expand-toggle pull-right visible-xs">
                                 <i class="fa fa-times icon"></i>
@@ -141,36 +141,66 @@
 
 
 			<ul class="nav navbar-nav">
-				<li class="active">
-					<a href="index.html">
-						<span class="icon fa fa-bandcamp"></span><span class="title">Dashboard</span>
-					</a>
-				</li>
-
+				<!-- Dashboard -->
 				<li class="panel panel-default dropdown">
 					<a data-toggle="collapse" href="#dropdown-table">
-						<span class="icon fa fa-thermometer-full"></span><span class="title">Table</span>
+						<span class="icon fa fa-line-chart"></span><span class="title">Dashboard</span>
 					</a>
 					<!-- Dropdown level 1 -->
 					<div id="dropdown-table" class="panel-collapse collapse">
 						<div class="panel-body">
 							<ul class="nav navbar-nav">
 								<li>
-									<a ui-sref="about">Table</a>
+									<a href="index.html">
+										<span class="icon fa fa-pie-chart"></span><span class="title">Dashboard 1</span>
+									</a>
 								</li>
 
 								<li>
-									<a ui-sref="home">Datatable</a>
+									<a ui-sref="profile">
+										<span class="icon fa fa-bar-chart"></span> Dashboard 2
+									</a>
+								</li>
+
+								<li>
+									<a ui-sref="salarygraph">
+										<span class="icon fa fa-bar-chart"></span> Salary Graph
+									</a>
 								</li>
 							</ul>
 						</div>
 					</div>
 				</li>
 
-				<!-- Dropdown-->
+				<!-- Table -->
+				<li class="panel panel-default dropdown">
+					<a data-toggle="collapse" href="#dropdown-table">
+						<span class="icon fa fa-table"></span><span class="title">Table</span>
+					</a>
+					<!-- Dropdown level 1 -->
+					<div id="dropdown-table" class="panel-collapse collapse">
+						<div class="panel-body">
+							<ul class="nav navbar-nav">
+								<li>
+									<a ui-sref="about">
+										<span class="icon fa fa-th-list"></span> Table
+									</a>
+								</li>
+
+								<li>
+									<a ui-sref="home">
+										<span class="icon fa fa-th"></span> Datatable
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</li>
+
+				<!-- Admin -->
 				<li class="panel panel-default dropdown">
 					<a data-toggle="collapse" href="#dropdown-example">
-						<span class="icon fa fa-plus-circle"></span><span class="title">Admin</span>
+						<span class="icon fa fa-pencil-square-o"></span><span class="title">Admin</span>
 					</a>
 					<!-- Dropdown level 1 -->
 					<div id="dropdown-example" class="panel-collapse collapse">
@@ -185,7 +215,6 @@
 						</div>
 					</div>
 				</li>
-
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
