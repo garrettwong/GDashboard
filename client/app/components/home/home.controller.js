@@ -15,6 +15,7 @@ class HomeController {
     JsonFileDatabase.put('fruits', 5, { id: 5, name: 'Pineapple' }).then((response) => {
       console.log('fruit updated', response.data);
     });
+
     JsonFileDatabase.remove('fruits', 1).then((response) => {
       console.log('fruit deleted', response.data);
     });
@@ -44,24 +45,28 @@ class HomeController {
         $scope.$apply();
       }, 500);
     };
+
     $scope.update = function() {
       let range = 100;
       let numPoints = 10;
       
       $scope.onClick(range, numPoints);
     };
+
     $scope.onClick = function (numPoints, range) {
       $scope.data[0] = generateSeries(numPoints, range, sin);
       $scope.data[1] = generateSeries(numPoints, range, cos);
       $scope.data[2] = generateSeries(numPoints, range/4, sin);
       $scope.data[3] = generateSeries(numPoints, range/4, cos);
     };
+
     function reset() {
       $scope.data = [
         [65, 59, 80, 81, 56, 55, 40],
         [28, 48, 40, 19, 86, 27, 90]
       ];
     }
+
     function generateSeries(count, range, fn) {
       let arr = [];
       for (let i = 0; i < count; i++) {
@@ -75,6 +80,7 @@ class HomeController {
     function cos(i, range) {
       return Math.cos(i) * range;
     }
+    
     $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
     $scope.options = {
       scales: {

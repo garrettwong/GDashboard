@@ -237,7 +237,7 @@ function writeJsonFileAsync(filepath, json) {
 function getConfig(file) {
     var filepath = __dirname + '/' + file;
 
-    filepath = filepath.replace('server/', '/');
+    filepath = filepath.replace('server/', '/').replace('//', '/');
 
     console.log(filepath);
     return readJsonFileSync(filepath);

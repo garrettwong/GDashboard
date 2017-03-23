@@ -13,6 +13,8 @@ import PieChartAjs from './piechartAjs/piechartAjs';
 
 import ListBullets from './listbullets/listbullets';
 
+import Users from './users/users';
+
 import Speech from './speech/speech';
 import DatePicker from './datepicker/datepicker';
 
@@ -53,6 +55,9 @@ let componentModule = angular.module('app.components', [
   // lists
   ListBullets,
 
+  // admin
+  Users,
+
   // small components
   Speech,
   DatePicker,
@@ -77,7 +82,7 @@ let componentModule = angular.module('app.components', [
   DynamicGraph,
   
   BarGraph,
-  PieChart
+  PieChart,
 ])
   
 .name;

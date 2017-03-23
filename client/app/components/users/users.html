@@ -1,0 +1,49 @@
+<div class="shadow-box">
+  
+  <div class="row">
+    <div class="col-sm-12" style="border-bottom:2px solid #999;">
+
+      <h4 style="display: inline-block; margin-top: 15px;">Shadow Boxed Users</h4>
+
+      <div class="pull-right">
+        <input type="text" class="form-control" ng-model="$ctrl.search" 
+          placeholder="Search" 
+          style="width: auto; position: relative; top: 2px; display: inline;" />
+
+        <button class="btn btn-default" ng-click="$ctrl.addNew()">Add New User</button>
+        <button class="btn btn-info" ng-click="$ctrl.selectUsers()">Select Users</button>
+        <button class="btn btn-primary" ng-click="$ctrl.save()">Save Users</button>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th ng-repeat="th in $ctrl.users.headers">{{th}}</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="row in $ctrl.users.rows">
+        <td ng-repeat="col in row">{{col}}</td>
+        <td></td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <td ng-repeat="th in $ctrl.users.headers" style="padding-left: 0;">
+          <input type="text" class="form-control" placeholder="{{th}}" ng-model="$ctrl.newObj[th]">
+        </td>
+
+        <td style="padding-top: 3px;">
+          <button class="btn btn-primary" style="width:100%;" ng-click="$ctrl.addNew($ctrl.newObj)">
+            <i class="fa fa-plus"></i>
+          </button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
