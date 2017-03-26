@@ -9,6 +9,7 @@ import angular from 'angular';
 import ngSanitize from 'angular-sanitize';
 import uiRouter from 'angular-ui-router';
 import angularUi from 'angular-ui-bootstrap';
+import angularFilter from 'angular-filter';
 import 'chart.js/dist/Chart.min';
 import 'angular-chart.js/dist/angular-chart.min';
 import 'angular-drag-and-drop-lists/angular-drag-and-drop-lists';
@@ -46,7 +47,9 @@ angular.module('app', [
 
   Common,
   Components,
-  Services
+  Services,
+
+  angularFilter
 ])
   .config(($locationProvider) => {
     "ngInject";

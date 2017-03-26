@@ -1,11 +1,11 @@
 <!-- http://stackoverflow.com/questions/27992992/i-need-list-of-all-class-name-of-font-awesome -->
 
-<select name="" id="" ng-model="$ctrl.selected">
+<select name="" id="" ng-model="$ctrl.selected" class="form-control">
 
-  <option ng-repeat="fontAwesomeIcon in $ctrl.fontAwesomeIcons">
+  <option value="{{fontAwesomeIcon}}" ng-repeat="fontAwesomeIcon in $ctrl.fontAwesomeIcons">
     {{fontAwesomeIcon}}
   </option>
 
 </select>
 
-{{$ctrl.selected}}
+<i class="fa {{$ctrl.selected}}"></i>

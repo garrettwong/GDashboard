@@ -10,21 +10,29 @@
 
     <form action="" class="form-horizontal">
 
-        <div class="form-group" ng-repeat="(key, val) in $ctrl.item">
-            <label class="control-label col-md-3 col-sm-3" for="{{key}}">{{key}} 
-                <span class="required text-danger">*</span>
-            </label>
+        <div ng-repeat="(key, val) in $ctrl.item">
+            <div class="form-group" ng-show="key !== 'faIcon'">
+                <label class="control-label col-md-3 col-sm-3" for="{{key}}">{{key}} 
+                    <span class="required text-danger">*</span>
+                </label>
 
-            <div class="col-md-6 col-sm-6">
-                <input type="text" id="{{key}}" 
-                    required="required" 
-                    class="form-control col-md-7 col-xs-12"
-                    ng-model="$ctrl.item[key]" />
+                <div class="col-md-6 col-sm-6">
+                    <input type="text" id="{{key}}" 
+                        required="required" 
+                        class="form-control col-md-7 col-xs-12"
+                        ng-model="$ctrl.item[key]" />
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="key === 'faIcon'">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Grouped</label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <font-awesome-select selected="$ctrl.item[key]"></font-awesome-select>
+                </div>
             </div>
         </div>
     </form>
 
-    <font-awesome-select></font-awesome-select>
 </div>
 
 <div class="modal-footer">

@@ -39,6 +39,7 @@ import PieChart from './piechart/piechart';
 
 // plugins
 import FontAwesomeSelect from './fontAwesomeSelect/fontAwesomeSelect';
+import ChartJsLine from './chartjsline/chartjsline';
 
 let componentModule = angular.module('app.components', [
   //pages
@@ -88,7 +89,8 @@ let componentModule = angular.module('app.components', [
   PieChart,
 
   // plugins
-  FontAwesomeSelect
+  FontAwesomeSelect,
+  ChartJsLine
 ])
   
 .name;

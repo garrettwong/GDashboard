@@ -7,6 +7,7 @@
     "angular": "^1.5.0",
     "angular-chart.js": "^1.0.3",
     "angular-drag-and-drop-lists": "^1.4.0",
+    "angular-filter": "^0.5.15",
     "angular-sanitize": "^1.6.0",
     "angular-ui-bootstrap": "^2.2.0",
     "angular-ui-router": "^1.0.0-beta.1",
@@ -86,7 +87,6 @@
   "scripts": {
     "test": "karma start",
     "start": "concurrently \"gulp serve\" \"nodemon server/server.js\"",
-    
     "gulp": "gulp serve",
     "nodemon": "nodemon GDashboard/server/server.js",
     "list": "cd server && ls"

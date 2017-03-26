@@ -5,7 +5,7 @@ import './fontAwesomeSelect.styl';
 let fontAwesomeSelectComponent = {
   restrict: 'E',
   bindings: {
-    selected: '<'
+    selected: '=' // 2-way binding
   },
   template,
   controller
