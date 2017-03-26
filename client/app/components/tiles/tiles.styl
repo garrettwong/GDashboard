@@ -48,12 +48,25 @@
       color: #BAB8B8;
     }
 
+    /* icon interaction */
     .icon i {
       margin: 0;
       font-size: 60px;
       line-height: 0;
       vertical-align: bottom;
       padding: 0;
+    }
+
+    .icon i:before {
+      background: -webkit-linear-gradient(#b9b9b9, #2A3F54);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .icon i:hover {
+      font-size:64px;
+      -webkit-transition: width 2s; /* Safari */
+      transition: width 2s;
     }
   }
   

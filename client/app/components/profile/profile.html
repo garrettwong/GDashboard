@@ -1,78 +1,60 @@
 <div class="container-fluid">
   
-  <div class="row sidecannon">
-    <div class="col-sm-12">
-      Filters:
-
-      <div style="display: inline-block; margin-left:24px;">
-        <label>By Name:</label>
-
-        <select name="Selection" id="" style="display: inline-block">
-          <option value="limlam8"></option>
-          <option value="limlam8">Bryan Lim</option>
-        </select>
-      </div>
-
-
-      <div style="display: inline-block; margin-left:24px;">
-        <label>Location:</label>
-
-        <select name="Selection" id="" style="display: inline-block">
-          <option value=""></option>
-          <option value="taiwan">Taiwan</option>
-          <option value="japan">Japan</option>
-          <option value="singapore">Singapore</option>
-        </select>
-      </div>
-
-    </div>
-  </div>
-
+  <!-- dashboard grid -->
   <dashboardgrid></dashboardgrid>
 
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
+
       <div class="box">
+
+        <h4>Rate of Candidate Turnover</h4>
+        
+        <div class="pull-right">
+          <input type="date" class="form-control" />
+        </div>
+
+        <slideandzoomareagraph></slideandzoomareagraph>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="box">
+
+        <h4>Friend Searcher</h4>
+
         <div class="row">
           <div class="col-sm-12">
-            <div class="row">
-              <div class="col-sm-6">
 
-                <h4>Rate of Candidate Turnover</h4>
-              </div>
-              <div class="col-sm-6">
-                <div class="pull-right">
-                  <input type="date" class="form-control" />
-                </div>
-              </div>
+            Filters:
+            <div style="display: inline-block; margin-left:24px;">
+              <label>By Name:</label>
+
+              <select name="Selection" id="" style="display: inline-block">
+                <option value="limlam8"></option>
+                <option value="limlam8">Bryan Lim</option>
+              </select>
             </div>
-            
+
+            <div style="display: inline-block; margin-left:24px;">
+              <label>Location:</label>
+
+              <select name="Selection" id="" style="display: inline-block">
+                <option value=""></option>
+                <option value="taiwan">Taiwan</option>
+                <option value="japan">Japan</option>
+                <option value="singapore">Singapore</option>
+              </select>
+            </div>
+
+
+            <div style="display: inline-block; margin-left:24px;">
+              <input type="text" class="inputSearch" ng-model="$ctrl.search" placeholder="Search" />
+            </div>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-sm-9">
-            <slideandzoomareagraph></slideandzoomareagraph>
-          </div>
-          <div class="col-sm-3">
-            <h4>Bryan Lim</h4>
-            
-            <listbullets></listbullets>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="box">
-        <piechart></piechart>
-      </div>
-    </div>
-
-    <div class="col-sm-6">
-      <div class="box">
+        <!-- table -->
         <table class="table table-striped">
           <thead>
             <tr>
@@ -99,6 +81,9 @@
               <td>
                 <a ui-sref="profile/limlam8"><i class="fa fa-phone"></i></a>
                 <a ui-sref="profile/limlam8"><i class="fa fa-bar-chart"></i></a>
+              </td>
+              <td>
+                <button class="btn btn-info" ng-click="$ctrl.openEditModal()">Edit Modal</button>
               </td>
             </tr>
           </tbody>

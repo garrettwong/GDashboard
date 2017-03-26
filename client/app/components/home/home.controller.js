@@ -24,6 +24,26 @@ class HomeController {
     $scope.series = ['Series A', 'Series B'];
     reset(); // set $scope.data
     
+
+    this.listData = [
+      { 
+        color: 'red', value: 100, sales: 2000, category: 'now', title: 'bryan'
+      },
+      { 
+        color: 'blue', value: 100, sales: 2000, category: 'now', title: 'jackson'
+      },
+      { 
+        color: 'green', value: 100, sales: 2000, category: 'now', title: 'eric'
+      },
+      { 
+        color: 'yellow', value: 100, sales: 2000, category: 'now', title: 'title'
+      },
+      { 
+        color: 'purple', value: 100, sales: 2000, category: 'now', title: 'title'
+      },
+    ];
+
+
     function thisOrThat(a, b) {
       var a = Math.random();
 
@@ -80,7 +100,7 @@ class HomeController {
     function cos(i, range) {
       return Math.cos(i) * range;
     }
-    
+
     $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
     $scope.options = {
       scales: {

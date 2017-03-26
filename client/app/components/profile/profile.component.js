@@ -6,7 +6,7 @@ let profileComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller
+  controller: ['$uibModal', controller]
 };
 
 export default profileComponent;

@@ -1,6 +1,10 @@
 class TilesController {
+  
+  /*
+   * @function constructor
+   * @param tiles - array of tile objects { value, name, desc, icon }
+   */
   constructor() {
-
     if (!this.tiles) {
       this.tiles = [
         {
@@ -20,20 +24,12 @@ class TilesController {
           name: 'Feature Set',
           desc: 'Computed by the amount of reusable code',
           icon: 'fa-percent'
-        },
-        // {
-        //   value: '128%',
-        //   name: 'Storage Efficiency',
-        //   desc: 'Measured by Storage\n',
-        //   icon: 'fa-comments-o'
-        // }
+        }
       ];
 
       this.tileColumnClasses = this.getTileColumnClasses(this.tiles);
-
     } else {
-      // this.tiles was already defined
-
+      
     }
   }
 
