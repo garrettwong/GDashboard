@@ -37,6 +37,9 @@ import DynamicGraph from './dynamicgraph/dynamicgraph';
 import BarGraph from './bargraph/bargraph';
 import PieChart from './piechart/piechart';
 
+// plugins
+import FontAwesomeSelect from './fontAwesomeSelect/fontAwesomeSelect';
+
 let componentModule = angular.module('app.components', [
   //pages
   Home,
@@ -83,6 +86,9 @@ let componentModule = angular.module('app.components', [
   
   BarGraph,
   PieChart,
+
+  // plugins
+  FontAwesomeSelect
 ])
   
 .name;

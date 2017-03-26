@@ -8,11 +8,23 @@
 <div class="modal-body" id="modal-body">
     {{$ctrl.item}}
 
-    <ul>
-        <li ng-repeat="item in $ctrl.items">
-            <a href="#" ng-click="$event.preventDefault(); $ctrl.selected.item = item">{{ $ctrl.item }}</a>
-        </li>
-    </ul>
+    <form action="" class="form-horizontal">
+
+        <div class="form-group" ng-repeat="(key, val) in $ctrl.item">
+            <label class="control-label col-md-3 col-sm-3" for="{{key}}">{{key}} 
+                <span class="required text-danger">*</span>
+            </label>
+
+            <div class="col-md-6 col-sm-6">
+                <input type="text" id="{{key}}" 
+                    required="required" 
+                    class="form-control col-md-7 col-xs-12"
+                    ng-model="$ctrl.item[key]" />
+            </div>
+        </div>
+    </form>
+
+    <font-awesome-select></font-awesome-select>
 </div>
 
 <div class="modal-footer">
