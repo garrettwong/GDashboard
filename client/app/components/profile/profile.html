@@ -68,22 +68,28 @@
           </thead>
 
           <tbody>
-            <tr>
+            <tr ng-repeat="user in $ctrl.users">
               <td>
-                Bryan Lim <i class="fa fa-eye"></i>
+                {{user.name}} <i class="fa fa-eye"></i>
               </td>
-              <td>limlam8@gmail.com</td>
-              <td>123-456-7890</td>
+              <td>{{user.email}}</td>
+              <td>{{user.phone}}</td>
               <td>
-                <a ui-sref="profile/limlam8"><i class="fa fa-user-md"></i></a>
+                <a ui-sref="profile/limlam8"><i class="fa {{user.faIcon}}"></i></a>
               </td>
-              <td>36/100 (36%)</td>
+              <td>{{user.faIcon}}</td>
               <td>
                 <a ui-sref="profile/limlam8"><i class="fa fa-phone"></i></a>
                 <a ui-sref="profile/limlam8"><i class="fa fa-bar-chart"></i></a>
               </td>
               <td>
-                <button class="btn btn-info" ng-click="$ctrl.openEditModal()">Edit Modal</button>
+                <button class="btn btn-info" ng-click="$ctrl.openEditModal(user)">
+                  <i class="fa fa-edit"></i>
+                </button>
+
+                <button class="btn btn-danger" ng-click="$ctrl.openEditModal()">
+                  <i class="fa fa-remove"></i>
+                </button>
               </td>
             </tr>
           </tbody>

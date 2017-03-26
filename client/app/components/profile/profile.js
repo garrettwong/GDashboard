@@ -1,6 +1,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import profileComponent from './profile.component';
+import editModalComponent from './editModal/editModal.component';
 
 let profileModule = angular.module('profile', [
   uiRouter
@@ -16,6 +17,7 @@ let profileModule = angular.module('profile', [
     });
 })
 
+.component('editModalComponent', editModalComponent)
 .component('profile', profileComponent)
 
 .name;

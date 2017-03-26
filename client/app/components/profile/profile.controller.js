@@ -4,6 +4,15 @@ class ProfileController {
 
     this.items = [1];
     this.$uibModal = $uibModal;
+
+    this.users = [
+      {
+        name: 'Bryan Lim',
+        email: 'limlam8@gmail.com',
+        phone: '(909) 203-3577',
+        faIcon: 'fa-user-md'
+      }
+    ];
   }
 
   /*
@@ -14,18 +23,18 @@ class ProfileController {
 
     var modalInstance = this.$uibModal.open({
         animation: true,
-        component: 'modalComponent',
+        component: 'editModalComponent',
         resolve: {
-          items: function () {
-            console.log(model.items, 'items');;
-            return model.items;
+          item: function () {
+            return ref;
           }
         }
       });
 
       modalInstance.result.then(function (selectedItem) {
-        console.log(model.selected, selectedItem, 'selected');
         model.selected = selectedItem;
+        
+        console.log('selectedItem', model.selected);
       }, function () {
         
       });
