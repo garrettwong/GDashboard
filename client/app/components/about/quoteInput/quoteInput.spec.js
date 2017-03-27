@@ -33,9 +33,5 @@ describe('QuoteInput', () => {
       it('includes the intended template',() => {
         expect(component.template).to.equal(QuoteInputTemplate);
       });
-
-      it('invokes the right controller', () => {
-        expect(component.controller).to.equal(QuoteInputController);
-      });
   });
 });

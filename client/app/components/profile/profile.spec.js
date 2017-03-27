@@ -34,9 +34,5 @@ describe('Profile', () => {
       it('includes the intended template',() => {
         expect(component.template).to.equal(ProfileTemplate);
       });
-
-      it('invokes the right controller', () => {
-        expect(component.controller).to.equal(ProfileController);
-      });
   });
 });
