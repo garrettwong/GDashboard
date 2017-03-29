@@ -1,0 +1,76 @@
+<h4>
+  Friend Searcher</h4>
+
+<div class="row">
+  <div class="col-sm-12">
+
+    Filters:
+    <div style="display: inline-block; margin-left:24px;">
+      <label>By Name:</label>
+
+      <!-- users -->
+      <select name="Selection" id="" style="display: inline-block">
+                <option value="all">Show All</option>
+                <option value="{{user.name}}" ng-repeat="user in $ctrl.users">{{user.name}}</option>
+              </select>
+    </div>
+
+    <div style="display: inline-block; margin-left:24px;">
+      <label>By Location:</label>
+
+      <select name="Selection" id="" style="display: inline-block">
+                <option value="all">Show All</option>
+                <option value="{{user.location}}" ng-repeat="user in $ctrl.users | unique:'location'">
+                  {{user.location}}
+                </option>
+              </select>
+    </div>
+
+
+    <div style="display: inline-block; margin-left:24px;">
+      <input type="text" class="inputSearch" ng-model="$ctrl.search" placeholder="Search" />
+    </div>
+  </div>
+</div>
+
+<!-- table -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th><i class="fa fa-rocket"></i></th>
+      <th>Efficiency</th>
+      <th>Refs</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="user in $ctrl.users">
+      <td>
+        {{user.name}} <i class="fa fa-eye"></i>
+      </td>
+      <td>{{user.email}}</td>
+      <td>{{user.phone}}</td>
+      <td>
+        <a ui-sref="profile/limlam8"><i class="fa {{user.faIcon}}"></i></a>
+      </td>
+      <td>{{user.faIcon}}</td>
+      <td>
+        <a ui-sref="profile/limlam8"><i class="fa fa-phone"></i></a>
+        <a ui-sref="profile/limlam8"><i class="fa fa-bar-chart"></i></a>
+      </td>
+      <td>
+        <button class="btn btn-info" ng-click="$ctrl.openEditModal(user)">
+                  <i class="fa fa-edit"></i>
+                </button>
+
+        <button class="btn btn-danger" ng-click="$ctrl.openEditModal()">
+                  <i class="fa fa-remove"></i>
+                </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

@@ -38,8 +38,10 @@ import BarGraph from './bargraph/bargraph';
 import PieChart from './piechart/piechart';
 
 // plugins
+import ChartJsModules from './chartjsModules';
+
 import FontAwesomeSelect from './fontAwesomeSelect/fontAwesomeSelect';
-import ChartJsLine from './chartjsline/chartjsline';
+import FriendSearcher from './friendSearcher/friendSearcher';
 
 let componentModule = angular.module('app.components', [
   //pages
@@ -84,13 +86,15 @@ let componentModule = angular.module('app.components', [
   
   SalaryGraph,
   DynamicGraph,
-  
   BarGraph,
   PieChart,
 
   // plugins
   FontAwesomeSelect,
-  ChartJsLine
+  FriendSearcher,
+
+  // modules
+  ChartJsModules,
 ])
   
 .name;
