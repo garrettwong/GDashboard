@@ -3,6 +3,7 @@ import angular from 'angular';
 import ChartJsLine from './chartjsline/chartjsline';
 import ChartJsBar from './chartjsbar/chartjsbar';
 import ChartJsPie from './chartjspie/chartjspie';
+import ChartJsBubble from './chartjsbubble/chartjsbubble';
 
 /*
  * @module chartjsModule
@@ -11,7 +12,8 @@ import ChartJsPie from './chartjspie/chartjspie';
 let chartjsModule = angular.module('app.chartjsModules', [
   ChartJsLine,
   ChartJsBar,
-  ChartJsPie
+  ChartJsPie,
+  ChartJsBubble
 ])
   
 .name;
