@@ -1,16 +1,16 @@
-import TableModule from './table'
-import TableController from './table.controller';
-import TableComponent from './table.component';
-import TableTemplate from './table.html';
+import TableExamplesModule from './tableExamples'
+import TableExamplesController from './tableExamples.controller';
+import TableExamplesComponent from './tableExamples.component';
+import TableExamplesTemplate from './tableExamples.html';
 
-describe('Table', () => {
+describe('TableExamples', () => {
   let $rootScope, makeController;
 
-  beforeEach(window.module(TableModule));
+  beforeEach(window.module(TableExamplesModule));
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
     makeController = () => {
-      return new TableController();
+      return new TableExamplesController();
     };
   }));
 
@@ -30,20 +30,20 @@ describe('Table', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
     it('has name in template [REMOVE]', () => {
-      expect(TableTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
+      expect(TableExamplesTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
     });
   });
 
   describe('Component', () => {
       // component/directive specs
-      let component = TableComponent;
+      let component = TableExamplesComponent;
 
       it('includes the intended template',() => {
-        expect(component.template).to.equal(TableTemplate);
+        expect(component.template).to.equal(TableExamplesTemplate);
       });
 
       it('invokes the right controller', () => {
-        expect(component.controller).to.equal(TableController);
+        expect(component.controller).to.equal(TableExamplesController);
       });
   });
 });

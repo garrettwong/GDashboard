@@ -13,6 +13,7 @@ import PieChartAjs from './piechartAjs/piechartAjs';
 
 // tables
 import DataTable from './datatable/datatable';
+import TableExamples from './tableexamples/tableexamples';
 
 // lists
 import ListBullets from './listbullets/listbullets';
@@ -67,6 +68,7 @@ let componentModule = angular.module('app.components', [
 
   // tables
   DataTable,
+  TableExamples,
 
   // admin
   Users,
