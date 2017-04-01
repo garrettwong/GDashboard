@@ -11,6 +11,10 @@ import IconList from './iconlist/iconlist';
 import GraphAnalytics from './graphanalytics/graphanalytics';
 import PieChartAjs from './piechartAjs/piechartAjs';
 
+// tables
+import DataTable from './datatable/datatable';
+
+// lists
 import ListBullets from './listbullets/listbullets';
 
 import Users from './users/users';
@@ -60,6 +64,9 @@ let componentModule = angular.module('app.components', [
 
   // lists
   ListBullets,
+
+  // tables
+  DataTable,
 
   // admin
   Users,

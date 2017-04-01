@@ -20,7 +20,6 @@ import Components from './components/components';
 import AppComponent from './app.component';
 import Services from './services/services';
 
-
 // styles
 // import 'https://fonts.googleapis.com/css?family=Droid+Sans';
 import 'normalize.css';
@@ -30,12 +29,15 @@ import 'font-awesome/css/font-awesome.css';
 import 'animate.css/animate.min.css';
 import 'bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css';
 import 'checkbox3/dist/checkbox3.min.css'
-import 'DataTables/media/css/jquery.dataTables.min.css'
-import 'datatables/media/css/dataTables.bootstrap.css';
 import 'select2/dist/css/select2.min.css';
+
+
+
 
 import './styles/style.css';
 import './styles/theme.css';
+
+
 
 angular.module('app', [
   uiRouter,
