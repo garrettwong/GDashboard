@@ -54,3 +54,158 @@ ul.colorchevron li:before{
     content:"\f054";
     color: #286090;     
 }
+
+
+/*
+image media gallery
+*/
+.col-md-55 {
+    position: relative;
+    min-height: 1px;
+    float: left;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+@media (min-width: 1200px)
+{
+    .col-md-55 {
+        width: 20%;
+    }
+}
+
+
+.thumbnail .image {
+    height: 150px;
+    overflow: hidden
+}
+
+.caption {
+    padding: 9px 5px;
+    background: #F7F7F7
+}
+
+.caption p {
+    margin-bottom: 5px
+}
+
+.thumbnail {
+    height: 190px;
+    overflow: hidden
+}
+
+.view {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    box-shadow: 1px 1px 2px #e6e6e6;
+    cursor: default
+}
+
+.dropdown-menu a,.voiceBtn {
+    cursor: pointer
+}
+
+.view .content,.view .mask {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0
+}
+
+.sideways,.view .tools,.view img,.view p {
+    position: relative
+}
+
+.view img {
+    display: block
+}
+
+.view .tools {
+    color: #fff;
+    text-align: center;
+    font-size: 17px;
+    padding: 3px;
+    background: rgba(0,0,0,.35);
+    margin: 73px 0 0
+}
+
+.mask.no-caption .tools {
+    margin: 90px 0 0
+}
+
+.view .tools a {
+    display: inline-block;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0 4px
+}
+
+.view p {
+    font-family: Georgia,serif;
+    font-size: 12px;
+    color: #fff;
+    padding: 10px 20px 20px;
+    text-align: center
+}
+
+.view a.info {
+    display: inline-block;
+    padding: 7px 14px;
+    background: #000;
+    color: #fff;
+    box-shadow: 0 0 1px #000
+}
+
+.view-first img {
+    transition: all .2s linear
+}
+
+.view-first .mask {
+    opacity: 0;
+    background-color: rgba(0,0,0,.5);
+    transition: all .4s ease-in-out
+}
+
+.view-first .tools {
+    transform: translateY(-140px);
+    opacity: 0;
+    transition: all .2s ease-in-out
+}
+
+.view-first p {
+    transform: translateY(140px);
+    opacity: 0;
+    transition: all .2s linear
+}
+
+.view-first:hover img {
+    transform: scale(1.1)
+}
+
+.view-first:hover .mask {
+    opacity: 1
+}
+
+.view-first:hover .tools,.view-first:hover p {
+    opacity: 1;
+    transform: translateY(0)
+}
+
+.view-first:hover p {
+    transition-delay: .1s
+}
+
+.form-group.has-feedback span {
+    display: block!important
+}
+
+.form-group .btn {
+    margin-bottom: -6px
+}
+
+.input-group-btn .btn {
+    margin-bottom: 0
+}

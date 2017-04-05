@@ -12,11 +12,19 @@ let chartjslineModule = angular.module('chartjsbubble', [
  */
 .directive('chartjsbubble', function () {
     return {
+        scope: {
+            bubbleData: '='
+        },
+        
         template,
         restrict: 'E',
         link: function (scope, element, attrs) {           
             console.log(element, $(element).css('width'), $(element).css('height'));
 
+            scope.$watch('bubbleData', function(a, b) {
+                console.log('bubbledata', a, b);
+            });
+            
             scope.name = 'Bubbles per week';
 
             var ctx = document.getElementById("bubbleChartJs");
