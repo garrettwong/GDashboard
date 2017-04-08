@@ -1,0 +1,24 @@
+<div>
+  <h1>{{ $ctrl.name }}</h1>
+
+  <h2>Column Headers</h2>
+  {{$ctrl.columnHeaders}}
+
+  <div class="form-group">
+    <input type="text" ng-model="columnHeaderToAdd">
+    <button ng-click="$ctrl.addColumnHeader(columnHeaderToAdd)">Add Column Header</button>
+  </div>
+
+  <h2>Dataset</h2>
+  {{$ctrl.dataset}}
+
+  <hr />
+
+  <div class="form-group">
+    <input type="text" ng-model="dataRowToAdd" />
+    <button ng-click="$ctrl.addDataRow(dataRowToAdd)">Add Data Row</button>
+  </div>
+
+  <datatable data="$ctrl.columnHeaders" data2="$ctrl.dataset"></datatable>
+
+</div>
