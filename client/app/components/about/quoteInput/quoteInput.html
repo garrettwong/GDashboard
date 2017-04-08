@@ -1,36 +1,27 @@
-<div class="simple-input">
-  <h3>About</h3>
-
+<div class="simple-input" style="padding:12px;">
+  
   <form class="form">
     <div class="form-group">
-      <label for="" class="col-xs-4">What is your name?</label>
-
-      <div class="col-xs-8">
-        <input type="text" class="form-control" ng-model="$ctrl.phrase">
-      </div>
+      <label>What is your name?</label>
+      <input type="text" class="form-control" ng-model="$ctrl.phrase">
     </div>
 
     <div class="form-group">
-      <label for="" class="col-xs-4">Click to see a random quote</label>
-
-      <div class="col-xs-8">
-        <button class="btn btn-warning" ng-click="$ctrl.getQuote()">Get Quote</button>
-      </div>
+      <label for="">Click to see a random quote</label>
+      <button class="btn btn-warning" ng-click="$ctrl.getQuote()">Get Quote</button>
     </div>
 
     <div class="form-group">
-      <label for="" class="col-xs-4">Options:</label>
+      <label for="">Options:</label>
 
-      <div class="col-xs-4">
-        <input type="radio" ng-model="$ctrl.selectedRadio" value="Red Pill"> Red
-        <input type="radio" ng-model="$ctrl.selectedRadio" value="Blue Pill"> Blue
-        <input type="radio" ng-model="$ctrl.selectedRadio" value="No Pill"> No
-      </div>
+      <input type="radio" ng-model="$ctrl.selectedRadio" value="Red Pill"> Red
+      <input type="radio" ng-model="$ctrl.selectedRadio" value="Blue Pill"> Blue
+      <input type="radio" ng-model="$ctrl.selectedRadio" value="No Pill"> No
 
-      <div class="col-xs-4">
+      <div>
         {{$ctrl.selectedRadio}}
       </div>
     </div>
   </form>
-  
+
 </div>
