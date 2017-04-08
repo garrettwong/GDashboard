@@ -1,2 +1,20 @@
 .datatable
   color red
+
+/* CSS Row slide down */
+td.details-control {
+    background: url('/examples/resources/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+ 
+tr.shown td.details-control {
+    background: url('/examples/resources/details_close.png') no-repeat center center;
+}
+ 
+div.slider {
+    display: none;
+}
+ 
+table.dataTable tbody td.no-padding {
+    padding: 0;
+}
