@@ -16,9 +16,12 @@ class DatatableController {
     //
     console.log($.fn.DataTable);
     this.$timeout(() => {
-      this.dtRef = $('#a74029').DataTable();
+      this.dtRef = $('#a74029').DataTable({
+        data: this.data2
+      });
     }, 0)
     
+    // previous map to track changes
     this.previous = {
       data: angular.copy(this.data),
       data2: angular.copy(this.data2)
