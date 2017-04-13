@@ -1,8 +1,6 @@
 import $ from 'jquery/dist/jquery';
 import jQuery from 'jquery/dist/jquery';
 import bootstrap from 'bootstrap/dist/js/bootstrap';
-// import chartjs from 'Chart.js/Chart';
-// import bootstrapSwitch from 'bootstrap-switch/dist/js/boostrap-switch';
 import matchHeight from 'matchHeight/jquery.matchHeight';
 
 import angular from 'angular';
@@ -10,8 +8,8 @@ import ngSanitize from 'angular-sanitize';
 import uiRouter from 'angular-ui-router';
 import angularUi from 'angular-ui-bootstrap';
 import angularFilter from 'angular-filter';
-import 'chart.js/dist/Chart.min';
-import 'angular-chart.js/dist/angular-chart.min';
+import 'chart.js/dist/Chart';
+import 'angular-chart.js/dist/angular-chart';
 import 'angular-drag-and-drop-lists/angular-drag-and-drop-lists';
 
 

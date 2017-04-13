@@ -16,28 +16,14 @@ class DatatableController {
     //
     console.log('this', this);
 
-    this.data2 = [
-      {
-        "name": "Tiger Nixon",
-        "position": "System Architect",
-        "salary": "$320,800",
-        "office": "Edinburgh"
-      },
-      {
-        "name": "Garrett Winters",
-        "position": "Accountant",
-        "salary": "$170,750",
-        "office": "Tokyo",
-      }];
-
     this.$timeout(() => {
-      this.setup();
+      this.dataTableSetup();
     }, 0)
 
     // previous map to track changes
     this.previous = {
-      data: angular.copy(this.data),
-      data2: angular.copy(this.data2)
+      columns: angular.copy(this.columns),
+      rows: angular.copy(this.rows)
     };
   }
 
@@ -47,60 +33,71 @@ class DatatableController {
 
   $doCheck() {
     // on col header change
-    if (!angular.equals(this.previous.data, this.data)) {
-      console.log('data $doCheck', this.data, this.data2);
+    console.log('something changed', this);
 
-      this.previous.data = angular.copy(this.data);
+    if (!angular.equals(this.previous.columns, this.columns)) {
+      console.log('data $doCheck', this.columns, this.rows);
+
+      for(var kIdx = 0; kIdx < this.columns.length; kIdx++) {
+        // for each property ensure that it exists on all objects
+        for (var oIdx = 0; oIdx < this.rows.length; oIdx++) {
+          let propName = this.columns[kIdx].data;
+          if (!this.rows[oIdx].hasOwnProperty(propName)) {
+            this.rows[oIdx][propName] = 'A';
+          }
+        }
+      }
+
+      this.previous.columns = angular.copy(this.columns);
     }
 
     // on data change
-    if (!angular.equals(this.previous.data2, this.data2)) {
-      console.log('data2 $doCheck', this.data2);
+    if (!angular.equals(this.previous.rows, this.rows)) {
+      console.log('rows $doCheck', this.rows);
 
-      this.previous.data2 = angular.copy(this.data2);
+      this.previous.rows = angular.copy(this.rows);
 
-      if (this.dtRef) {
-        this.dtRef.destroy();
-      }
-      this.dtRef = $('#a74029').DataTable({
-        data: this.data2
-      })
+      this.dataTableSetup();
     }
   }
 
-  setup() {
+  dataTableSetup() {
+    if (this.dtRef) {
+      this.dtRef.destroy();
+      $('#a74029 thead, #a74029 tbody').html('');
+    }
 
-    console.log(this.data2);
+    let columnExtensions = [{
+      "class": 'details-control fa fa-plus',
+      "orderable": false,
+      "data": null,
+      "defaultContent": ''
+    }];
+  
+    console.log(this.columns, this.rows);
+    if (this.columns) {
+      columnExtensions = columnExtensions.concat(this.columns);
+    }
+
+    console.log('col', JSON.stringify(this.rows), JSON.stringify(columnExtensions));
 
     this.dtRef = $('#a74029').DataTable({
-      columns: [
-        {
-          "class": 'details-control fa fa-plus',
-          "orderable": false,
-          "data": null,
-          "defaultContent": ''
-        },
-        
-        { title: 'Name', "data": "name" },
-        { title: 'Position', "data": "position" },
-        { title: 'Office', "data": "office" },
-        { title: 'Salary', "data": "salary" }
-      ],
+      columns: columnExtensions,
 
-      data: this.data2,
+      data: this.rows,
 
       "order": [[1, 'asc']]
     });
 
     this.registerRowSlideDown();
   }
-  
+
   registerRowSlideDown() {
     let _self = this;
-    console.log('registering', this);
 
     // Add event listener for opening and closing details
-    $('#a74029 tbody').on('click', 'td.details-control', function () {
+    $('#a74029 tbody').off('click', 'td.details-control')
+    .on('click', 'td.details-control', function () {
       var tr = $(this).closest('tr');
       var row = _self.dtRef.row(tr);
 

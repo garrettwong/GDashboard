@@ -1,0 +1,96 @@
+<div class="dynamicForm">
+  <!-- begin form -->
+  <h2>
+    Columns
+
+    <form class="form-horizontal">
+      <div class="col-sm-offset-8 col-sm-4">
+        <div class="input-group">
+          <input type="text" class="form-control" ng-model="columnHeaderToAdd" placeholder="Column Name">
+          <span class="input-group-btn">
+          <button type="button" class="btn btn-primary"
+                    ng-click="$ctrl.addColumnHeader(columnHeaderToAdd)">
+                    Add New Col <i class="fa fa-plus-circle"></i>
+          </button>
+      </span>
+        </div>
+      </div>
+    </form>
+
+  </h2>
+
+
+  <div style="clear:both;"></div>
+
+  <!-- using directive -->
+  <section class="row">
+    <form class="form-horizontal form-label-left">
+      <h5>{</h5>
+
+      <dynamic-form-renderer 
+        props="$ctrl.columns" 
+        add-data="$ctrl.addData()"
+        row-to-add="$ctrl.dataRowToAdd"></dynamic-form-renderer>
+
+      <h5>}</h5>
+
+    </form>
+  </section>
+
+  <!-- using ng-include template -->
+  <!--<section class="row">
+    <form class="form-horizontal form-label-left">
+      <h5>{</h5>
+
+      <div ng-repeat="prop in $ctrl.columns track by $index" ng-include="'prop_renderer.html'"></div>
+
+      <h5>}</h5>
+
+      <div class="form-group">
+        <button ng-click="$ctrl.addData()" class="btn btn-primary">Add Data</button>
+      </div>
+
+    </form>
+  </section>-->
+</div>
+
+
+
+<!-- script prop_renderer.html -->
+<script type="text/ng-template" id="prop_renderer.html">
+
+  <div class="item form-group bad">
+    <label class="control-label col-md-2 col-sm-3 col-xs-12" style="margin-top:12px;" for="name">{{prop.title}}:</label>
+
+    <div class="col-md-8 col-sm-6 col-xs-12">
+      <!-- perhaps use an ng-switch here and render different types to key off of to render, select, textarea, text, etc -->
+      <input id="name" class="form-control col-sm-8" style="display: inline; width: auto;" data-validate-length-range="6" data-validate-words="2"
+        name="name" placeholder="{{prop.data}}" required="required" type="text" ng-model="$ctrl.dataRowToAdd[prop.data]" />
+
+      <div class="col-sm-2" style="margin-top: 25px; margin-left: -10px;">,</div>
+    </div>
+  </div>
+
+  <!-- uncomment this to enable two level nested columns -->
+  <!-- perhaps use an ng-switch here and render different types to key off of to render, select, textarea, text, etc -->
+  <!--<ul>
+    <li ng-repeat="(prop, value) in prop">
+
+      <div class="item form-group bad">
+        <label class="control-label col-md-2 col-sm-3 col-xs-12" style="margin-top:12px;" for="name">{{prop}}:</label>
+
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          
+          <input id="name" class="form-control col-sm-8" style="display: inline; width: auto;" data-validate-length-range="6" data-validate-words="2"
+            name="name" placeholder="{{value}}" required="required" type="text" ng-model="$ctrl.dataRowToAdd[value]"
+          />
+
+          <div class="col-sm-2" style="margin-top: 25px; margin-left: -10px;">,</div>
+        </div>
+      </div>
+
+      <div ng-include="prop_renderer.html"></div>
+    </li>
+  </ul>-->
+
+</script>

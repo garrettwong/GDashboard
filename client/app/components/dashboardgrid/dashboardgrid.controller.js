@@ -7,7 +7,7 @@ class DashboardgridController {
         faIcon: 'fa-key',
         title: 'Keys',
         count: '1,475',
-        changePercent: 23.2
+        changePercent: 23.24
       },
       {
         faIcon: 'fa-clock-o',

@@ -1,0 +1,37 @@
+{{rowToAdd}}
+<ul>
+  <li ng-repeat="(prop, value) in props">
+
+    <div class="item form-group">
+      <label class="control-label col-md-2 col-sm-3 col-xs-12" style="margin-top:12px;">
+        {{value.title}}:
+      </label>
+
+      <div class="col-md-8 col-sm-6 col-xs-12">
+        <!-- perhaps use an ng-switch here and render different types to key off of to render, select, textarea, text, etc -->
+        <input class="form-control col-sm-8" 
+          style="display: inline; width: auto;"
+          placeholder="{{value}}" 
+          type="text"
+          ng-model="rowToAdd[value.data]" />
+
+        <div class="col-sm-2" style="margin-top: 25px; margin-left: -10px;">,</div>
+      </div>
+
+      <div ng-if="value.internalType === 'object'">
+        {{value.keys}} {{value.internalType}}
+        <!--<dynamic-form-renderer props="value"></dynamic-form-renderer>-->
+      </div>
+
+      <div ng-if="value.internalType === 'array'">
+        {{value.keys}} {{value.internalType}}
+        <!--<dynamic-form-renderer props="value"></dynamic-form-renderer>-->
+      </div>
+    </div>
+    
+  </li>
+</ul>
+
+<div class="form-group">
+  <button ng-click="btnAddData()" class="btn btn-info">Add Data</button>
+</div>

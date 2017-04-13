@@ -10,6 +10,7 @@ import Tiles from './tiles/tiles';
 import IconList from './iconlist/iconlist';
 import GraphAnalytics from './graphanalytics/graphanalytics';
 import PieChartAjs from './piechartAjs/piechartAjs';
+import DynamicForm from './dynamicForm/dynamicForm';
 
 // tables
 import DataTable from './datatable/datatable';
@@ -44,6 +45,7 @@ import PieChart from './piechart/piechart';
 
 // plugins
 import ChartJsModules from './chartjsModules';
+import DynamicFormRenderer from './dynamicFormRenderer/dynamicFormRenderer';
 
 import FontAwesomeSelect from './fontAwesomeSelect/fontAwesomeSelect';
 import FriendSearcher from './friendSearcher/friendSearcher';
@@ -62,6 +64,7 @@ let componentModule = angular.module('app.components', [
   IconList,
   GraphAnalytics,
   PieChartAjs,
+  DynamicForm,
 
   // lists
   ListBullets,
@@ -104,6 +107,7 @@ let componentModule = angular.module('app.components', [
 
   // modules
   ChartJsModules,
+  DynamicFormRenderer
 ])
   
 .name;

@@ -1,45 +1,29 @@
-class TableExamplesController {
+class DynamicFormController {
   constructor() {
-    this.name = 'tableExamples';
 
-    this.columns = [
+    this.dataRowToAdd = {a:1};
+
+    this.columns = this.columns || [
       {
         title: "Name",
         data: 'name',
-        type: 'text',
-        cyber: {
-          a: 'b', c: 'dee'
-        }
-      },
-      {
-        title: 'Positioned',
-        data: 'position',
-        type: 'select'
-      },
-      {
-        title: 'Salary',
-        data: 'salary',
         type: 'text'
       },
       {
-        title: 'Office',
-        data: 'office',
-        type: 'radio'
+        title: 'Position',
+        data: 'position',
+        type: 'select'
       }
     ];
 
-    this.dataset = [{
+    this.dataset = this.dataset || [{
         "name": "Garrett Wong",
-        "position": "System Architect",
-        "salary": "$320,800",
-        "office": "Irvine"
+        "position": "System Architect"
       },
 
       {
         "name": "Brian Wong",
-        "position": "Doctor Architect",
-        "salary": "$320,800",
-        "office": "Memphis"
+        "position": "Doctor Architect"
       },
     ];
   }
@@ -65,11 +49,18 @@ class TableExamplesController {
     this.columns.push(newColumn);
   }
 
-  addDataRow() {
-    console.log(this.dataRowToAdd);
+  // addData() {
+  //   alert('wait');
 
-    this.dataset.push( this.dataRowToAdd );
+  //   console.log('addDataRow', this.dataRowToAdd);
+
+  //   this.dataset.push( this.dataRowToAdd );
+  // }
+  addData() {
+    console.log('addDataRow', this);
+
+    this.dataset.push( angular.copy(this.dataRowToAdd) );
   }
 }
 
-export default TableExamplesController;
+export default DynamicFormController;

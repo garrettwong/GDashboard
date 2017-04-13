@@ -10,8 +10,8 @@ import 'datatables.net-bs/css/dataTables.bootstrap.css';
 let datatableComponent = {
   restrict: 'E',
   bindings: {
-    data: '=',
-    data2: '<'
+    columns: '<',
+    rows: '<'
   },
   template,
   controller: ['$timeout', controller]
