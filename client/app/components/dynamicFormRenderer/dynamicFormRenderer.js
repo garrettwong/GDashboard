@@ -25,7 +25,7 @@ let dynamicFormRenderer = angular.module('dynamicFormRenderer', [
             if (!scope.props) scope.props = {};
 
             if (typeof(scope.props) !== undefined) {
-                //this.markObject(scope.props);
+                this.markObject(scope.props);
             }
             
             scope.btnAddData = function() {
@@ -49,7 +49,7 @@ let dynamicFormRenderer = angular.module('dynamicFormRenderer', [
                         obj[key].internalType = 'object';
                     }
 
-                    this.markObject(obj[key]);
+                    //this.markObject(obj[key]);
                     obj[key].keys = Object.keys(obj[key]);
                 }
             }

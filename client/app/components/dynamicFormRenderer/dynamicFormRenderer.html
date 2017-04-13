@@ -1,34 +1,56 @@
-{{rowToAdd}}
 <ul>
+  <li>
+    <h5>{</h5>
+  </li>
   <li ng-repeat="(prop, value) in props">
 
+    <div>
+      {{rowToAdd}}
+      <hr>
+    </div>
+
     <div class="item form-group">
-      <label class="control-label col-md-2 col-sm-3 col-xs-12" style="margin-top:12px;">
+      <label class="control-label col-md-1" style="margin-top:12px;">
         {{value.title}}:
       </label>
 
       <div class="col-md-8 col-sm-6 col-xs-12">
         <!-- perhaps use an ng-switch here and render different types to key off of to render, select, textarea, text, etc -->
-        <input class="form-control col-sm-8" 
-          style="display: inline; width: auto;"
-          placeholder="{{value}}" 
-          type="text"
-          ng-model="rowToAdd[value.data]" />
+        <input class="form-control col-sm-8" style="display: inline; width: auto;" 
+        placeholder="{{value}}" type="text" ng-model="rowToAdd[value.data]"
+        />
 
-        <div class="col-sm-2" style="margin-top: 25px; margin-left: -10px;">,</div>
+        <div class="col-sm-2 comma" style="margin-top: 25px; margin-left: -10px;">,</div>
       </div>
 
+      <!-- 2 level recursion -->
       <div ng-if="value.internalType === 'object'">
-        {{value.keys}} {{value.internalType}}
         <!--<dynamic-form-renderer props="value"></dynamic-form-renderer>-->
+        <div style="clear:both;"></div>
+<!--
+        <ul>
+          <li class="item form-group no-margin-bottom" ng-repeat="(k, v) in value">
+            <label class="control-label col-md-1" style="margin-top:12px; font-size: 11px;">            
+              {{k}}:
+            </label>
+            <div class="col-md-8" style="display: inline; width: auto;">
+              <input class="form-control col-sm-8" style="display: inline;" type="text" ng-model="rowToAdd[k]" />
+            </div>
+
+            <div class="col-sm-2 comma" style="margin-top: 25px; margin-left: -25px;">,</div>
+          </li>
+        </ul>-->
       </div>
 
       <div ng-if="value.internalType === 'array'">
-        {{value.keys}} {{value.internalType}}
+        <!--{{value.keys}} {{value.internalType}}-->
         <!--<dynamic-form-renderer props="value"></dynamic-form-renderer>-->
       </div>
     </div>
-    
+
+  </li>
+  <li>
+    <h5>}</h5>
   </li>
 </ul>
 

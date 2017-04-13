@@ -7,7 +7,13 @@ class DynamicFormController {
       {
         title: "Name",
         data: 'name',
-        type: 'text'
+        type: 'textarea',
+        isCool: true,
+        location: {
+          city: 'Irvine',
+          zip: 92612
+        },
+        relationships: [1, 2, { name: 'Vince' }]
       },
       {
         title: 'Position',
