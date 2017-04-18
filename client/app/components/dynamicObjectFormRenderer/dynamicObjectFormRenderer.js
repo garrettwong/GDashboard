@@ -2,7 +2,7 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import template from './dynamicObjectFormRenderer.html';
 
-let dynamicFormRenderer = angular.module('dynamicFormRenderer', [
+let dynamicFormObjectRenderer = angular.module('dynamicFormObjectRenderer', [
   uiRouter
 ])
 
@@ -10,7 +10,7 @@ let dynamicFormRenderer = angular.module('dynamicFormRenderer', [
  * @directive <chartjspie></chartjspie>
  * @description http://www.chartjs.org/docs/#doughnut-pie-chart-introduction
  */
-.directive('dynamicFormRenderer', function () {
+.directive('dynamicFormObjectRenderer', function () {
     return {
         template,
         restrict: 'E',
@@ -26,4 +26,4 @@ let dynamicFormRenderer = angular.module('dynamicFormRenderer', [
 
 .name;
 
-export default dynamicFormRenderer;
+export default dynamicFormObjectRenderer;

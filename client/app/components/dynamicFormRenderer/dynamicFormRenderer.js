@@ -21,11 +21,11 @@ let dynamicFormRenderer = angular.module('dynamicFormRenderer', [
         },
         link: function (scope, element, attrs) {
             console.log('props', scope.props);
-
+            
             if (!scope.props) scope.props = {};
 
             if (typeof(scope.props) !== undefined) {
-                this.markObject(scope.props);
+                //this.markObject(scope.props);
             }
             
             scope.btnAddData = function() {

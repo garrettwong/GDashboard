@@ -25,12 +25,11 @@
   <!-- using directive -->
   <section class="row">
     <form class="form-horizontal form-label-left">
-
       <dynamic-form-renderer 
         props="$ctrl.columns" 
         add-data="$ctrl.addData()"
-        row-to-add="$ctrl.dataRowToAdd"></dynamic-form-renderer>
-
+        row-to-add="$ctrl.dataRowToAdd">
+      </dynamic-form-renderer>
     </form>
   </section>
 
@@ -62,7 +61,7 @@
     <div class="col-md-8 col-sm-6 col-xs-12">
       <!-- perhaps use an ng-switch here and render different types to key off of to render, select, textarea, text, etc -->
       <input id="name" class="form-control col-sm-8" style="display: inline; width: auto;" data-validate-length-range="6" data-validate-words="2"
-        name="name" placeholder="{{prop.data}}" required="required" type="text" ng-model="$ctrl.dataRowToAdd[prop.data]" />
+        name="name" placeholder="{{prop.data}}" type="text" ng-model="$ctrl.dataRowToAdd[prop.data]" />
 
       <div class="col-sm-2" style="margin-top: 25px; margin-left: -10px;">,</div>
     </div>
@@ -79,7 +78,7 @@
         <div class="col-md-8 col-sm-6 col-xs-12">
           
           <input id="name" class="form-control col-sm-8" style="display: inline; width: auto;" data-validate-length-range="6" data-validate-words="2"
-            name="name" placeholder="{{value}}" required="required" type="text" ng-model="$ctrl.dataRowToAdd[value]"
+            name="name" placeholder="{{value}}" type="text" ng-model="$ctrl.dataRowToAdd[value]"
           />
 
           <div class="col-sm-2" style="margin-top: 25px; margin-left: -10px;">,</div>

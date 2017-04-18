@@ -1,6 +1,9 @@
 class DynamicFormController {
+  /*
+    * @desc setup default data
+    */
   constructor() {
-
+    
     this.dataRowToAdd = {a:1};
 
     this.columns = this.columns || [
