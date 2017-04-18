@@ -27,8 +27,8 @@
       <div ng-if="value.internalType === 'object'">
         <!--<dynamic-form-renderer props="value"></dynamic-form-renderer>-->
         <div style="clear:both;"></div>
-<!--
-        <ul>
+
+        <!--<ul>
           <li class="item form-group no-margin-bottom" ng-repeat="(k, v) in value">
             <label class="control-label col-md-1" style="margin-top:12px; font-size: 11px;">            
               {{k}}:
@@ -40,6 +40,8 @@
             <div class="col-sm-2 comma" style="margin-top: 25px; margin-left: -25px;">,</div>
           </li>
         </ul>-->
+
+        <dynamic-object-form-renderer value="value" row-to-add="rowToAdd"></dynamic-object-form-renderer>
       </div>
 
       <div ng-if="value.internalType === 'array'">

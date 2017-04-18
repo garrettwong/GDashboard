@@ -46,6 +46,8 @@ import PieChart from './piechart/piechart';
 // plugins
 import ChartJsModules from './chartjsModules';
 import DynamicFormRenderer from './dynamicFormRenderer/dynamicFormRenderer';
+import DynamicObjectFormRenderer from './dynamicObjectFormRenderer/dynamicObjectFormRenderer';
+
 
 import FontAwesomeSelect from './fontAwesomeSelect/fontAwesomeSelect';
 import FriendSearcher from './friendSearcher/friendSearcher';
@@ -107,7 +109,8 @@ let componentModule = angular.module('app.components', [
 
   // modules
   ChartJsModules,
-  DynamicFormRenderer
+  DynamicFormRenderer,
+  DynamicObjectFormRenderer
 ])
   
 .name;
