@@ -1,40 +1,62 @@
-<div class="dynamicForm">
-  <!-- begin form -->
-  <h2>
-    Columns
+<div class="row">
+  <div class="col-md-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Dynamic Form Renderer</h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Settings 1</a>
+              </li>
 
-    <form class="form-horizontal">
-      <div class="col-sm-offset-8 col-sm-4">
-        <div class="input-group">
-          <input type="text" class="form-control" ng-model="columnHeaderToAdd" placeholder="Column Name">
-          <span class="input-group-btn">
+            </ul>
+          </li>
+
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+
+
+
+
+      <div class="x_content">
+
+
+
+        <div class="dynamicForm">
+          <!-- begin form -->
+
+          <form class="form-horizontal">
+            <div class="col-sm-offset-8 col-sm-4">
+              <div class="input-group">
+                <input type="text" class="form-control" ng-model="columnHeaderToAdd" placeholder="Column Name">
+                <span class="input-group-btn">
           <button type="button" class="btn btn-primary"
                     ng-click="$ctrl.addColumnHeader(columnHeaderToAdd)">
                     Add New Col <i class="fa fa-plus-circle"></i>
           </button>
       </span>
-        </div>
-      </div>
-    </form>
-
-  </h2>
+              </div>
+            </div>
+          </form>
 
 
-  <div style="clear:both;"></div>
 
-  <!-- using directive -->
-  <section class="row">
-    <form class="form-horizontal form-label-left">
-      <dynamic-form-renderer 
-        props="$ctrl.columns" 
-        add-data="$ctrl.addData()"
-        row-to-add="$ctrl.dataRowToAdd">
-      </dynamic-form-renderer>
-    </form>
-  </section>
+          <div style="clear:both;"></div>
 
-  <!-- using ng-include template -->
-  <!--<section class="row">
+          <!-- using directive -->
+          <section class="row">
+            <form class="form-horizontal form-label-left">
+              <dynamic-form-renderer props="$ctrl.columns" add-data="$ctrl.addData()" row-to-add="$ctrl.dataRowToAdd">
+              </dynamic-form-renderer>
+            </form>
+          </section>
+
+          <!-- using ng-include template -->
+          <!--<section class="row">
     <form class="form-horizontal form-label-left">
       <h5>{</h5>
 
@@ -48,8 +70,17 @@
 
     </form>
   </section>-->
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
 </div>
 
+
+<!-- templates -->
 
 
 <!-- script prop_renderer.html -->

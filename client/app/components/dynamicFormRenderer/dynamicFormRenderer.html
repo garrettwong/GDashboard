@@ -1,25 +1,16 @@
 <ul>
-  <li>
-    <h5>{</h5>
-  </li>
-  <li ng-repeat="(prop, value) in props">
+  <li ng-repeat="(prop, value) in props track by $index" class="animate-repeat">
 
-    <div>
-      Row to Add: {{rowToAdd}}
-    </div>
-
-    <div class="item form-group">
+    <div class="form-group">
       <label class="control-label col-md-1" style="margin-top:12px;">
         {{value.title}}:
       </label>
 
       <div class="col-md-8 col-sm-6 col-xs-12">
         <!-- perhaps use an ng-switch here and render different types to key off of to render, select, textarea, text, etc -->
-        <input class="form-control col-sm-8" 
-        style="display: inline; width: auto;" placeholder="{{value}}" type="text" ng-model="rowToAdd[value.data]"
+        <input class="form-control col-sm-8" style="display: inline; width: auto;" placeholder="{{value}}" type="text" ng-model="rowToAdd[value.data]"
         />
 
-        <div class="col-sm-2 comma" style="margin-top: 25px; margin-left: -10px;">,</div>
       </div>
 
       <!-- 2 level recursion -->
@@ -48,13 +39,21 @@
         <!--<dynamic-form-renderer props="value"></dynamic-form-renderer>-->
       </div>
     </div>
-
-  </li>
-  <li>
-    <h5>}</h5>
   </li>
 </ul>
 
-<div class="form-group">
-  <button ng-click="btnAddData()" class="btn btn-info">Add Data</button>
+
+<div class="row">
+  <div class="col-sm-12">
+
+    <div class="form-group" style="margin-left: 20px;">
+      <div>
+        <button ng-click="btnAddData()" class="btn btn-info">Add Data</button>
+
+        <button ng-click="$ctrl.red = !$ctrl.red" class="btn btn-info">RED Data</button>
+      </div>
+
+      <div ng-hide="$ctrl.red" class="box-one">REs</div>
+    </div>
+  </div>
 </div>

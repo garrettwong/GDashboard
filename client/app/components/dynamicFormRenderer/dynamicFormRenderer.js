@@ -1,9 +1,13 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import ngAnimate from 'angular-animate';
+
 import template from './dynamicFormRenderer.html';
+import './dynamicFormRenderer.styl';
 
 let dynamicFormRenderer = angular.module('dynamicFormRenderer', [
-  uiRouter
+  uiRouter,
+  ngAnimate
 ])
 
 /*
@@ -21,7 +25,7 @@ let dynamicFormRenderer = angular.module('dynamicFormRenderer', [
         },
         link: function (scope, element, attrs) {
             console.log('props', scope.props);
-            
+
             if (!scope.props) scope.props = {};
 
             if (typeof(scope.props) !== undefined) {

@@ -31,14 +31,14 @@ class TableExamplesController {
     this.dataset = [{
         "name": "Garrett Wong",
         "position": "System Architect",
-        "salary": "$320,800",
+        "salary": "$120,800",
         "office": "Irvine"
       },
 
       {
         "name": "Brian Wong",
         "position": "Doctor Architect",
-        "salary": "$320,800",
+        "salary": "$231,420",
         "office": "Memphis"
       },
     ];
