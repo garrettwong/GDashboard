@@ -1,111 +1,144 @@
-<div class="container">
+<div class="container-fluid">
 
     <div class="row">
         <div class="col-sm-6">
-            <quote-input></quote-input>
 
-            <datepicker></datepicker>
+            <!-- .x_panel -->
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Test Form</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <quote-input></quote-input>
+
+                    <datepicker></datepicker>
+
+
+                    <button type="button" class="btn btn-default" ng-click="$ctrl.open()">Open me!</button>
+                    <button type="button" class="btn btn-default" ng-click="$ctrl.openComponentModal()">Open a component modal!</button>
+                    <div ng-show="$ctrl.selected">Selection from a modal: {{ $ctrl.selected }}</div>
+                </div>
+            </div><!-- /.x_panel -->
         </div>
 
         <div class="col-sm-6">
-            <form-samples></form-samples>
+
+            <!-- .x_panel -->
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Test Form</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <form-samples></form-samples>
+                </div>
+            </div><!-- /.x_panel -->
         </div>
 
-        <div class="col-xs-6">
-        </div>
 
         <div class="col-xs-6">
+            <!-- .x_panel -->
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>General Form <small>Click to validate</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Register</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
 
-            <form class="form-horizontal form-label-left">
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left">
 
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Default Input</label>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Default Input">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Disabled Input </label>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control" disabled="disabled" placeholder="Disabled Input">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Read-Only Input</label>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control" readonly="readonly" placeholder="Read-Only Input">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Default Input</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="Default Input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Disabled Input </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" disabled="disabled" placeholder="Disabled Input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Read-Only Input</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" readonly="readonly" placeholder="Read-Only Input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
                         </label>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <textarea class="form-control" rows="3" placeholder="rows=&quot;3&quot;"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="password" class="form-control" value="passwordonetwo">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">AutoComplete</label>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" name="country" id="autocomplete-custom-append" class="form-control col-md-10">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Select</label>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <select class="form-control">
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <textarea class="form-control" rows="3" placeholder="rows=&quot;3&quot;"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="password" class="form-control" value="passwordonetwo">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">AutoComplete</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" name="country" id="autocomplete-custom-append" class="form-control col-md-10">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Select</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <select class="form-control">
                             <option>Choose option</option>
                             <option>Option one</option>
                             <option>Option two</option>
                             <option>Option three</option>
                             <option>Option four</option>
                           </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Custom</label>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <select class="select2_single form-control" tabindex="-1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Custom</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <select class="select2_single form-control" tabindex="-1">
                             <option></option>
                             <option value="AK">Alaska</option>
                             <option value="HI">Hawaii</option>
                             <option value="CA">California</option>
                             <option value="NV">Nevada</option>
                             <option value="OR">Oregon</option>
-                            <option value="WA">Washington</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="CO">Colorado</option>
-                            <option value="ID">Idaho</option>
-                            <option value="MT">Montana</option>
-                            <option value="NE">Nebraska</option>
-                            <option value="NM">New Mexico</option>
-                            <option value="ND">North Dakota</option>
-                            <option value="UT">Utah</option>
-                            <option value="WY">Wyoming</option>
-                            <option value="AR">Arkansas</option>
-                            <option value="IL">Illinois</option>
-                            <option value="IA">Iowa</option>
-                            <option value="KS">Kansas</option>
-                            <option value="KY">Kentucky</option>
-                            <option value="LA">Louisiana</option>
-                            <option value="MN">Minnesota</option>
-                            <option value="MS">Mississippi</option>
-                            <option value="MO">Missouri</option>
-                            <option value="OK">Oklahoma</option>
-                            <option value="SD">South Dakota</option>
-                            <option value="TX">Texas</option>
                           </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Grouped</label>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <select class="select2_group form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Grouped</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <select class="select2_group form-control">
                             <optgroup label="Alaskan/Hawaiian Time Zone">
                               <option value="AK">Alaska</option>
                               <option value="HI">Hawaii</option>
@@ -167,12 +200,12 @@
                               <option value="WV">West Virginia</option>
                             </optgroup>
                           </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Multiple</label>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <select class="select2_multiple form-control" multiple="multiple">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Multiple</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <select class="select2_multiple form-control" multiple="multiple">
                             <option>Choose option</option>
                             <option>Option one</option>
                             <option>Option two</option>
@@ -181,107 +214,80 @@
                             <option>Option five</option>
                             <option>Option six</option>
                           </select>
-                    </div>
+                            </div>
+                        </div>
+
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                <button type="button" class="btn btn-primary">Cancel</button>
+                                <button type="reset" class="btn btn-primary">Reset</button>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
-
-                <div class="control-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Input Tags</label>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input id="tags_1" type="text" class="tags form-control" value="social, adverts, sales" data-tagsinput-init="true" style="display: none;">
-                        <div
-                            id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;"><span class="tag"><span>social&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span>
-                            <span
-                                class="tag"><span>adverts&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span><span class="tag"><span>sales&nbsp;&nbsp;</span>
-                                <a
-                                    href="#" title="Removing tag">x</a>
-                                    </span><span class="tag"><span>hi&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span>
-                                    <span
-                                        class="tag"><span>lol&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span>
-                                        <div id="tags_1_addTag"><input id="tags_1_tag" value="" data-default="add a tag" style="color: rgb(102, 102, 102); width: 72px;"></div>
-                                        <div
-                                            class="tags_clear"></div>
-                </div>
-                <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+            </div>
+            <!-- /.x_panel -->
         </div>
-    </div>
 
-    <div class="ln_solid"></div>
-    <div class="form-group">
-        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-            <button type="button" class="btn btn-primary">Cancel</button>
-            <button type="reset" class="btn btn-primary">Reset</button>
-            <button type="submit" class="btn btn-success">Submit</button>
-        </div>
-    </div>
+        <div class="col-sm-6">
 
-    </form>
-
-    <div class="x_panel">
-        <div class="x_title">
-            <h2>Registration Form <small>Click to validate</small></h2>
-            <ul class="nav navbar-right panel_toolbox">
-                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
+            <!-- .x_panel -->
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Registration Form <small>Click to validate</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
                     </ul>
-                </li>
-                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                </li>
-            </ul>
-            <div class="clearfix"></div>
-        </div>
 
-        <div class="x_content">
+                    <div class="clearfix"></div>
+                </div>
 
-            <!-- start form for validation -->
-            <form id="demo-form" data-parsley-validate="" novalidate="">
-                <label for="fullname">Full Name * :</label>
-                <input type="text" id="fullname" class="form-control parsley-success" name="fullname" required="" data-com.agilebits.onepassword.user-edited="yes"
-                    data-parsley-id="20">
+                <div class="x_content">
 
-                <label for="email">Email * :</label>
-                <input type="email" id="email" class="form-control parsley-success" name="email" data-parsley-trigger="change" required=""
-                    data-com.agilebits.onepassword.user-edited="yes" data-parsley-id="22">
+                    <!-- start form for validation -->
+                    <form id="demo-form" data-parsley-validate="" novalidate="">
+                        <label for="fullname">Full Name * :</label>
+                        <input type="text" id="fullname" class="form-control parsley-success" name="fullname" required="" data-com.agilebits.onepassword.user-edited="yes"
+                            data-parsley-id="20">
 
-                <label for="heard">Job Position <i class="text-danger">*</i>:</label>
-                <select id="heard" class="form-control parsley-error" required="" data-parsley-id="38">
+                        <label for="email">Email * :</label>
+                        <input type="email" id="email" class="form-control parsley-success" name="email" data-parsley-trigger="change" required=""
+                            data-com.agilebits.onepassword.user-edited="yes" data-parsley-id="22">
+
+                        <label for="heard">Job Position <i class="text-danger">*</i>:</label>
+                        <select id="heard" class="form-control parsley-error" required="" data-parsley-id="38">
                             <option value="">Choose...</option>
                             <option value="engineer">Engineer</option>
                             <option value="doctor">Doctor</option>
                             <option value="lawyer">Lawyer</option>
                           </select>
 
-                <ul class="parsley-errors-list filled" id="parsley-id-38">
-                    <li class="parsley-required">This value is required.</li>
-                </ul>
+                        <ul class="parsley-errors-list filled" id="parsley-id-38">
+                            <li class="parsley-required">This value is required.</li>
+                        </ul>
 
-                <label for="message">Message (20 chars min, 100 max) :</label>
-                <textarea id="message" required="required" class="form-control parsley-error" name="message" data-parsley-trigger="keyup"
-                    data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
-                    data-parsley-validation-threshold="10" data-parsley-id="40"></textarea>
-                <ul class="parsley-errors-list filled" id="parsley-id-40">
-                    <li class="parsley-required">This value is required.</li>
-                </ul>
+                        <label for="message">Message (20 chars min, 100 max) :</label>
+                        <textarea id="message" required="required" class="form-control parsley-error" name="message" data-parsley-trigger="keyup"
+                            data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                            data-parsley-validation-threshold="10" data-parsley-id="40"></textarea>
+                        <ul class="parsley-errors-list filled" id="parsley-id-40">
+                            <li class="parsley-required">This value is required.</li>
+                        </ul>
 
-                <br>
+                        <br>
 
-                <button class="btn btn-primary">Validate form</button>
+                        <button class="btn btn-primary">Validate form</button>
 
-            </form>
-            <!-- end form for validations -->
+                    </form>
+                    <!-- end form for validations -->
+                </div>
+            </div>
+            <!-- /.x_panel -->
 
         </div>
     </div>
-</div>
-</div>
-
-<button type="button" class="btn btn-default" ng-click="$ctrl.open()">Open me!</button>
-<button type="button" class="btn btn-default" ng-click="$ctrl.openComponentModal()">Open a component modal!</button>
-<div ng-show="$ctrl.selected">Selection from a modal: {{ $ctrl.selected }}</div>
 </div>
