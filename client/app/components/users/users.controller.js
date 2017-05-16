@@ -11,7 +11,7 @@ class UsersController {
     this.name = 'users';
 
     this.users = {
-      headers: ['Full Name', 'Email', 'Phone', 'Age'],
+      headers: ['Full Name', 'Email', 'Phone', 'Age', 'ID'],
       rows: []
     }
 
