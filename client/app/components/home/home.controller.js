@@ -1,5 +1,6 @@
 class HomeController {
   constructor($scope, JsonFileDatabase) {
+    
     JsonFileDatabase.getAll('fruits').then((response) => {
       console.log('fruits received', response.data);
     });

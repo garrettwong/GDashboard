@@ -20,30 +20,29 @@ describe('Fruits', () => {
 
   describe('Controller', () => {
     // controller specs
-    it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
+    it('has a name property', () => {
       let controller = makeController();
       expect(controller).to.have.property('name');
-    });
-  });
-
-  describe('Template', () => {
-    // template specs
-    // tip: use regex to ensure correct bindings are used e.g., {{  }}
-    it('has name in template [REMOVE]', () => {
-      expect(FruitsTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
     });
   });
 
   describe('Component', () => {
       // component/directive specs
       let component = FruitsComponent;
+      let componentController;
 
       it('includes the intended template',() => {
         expect(component.template).to.equal(FruitsTemplate);
       });
 
       it('invokes the right controller', () => {
-        expect(component.controller).to.equal(FruitsController);
+        if (component.controller instanceof Array) {
+          componentController = component.controller[component.controller.length-1];
+        } else {
+          componentController = component.controller;
+        }
+        expect(componentController).to.equal(FruitsController);
       });
+
   });
 });

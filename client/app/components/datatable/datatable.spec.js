@@ -18,32 +18,22 @@ describe('Datatable', () => {
     // top-level specs: i.e., routes, injection, naming
   });
 
-  describe('Controller', () => {
-    // controller specs
-    it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
-      let controller = makeController();
-      expect(controller).to.have.property('name');
-    });
-  });
-
-  describe('Template', () => {
-    // template specs
-    // tip: use regex to ensure correct bindings are used e.g., {{  }}
-    it('has name in template [REMOVE]', () => {
-      expect(DatatableTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
-    });
-  });
-
   describe('Component', () => {
       // component/directive specs
       let component = DatatableComponent;
+      let componentController;
 
       it('includes the intended template',() => {
         expect(component.template).to.equal(DatatableTemplate);
       });
 
       it('invokes the right controller', () => {
-        expect(component.controller).to.equal(DatatableController);
+        if (component.controller instanceof Array) {
+          componentController = component.controller[component.controller.length-1];
+        } else {
+          componentController = component.controller;
+        }
+        expect(componentController).to.equal(DatatableController);
       });
   });
 });

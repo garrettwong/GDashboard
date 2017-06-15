@@ -2,6 +2,10 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import fruitsComponent from './fruits.component';
 
+import jsonFileDatabase from '../../../services/jsonFileDatabase';
+import fruitsService from './fruits.service';
+
+
 let fruitsModule = angular.module('fruits', [
   uiRouter
 ])
@@ -14,6 +18,8 @@ let fruitsModule = angular.module('fruits', [
       component: 'fruits'
     });
 })
+
+.service(fruitsService.getClassName(), [jsonFileDatabase.getClassName(), fruitsService])
 
 .component('fruits', fruitsComponent)
 

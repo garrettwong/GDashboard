@@ -1,3 +1,22 @@
-<div>
-  <h1>{{ $ctrl.name }}</h1>
+<div class="appCard">
+  <div class="appPadding">
+
+    <div class="row">
+      <div class="col-sm-12">
+
+        <h3 style="display:inline; line-height:50px;">Fruits Admin</h3>
+        <div class="pull-right">
+          <button class="btn btn-primary" ng-click="$ctrl.openAddNew()">Add New</button>
+          <button class="btn btn-info" ng-click="$ctrl.openAdmin()">Admin</button>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <table class="table table-striped" id="{{$ctrl._generatedId}}">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
