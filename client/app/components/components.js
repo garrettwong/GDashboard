@@ -43,6 +43,9 @@ import DynamicGraph from './dynamicgraph/dynamicgraph';
 import BarGraph from './bargraph/bargraph';
 import PieChart from './piechart/piechart';
 
+// Admin
+import ComponentsAdmin from './componentsAdmin';
+
 // plugins
 import ChartJsModules from './chartjsModules';
 import DynamicFormRenderer from './dynamicFormRenderer/dynamicFormRenderer';
@@ -103,6 +106,9 @@ let componentModule = angular.module('app.components', [
   BarGraph,
   PieChart,
 
+  // admin
+  ComponentsAdmin,
+  
   // plugins
   FontAwesomeSelect,
   FriendSearcher,
