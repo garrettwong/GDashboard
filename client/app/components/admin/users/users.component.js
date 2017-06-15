@@ -1,7 +1,7 @@
 import template from './users.html';
 import controller from './users.controller';
 import './users.styl';
-import JsonFileDatabase from '../../services/jsonFileDatabase';
+import JsonFileDatabase from '../../../services/jsonFileDatabase';
 
 let usersComponent = {
   restrict: 'E',

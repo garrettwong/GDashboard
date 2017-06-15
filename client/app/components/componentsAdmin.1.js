@@ -2,23 +2,20 @@ const moduleName = 'app.componentsAdmin';
 
 import angular from 'angular';
 
-// tables
+// dependencies
 import DataTable from './datatable/datatable';
 import TableExamples from './tableexamples/tableexamples';
 
-// lists
-import ListBullets from './listbullets/listbullets';
-
-// admin
+// pages
 import Users from './users/users';
 import Fruits from './fruits/fruits';
 
 let componentModule = angular.module(moduleName, [
-  // tables
+  // dependencies
   DataTable,
   TableExamples,
 
-  // admin
+  // pages
   Users,
   Fruits
 ])

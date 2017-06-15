@@ -2,8 +2,6 @@ import angular from 'angular';
 
 import Home from './home/home';
 import About from './about/about';
-import RegistrationForm from './registrationForm/registrationForm';
-import Login from './login/login';
 import Profile from './profile/profile';
 import DashboardGrid from './dashboardgrid/dashboardgrid';
 import Tiles from './tiles/tiles';
@@ -18,8 +16,6 @@ import TableExamples from './tableexamples/tableexamples';
 
 // lists
 import ListBullets from './listbullets/listbullets';
-
-import Users from './users/users';
 
 import Speech from './speech/speech';
 import DatePicker from './datepicker/datepicker';
@@ -44,7 +40,7 @@ import BarGraph from './bargraph/bargraph';
 import PieChart from './piechart/piechart';
 
 // Admin
-import ComponentsAdmin from './componentsAdmin';
+import ComponentsAdmin from './admin/componentsAdmin';
 
 // plugins
 import ChartJsModules from './chartjsModules';
@@ -61,8 +57,6 @@ let componentModule = angular.module('app.components', [
 
   // forms
   About,
-  RegistrationForm,
-  Login,
   Profile,
   DashboardGrid,
   Tiles,
@@ -77,9 +71,6 @@ let componentModule = angular.module('app.components', [
   // tables
   DataTable,
   TableExamples,
-
-  // admin
-  Users,
 
   // small components
   Speech,
