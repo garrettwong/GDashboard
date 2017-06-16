@@ -4,6 +4,7 @@ import fruitsComponent from './fruits.component';
 
 import jsonFileDatabase from '../../../services/jsonFileDatabase';
 import fruitsService from './fruits.service';
+import fruitsModalComponent from './fruitsModal/fruitsModal.component';
 
 
 let fruitsModule = angular.module('fruits', [
@@ -20,6 +21,8 @@ let fruitsModule = angular.module('fruits', [
 })
 
 .service(fruitsService.getClassName(), [jsonFileDatabase.getClassName(), fruitsService])
+
+.component('fruitsModalComponent', fruitsModalComponent)
 
 .component('fruits', fruitsComponent)
 

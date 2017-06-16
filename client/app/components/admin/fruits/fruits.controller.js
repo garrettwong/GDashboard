@@ -156,10 +156,20 @@ class FruitsController {
   }
 
   openAddNew() {
-    alert('open addnew');
+    this.items = [1];
+    this.$uibModal.open({
+      animation: true,
+      component: 'fruitsModalComponent',
+      resolve: {
+        items: function () {
+          return [];
+        }
+      }
+    });
   }
+  
   openAdmin() {
-    alert('open admin');
+      alert('open admin');
   }
 
 
