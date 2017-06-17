@@ -50,7 +50,6 @@ class FruitsController {
 
   $doCheck() {
     // on col header change
-    console.log('something changed', this);
     if (this.columns === undefined || this.rows === undefined) return;
 
     if (!angular.equals(this.previous.columns, this.columns)) {
@@ -162,7 +161,9 @@ class FruitsController {
       component: 'fruitsModalComponent',
       resolve: {
         items: function () {
-          return [];
+          console.log('durrr');
+          
+          return ['haro'];
         }
       }
     });

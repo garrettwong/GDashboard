@@ -1,7 +1,12 @@
 class FruitsModalController {
   constructor($uibModalInstance, items) {
     var model = this;
+
+    console.log('modal', items, this);
+
+
     model.items = items;
+
     model.selected = {
       item: model.items[0]
     };
