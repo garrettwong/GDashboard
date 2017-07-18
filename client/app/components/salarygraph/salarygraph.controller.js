@@ -49,7 +49,7 @@ class SalarygraphController {
                         .arrayOfStringArraysToArrayOfObjectsBasedOnProperties(parsedResult.dataRows, parsedResult.headers);
 
       // set default selections
-      this.selectedKey = ['Company Name'];
+      this.selectedKey = [];
       this.selectedY = [];
     });
   }

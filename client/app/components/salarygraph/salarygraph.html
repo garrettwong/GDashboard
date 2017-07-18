@@ -1,37 +1,113 @@
 <div>
 
-  <!-- key selection -->
-  <div class="form-group">
-    <select name="" id="" class="form-control" ng-model="$ctrl.selectedKey">
-      <option value="" ng-repeat="key in $ctrl.keys track by $index">{{key}}</option>
-    </select>
-  </div>
-
   <!-- dashboard view -->
   <div class="row dashboardPanel">
-    <div class="col-sm-9">
+    <div class="col-sm-9 heading">
 
       <div class="row x_title">
-        <div class="col-md-6" style="padding-top:5px;">
-          <h4 class="iconTitle">Salary Graph <small>( {{$ctrl.selectedKey[0]}}, {{$ctrl.selectedY}} )</small></h4>
-        </div>
+        <div class="col-md-10" style="padding-top:5px;">
+          <h4 class="title pull-left">Salary Visualization</h4>
 
-        <div class="col-md-6" style="padding-top:10px;">
+          <ui-select multiple ng-model="$ctrl.selectedKey" theme="bootstrap" sortable="true" close-on-select="true" ng-change="$ctrl.updateGraph()"
+            style="width: 240px; margin-top: 2px;" class="margin-left pull-left">
 
-          <ui-select multiple ng-model="$ctrl.selectedY" theme="bootstrap" sortable="true" close-on-select="true" ng-change="$ctrl.updateGraph()">
-            <ui-select-match placeholder="Select key ...">{{$item}}</ui-select-match>
+            <ui-select-match placeholder="X projections ...">{{$item}}</ui-select-match>
 
             <ui-select-choices repeat="key in $ctrl.keys track by $index">
               <div ng-bind-html="key | highlight: $select.search"></div>
               <small>
-            {{$sce.trustAsHtml(key)}} 
-          </small>
+                {{$sce.trustAsHtml(key)}} 
+              </small>
+            </ui-select-choices>
+          </ui-select>
+
+          <ui-select multiple ng-model="$ctrl.selectedY" theme="bootstrap" sortable="true" close-on-select="true" ng-change="$ctrl.updateGraph()"
+            style="width: 290px; margin-top: 2px;" class="margin-left pull-left">
+            <ui-select-match placeholder="Y projections ...">{{$item}}</ui-select-match>
+
+            <ui-select-choices repeat="key in $ctrl.keys track by $index">
+              <div ng-bind-html="key | highlight: $select.search"></div>
+              <small>
+                {{$sce.trustAsHtml(key)}} 
+              </small>
             </ui-select-choices>
           </ui-select>
         </div>
+
+        <div class="col-md-2" style="padding-top:10px;">
+
+          <ul class="nav navbar-nav navbar-right">
+            <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+              <i class="fa fa-times icon"></i>
+            </button>
+
+            <li class="dropdown" uib-dropdown="" on-toggle="toggled(open)">
+              <a href="" id="simple-dropdown" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-refresh"></i>
+              </a>
+
+              <ul class="dropdown-menu" uib-dropdown-menu="" aria-labelledby="simple-dropdown">
+                <li class="title">
+                  Form
+                </li>
+
+                <!-- ngRepeat: choice in $ctrl.forms -->
+                <li ng-repeat="choice in $ctrl.forms" class="message ng-scope">
+                  <a ui-sref="about" class="ng-binding" href="/about">About</a>
+                </li>
+                <!-- end ngRepeat: choice in $ctrl.forms -->
+                <li ng-repeat="choice in $ctrl.forms" class="message ng-scope">
+                  <a ui-sref="login" class="ng-binding" href="/login">Login</a>
+                </li>
+                <!-- end ngRepeat: choice in $ctrl.forms -->
+              </ul>
+            </li>
+
+            <li class="dropdown" uib-dropdown="" on-toggle="toggled(open)">
+
+              <a href="" id="simple-dropdown" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-cog"></i>
+              </a>
+
+              <ul class="dropdown-menu animated fadeInDown" uib-dropdown-menu="" aria-labelledby="simple-dropdown">
+                <li class="title">
+                  Form
+                </li>
+              </ul>
+            </li>
+
+
+            <li class="dropdown" uib-dropdown="" on-toggle="toggled(open)">
+              <a href="" id="simple-dropdown" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-info-circle"></i>
+              </a>
+
+              <ul class="dropdown-menu" uib-dropdown-menu="" aria-labelledby="simple-dropdown">
+                <li class="title">
+                  Form
+                </li>
+
+                <!-- ngRepeat: choice in $ctrl.forms -->
+                <li ng-repeat="choice in $ctrl.forms" class="message ng-scope">
+                  <a ui-sref="about" class="ng-binding" href="/about">About</a>
+                </li>
+                <!-- end ngRepeat: choice in $ctrl.forms -->
+                <li ng-repeat="choice in $ctrl.forms" class="message ng-scope">
+                  <a ui-sref="login" class="ng-binding" href="/login">Login</a>
+                </li>
+                <!-- end ngRepeat: choice in $ctrl.forms -->
+              </ul>
+            </li>
+          </ul>
+
+        </div>
       </div>
-ABC
-      {{$ctrl.selectedListData}}
+
+
+      <div>
+        <button class="btn btn-primary">Instant</button>
+        <small>( {{$ctrl.selectedKey}}, {{$ctrl.selectedY}} )</small> {{$ctrl.selectedListData}}
+      </div>
 
       <!-- graph -->
       <dynamicgraph graph-data="$ctrl.graphData" labels="$ctrl.labels"></dynamicgraph>
@@ -41,17 +117,12 @@ ABC
     <div class="col-sm-3">
       <h4 class="iconTitle">Views</h4>
 
-      <iconlist class="ng-isolate-scope" 
-        list-data="$ctrl.listData"
-        selected-list-data="$ctrl.selectedListData"
-        on-click="$ctrl.onClickListElement()"></iconlist>
+      <iconlist class="ng-isolate-scope" list-data="$ctrl.listData" selected-list-data="$ctrl.selectedListData" on-click="$ctrl.onClickListElement()"></iconlist>
 
 
       <h4 class="iconTitle">Graph Analytics</h4>
 
-      <graphanalytics class="ng-isolate-scope" 
-        labels="$ctrl.labels"
-        graph-data="$ctrl.graphData"></graphanalytics>
+      <graphanalytics class="ng-isolate-scope" labels="$ctrl.labels" graph-data="$ctrl.graphData"></graphanalytics>
 
 
       <piechart-ajs></piechart-ajs>
@@ -76,7 +147,7 @@ ABC
         <tbody>
           <tr ng-repeat="gLabel in $ctrl.graphDataObjects | filter:$ctrl.selectedListData.title track by $index">
             <td>{{gLabel.label}}</td>
-            
+
             <td>{{gLabel.value}}</td>
           </tr>
         </tbody>
