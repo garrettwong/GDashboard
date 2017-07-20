@@ -29,7 +29,6 @@ let aboutModule = angular.module('about', [
 })
 
 .controller('AboutModalController', ['$uibModalInstance', 'items', aboutModalController])
-
 .component('modalComponent', aboutModalComponent)
 
 .component('about', aboutComponent)

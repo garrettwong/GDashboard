@@ -63,9 +63,10 @@
               </ul>
             </li>
 
-            <li class="dropdown" uib-dropdown="" on-toggle="toggled(open)">
+            <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
 
-              <a href="" id="simple-dropdown" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              <a href="" uib-dropdown-toggle ng-click="$ctrl.btnOpenSettingsModal()" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+
                 <i class="fa fa-cog"></i>
               </a>
 
@@ -114,53 +115,74 @@
 
     </div>
 
-    <div class="col-sm-3">
-      <h4 class="iconTitle">Views</h4>
+    <div class="col-sm-3 heading">
+      <div class="row x_title">
+        <div class="col-sm-12" style="padding-top: 5px;">
 
-      <iconlist class="ng-isolate-scope" list-data="$ctrl.listData" selected-list-data="$ctrl.selectedListData" on-click="$ctrl.onClickListElement()"></iconlist>
+          <h4 class="title pull-left">Views</h4>
+          <span class="pull-right fa fa-refresh text-primary"></span>
+        </div>
+      </div>
 
+      <div>
+        <!-- component: iconlist -->
+        <iconlist class="ng-isolate-scope" list-data="$ctrl.listData" selected-list-data="$ctrl.selectedListData" on-click="$ctrl.onClickListElement()"></iconlist>
 
-      <h4 class="iconTitle">Graph Analytics</h4>
-
-      <graphanalytics class="ng-isolate-scope" labels="$ctrl.labels" graph-data="$ctrl.graphData"></graphanalytics>
-
-
-      <piechart-ajs></piechart-ajs>
+        <!-- component: stockTable -->
+        <stock-table list-data="$ctrl.listData">></stock-table>
+        <hr />
+      </div>
     </div>
   </div>
 
 
   <div class="row dashboardPanel">
-    <div class="col-sm-9">
+    <div class="col-sm-12">
+
+      <!-- component: computeTable -->
       <h4 class="iconTitle">Compute Table <small>( {{$ctrl.selectedKey[0]}}, {{$ctrl.selectedY}} )</small></h4>
 
-      <input type="text" ng-model="$ctrl.selectedListData.title" class="form-control" />
+      <div class="input-group">
+        <div class="input-group-btn">
+          <!-- Buttons -->
+        </div>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Company Name</th>
-            <th ng-repeat="series in $ctrl.series">{{series}}</th>
-          </tr>
-        </thead>
+        <input type="text" ng-model="$ctrl.selectedListData.title" class="form-control" />
+      </div>
 
-        <tbody>
-          <tr ng-repeat="gLabel in $ctrl.graphDataObjects | filter:$ctrl.selectedListData.title track by $index">
-            <td>{{gLabel.label}}</td>
+      <div style="max-height:400px; height: 400px; overflow-y: scroll;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Company Name</th>
+              <th ng-repeat="series in $ctrl.series">{{series}}</th>
+            </tr>
+          </thead>
 
-            <td>{{gLabel.value}}</td>
-          </tr>
-        </tbody>
-      </table>
-
-    </div>
-
-    <div class="col-sm-3">
-
-
+          <tbody>
+            <tr ng-repeat="gLabel in $ctrl.graphDataObjects | filter:$ctrl.selectedListData.title track by $index">
+              <td>{{gLabel.label}}</td>
+              <td>{{gLabel.value}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+  
 
+  <div class="row dashboardPanel">
+    <div class="col-sm-8">
+      <h4 class="iconTitle">Graph Analytics</h4>
 
+      <!-- component: graphanalytics -->
+      <graphanalytics class="ng-isolate-scope" labels="$ctrl.labels" graph-data="$ctrl.graphData"></graphanalytics>
+    </div>
 
+    <div class="col-sm-4">
+      <!-- component: piechartAjs -->
+      <piechart-ajs></piechart-ajs>
+    </div>
+
+  </div>
 </div>

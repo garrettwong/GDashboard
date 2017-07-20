@@ -1,0 +1,61 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title" style="font-size: 18px;">Salary Graph Settings
+
+        <div class="pull-right" ng-click="$ctrl.cancel()" style="cursor: pointer;">x</div>
+    </h3>
+</div>
+
+<div class="modal-body" id="modal-body">
+
+    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="true">Favorites</a></li>
+
+            <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Profile</a></li>
+        </ul>
+
+        <div id="myTabContent" class="tab-content">
+            <div role="tabpanel" class="tab-pane fade" id="tab_content1" aria-labelledby="home-tab">
+
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade active in" id="tab_content2" aria-labelledby="profile-tab">
+                <!-- start user projects -->
+                <table class="data table table-striped no-margin">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Company Name</th>
+                            <th>Ticker</th>
+                            <th class="hidden-phone">Value</th>
+                            <th>Progression</th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+                        <tr ng-repeat="row in $ctrl.items track by $index">
+                            <td>{{$index+1}}</td>
+                            <td>{{row.title}}</td>
+                            <td>
+                                <a href="https://finance.yahoo.com/quote/{{row.symbol}}/" target="_blank">{{row.symbol}}</a>
+                            </td>
+                            <td class="hidden-phone">{{row.value}}</td>
+                            <td class="vertical-align-mid">
+                                <div class="progress">
+                                    <div class="progress-bar {{row.sales > 25 ? 'progress-bar-success' : 'progress-bar-danger'}}" data-transitiongoal="{{row.sales}}" aria-valuenow="{{row.sales}}" style="width: {{row.sales}}%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- end user projects -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>

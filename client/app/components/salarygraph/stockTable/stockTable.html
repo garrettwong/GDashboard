@@ -1,0 +1,16 @@
+<table class="table" style="color: #73879c">
+    <thead>
+        <tr>
+            <th>Stock</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="row in $ctrl.listData">
+            <td>{{row.title}}</td>
+            <td>{{row.symbol}}</td>
+            <td style="color: {{row.sales > 20 ? '#1abc9c' : 'red' }}">{{row.sales > 20 ? '+' + row.sales : '-' + row.sales}}</td>
+            <td>{{row.value}}</td>
+        </tr>
+    </tbody>
+</table>

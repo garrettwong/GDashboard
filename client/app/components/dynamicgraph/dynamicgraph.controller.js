@@ -7,7 +7,7 @@ class DynamicgraphController {
             [28, 48, -40, 19, 86, 27, 90]
         ];
 
-        this.colors = ['#45b7cd', '#ff6384', '#ff8e72'];
+        this.colors = ['#337ab7', '#d9534f', '#ff8e72'];
         this.chartType = 'chart-line'; //'chart-bar';
         this.datasetOverride = [
             { 

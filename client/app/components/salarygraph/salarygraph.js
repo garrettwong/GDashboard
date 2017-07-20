@@ -3,6 +3,9 @@ import uiRouter from 'angular-ui-router';
 import uiSelect from 'ui-select';
 import 'ui-select/dist/select.css';
 
+import stockTable from './stockTable/stockTable.component';
+import salaryGraphSettingsComponent from './salaryGraphSettings/salaryGraphSettings.component';
+
 import salarygraphComponent from './salarygraph.component';
 import SalaryGraphService from './salarygraph.service';
 import SalaryGraphParser from './salarygraph.parser';
@@ -25,6 +28,8 @@ let salarygraphModule = angular.module('salarygraph', [
     });
 })
 
+.component('stockTable', stockTable)
+.component('salaryGraphSettingsComponent', salaryGraphSettingsComponent)
 .component('salarygraph', salarygraphComponent)
 
 .name;

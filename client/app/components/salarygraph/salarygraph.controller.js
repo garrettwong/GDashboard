@@ -4,12 +4,13 @@
  */
 class SalarygraphController {
 
-  constructor($http, $timeout, SalaryGraphService, SalaryGraphParser, SalaryGraphDataConverter) {
+  constructor($http, $timeout, $uibModal, SalaryGraphService, SalaryGraphParser, SalaryGraphDataConverter) {
     this.name = 'salarygraph';
 
     // assign reference parameters
     this.$http = $http;
     this.$timeout = $timeout;
+    this.$uibModal = $uibModal;
     this._salaryGraphService = SalaryGraphService;
     this._salaryGraphParser = SalaryGraphParser;
     this._salaryGraphDataConverter = SalaryGraphDataConverter;
@@ -29,6 +30,28 @@ class SalarygraphController {
     
     // initial call to kick off getting data
     this.httpGET_inputFile('./static/ngaio2016.tsv');
+  }
+
+  btnOpenSettingsModal() {
+    let modalInstance = this.$uibModal.open({
+        animation: true,
+        component: 'salaryGraphSettingsComponent',
+        
+        // component "bindings"
+        resolve: {
+          items: () => {
+            return this.listData;
+          }
+        }
+      });
+
+      // component return values
+      modalInstance.result.then(function (selectedItem) {
+        console.log(selectedItem);
+        //model.selected = selectedItem;
+      }, function () {
+        
+      });
   }
 
   /*

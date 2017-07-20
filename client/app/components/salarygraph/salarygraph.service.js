@@ -21,38 +21,48 @@ export default class SalaryGraphService {
     let data = [
       {
         title: 'Google',
+        symbol: 'GOOG',
         value: 2300,
         category: 'Tech',
         sales: 23,
-        color: 'aero'
+        color: 'aero',
+        icon: 'fa-google'
       },
       {
         title: 'Facebook',
+        symbol: 'FB',
         value: 59,
         category: 'Tech',
         sales: 11,
-        color: 'green'
+        color: 'blue',
+        icon: 'fa-facebook'
       },
       {
         title: 'Apple',
+        symbol: 'AAPL',
         value: 25,
         category: 'Tech',
         sales: 19,
-        color: 'blue'
+        color: 'aero',
+        icon: 'fa-apple'
       },
       {
         title: 'Microsoft',
+        symbol: 'MSFT',
         value: 350,
         category: 'Tech',
         sales: 35,
-        color: 'aero'
+        color: 'aero',
+        icon: 'fa-windows'
       },
       {
         title: 'Amazon',
+        symbol: 'AMZN',
         value: 470,
         category: 'Tech',
         sales: 47,
-        color: 'blue'
+        color: 'blue',
+        icon: 'fa-amazon'
       }
     ];
 
