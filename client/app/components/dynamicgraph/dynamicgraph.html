@@ -1,7 +1,7 @@
 <div>
-  <button ng-click="$ctrl.modify()">Modify and Subtract</button>
-  <button ng-click="$ctrl.addLine();">Add Line of Regression</button>
-  <button ng-click="$ctrl.chartToggle();">Toggle Type</button>
+  <button ng-click="$ctrl.modify()" class="btn btn-primary">Subtract</button>
+  <button ng-click="$ctrl.addLine();" class="btn btn-primary">Add Line of Regression</button>
+  <button ng-click="$ctrl.chartToggle();" class="btn btn-success">Toggle Type</button>
 
   <div ng-if="$ctrl.chartType === 'chart-line'">
     <canvas id="line" class="chart chart-line" chart-data="$ctrl.data" chart-labels="$ctrl.labels" chart-series="$ctrl.series"

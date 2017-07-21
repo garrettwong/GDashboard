@@ -4,37 +4,144 @@
   <div class="row dashboardPanel">
     <div class="col-sm-9 heading">
 
+      <div class="" role="tabpanel" data-example-id="togglable-tabs">
+        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#salaryGraph" role="tab" id="salaryGraph-tab" data-toggle="tab" aria-expanded="true">Salary Graph</a></li>
+
+          <li role="presentation" class=""><a href="#companyMap" role="tab" id="companyMap-tab" data-toggle="tab" aria-expanded="false">Company Map</a></li>
+        </ul>
+
+        <div id="myTabContent" class="tab-content">
+
+
+          <div role="tabpanel" class="tab-pane fade active in" id="salaryGraph" aria-labelledby="salaryGraph-tab">
+
+
+            <div class="row x_title">
+              <div class="col-md-10" style="padding-top:5px;">
+                <h4 class="title pull-left">Salary Visualization</h4>
+
+                <ui-select multiple ng-model="$ctrl.selectedKey" theme="bootstrap" sortable="true" close-on-select="true" ng-change="$ctrl.updateGraph()"
+                  style="width: 240px; margin-top: 2px;" class="margin-left pull-left">
+
+                  <ui-select-match placeholder="X projections ...">{{$item}}</ui-select-match>
+
+                  <ui-select-choices repeat="key in $ctrl.keys track by $index">
+                    <div ng-bind-html="key | highlight: $select.search"></div>
+                    <small>
+                {{$sce.trustAsHtml(key)}} 
+              </small>
+                  </ui-select-choices>
+                </ui-select>
+
+                <ui-select multiple ng-model="$ctrl.selectedY" theme="bootstrap" sortable="true" close-on-select="true" ng-change="$ctrl.updateGraph()"
+                  style="width: 290px; margin-top: 2px;" class="margin-left pull-left">
+                  <ui-select-match placeholder="Y projections ...">{{$item}}</ui-select-match>
+
+                  <ui-select-choices repeat="key in $ctrl.keys track by $index">
+                    <div ng-bind-html="key | highlight: $select.search"></div>
+                    <small>
+                {{$sce.trustAsHtml(key)}} 
+              </small>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+
+              <div class="col-md-2" style="padding-top:10px;">
+
+                <ul class="nav navbar-nav navbar-right">
+                  <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+              <i class="fa fa-times icon"></i>
+            </button>
+
+                  <li class="dropdown" uib-dropdown="" on-toggle="toggled(open)">
+                    <a href="" id="simple-dropdown" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-refresh"></i>
+              </a>
+
+                    <ul class="dropdown-menu" uib-dropdown-menu="" aria-labelledby="simple-dropdown">
+                      <li class="title">
+                        Form
+                      </li>
+
+                      <!-- ngRepeat: choice in $ctrl.forms -->
+                      <li ng-repeat="choice in $ctrl.forms" class="message ng-scope">
+                        <a ui-sref="about" class="ng-binding" href="/about">About</a>
+                      </li>
+                      <!-- end ngRepeat: choice in $ctrl.forms -->
+                      <li ng-repeat="choice in $ctrl.forms" class="message ng-scope">
+                        <a ui-sref="login" class="ng-binding" href="/login">Login</a>
+                      </li>
+                      <!-- end ngRepeat: choice in $ctrl.forms -->
+                    </ul>
+                  </li>
+
+                  <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+                    <a href="" uib-dropdown-toggle ng-click="$ctrl.btnOpenSettingsModal()" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+
+                <i class="fa fa-cog"></i>
+              </a>
+
+                    <ul class="dropdown-menu animated fadeInDown" uib-dropdown-menu="" aria-labelledby="simple-dropdown">
+                      <li class="title">
+                        Form
+                      </li>
+                    </ul>
+                  </li>
+
+
+                  <li class="dropdown" uib-dropdown="" on-toggle="toggled(open)">
+                    <a href="" id="simple-dropdown" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-info-circle"></i>
+              </a>
+
+                    <ul class="dropdown-menu" uib-dropdown-menu="" aria-labelledby="simple-dropdown">
+                      <li class="title">
+                        Form
+                      </li>
+
+                      <!-- ngRepeat: choice in $ctrl.forms -->
+                      <li ng-repeat="choice in $ctrl.forms" class="message ng-scope">
+                        <a ui-sref="about" class="ng-binding" href="/about">About</a>
+                      </li>
+                      <!-- end ngRepeat: choice in $ctrl.forms -->
+                      <li ng-repeat="choice in $ctrl.forms" class="message ng-scope">
+                        <a ui-sref="login" class="ng-binding" href="/login">Login</a>
+                      </li>
+                      <!-- end ngRepeat: choice in $ctrl.forms -->
+                    </ul>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+
+            <div>
+              <button class="btn btn-primary">Instant</button>
+              <small>( {{$ctrl.selectedKey}}, {{$ctrl.selectedY}} )</small> {{$ctrl.selectedListData}}
+            </div>
+
+            <!-- component: dynamicgraph -->
+            <dynamicgraph graph-data="$ctrl.graphData" labels="$ctrl.labels"></dynamicgraph>
+          </div>
+
+          <div role="tabpanel" class="tab-pane fade" id="companyMap" aria-labelledby="companyMap-tab">
+            ASDF
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-3 heading">
       <div class="row x_title">
-        <div class="col-md-10" style="padding-top:5px;">
-          <h4 class="title pull-left">Salary Visualization</h4>
+        <div class="col-sm-10" style="padding-top: 5px;">
 
-          <ui-select multiple ng-model="$ctrl.selectedKey" theme="bootstrap" sortable="true" close-on-select="true" ng-change="$ctrl.updateGraph()"
-            style="width: 240px; margin-top: 2px;" class="margin-left pull-left">
-
-            <ui-select-match placeholder="X projections ...">{{$item}}</ui-select-match>
-
-            <ui-select-choices repeat="key in $ctrl.keys track by $index">
-              <div ng-bind-html="key | highlight: $select.search"></div>
-              <small>
-                {{$sce.trustAsHtml(key)}} 
-              </small>
-            </ui-select-choices>
-          </ui-select>
-
-          <ui-select multiple ng-model="$ctrl.selectedY" theme="bootstrap" sortable="true" close-on-select="true" ng-change="$ctrl.updateGraph()"
-            style="width: 290px; margin-top: 2px;" class="margin-left pull-left">
-            <ui-select-match placeholder="Y projections ...">{{$item}}</ui-select-match>
-
-            <ui-select-choices repeat="key in $ctrl.keys track by $index">
-              <div ng-bind-html="key | highlight: $select.search"></div>
-              <small>
-                {{$sce.trustAsHtml(key)}} 
-              </small>
-            </ui-select-choices>
-          </ui-select>
+          <h4 class="title pull-left">Views</h4>
         </div>
 
-        <div class="col-md-2" style="padding-top:10px;">
+        <div class="col-sm-2" style="padding-top:10px;">
 
           <ul class="nav navbar-nav navbar-right">
             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
@@ -42,32 +149,9 @@
             </button>
 
             <li class="dropdown" uib-dropdown="" on-toggle="toggled(open)">
-              <a href="" id="simple-dropdown" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+
+              <a href="" uib-dropdown-toggle="" ng-click="$ctrl.btnOpenSettingsModal()" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-refresh"></i>
-              </a>
-
-              <ul class="dropdown-menu" uib-dropdown-menu="" aria-labelledby="simple-dropdown">
-                <li class="title">
-                  Form
-                </li>
-
-                <!-- ngRepeat: choice in $ctrl.forms -->
-                <li ng-repeat="choice in $ctrl.forms" class="message ng-scope">
-                  <a ui-sref="about" class="ng-binding" href="/about">About</a>
-                </li>
-                <!-- end ngRepeat: choice in $ctrl.forms -->
-                <li ng-repeat="choice in $ctrl.forms" class="message ng-scope">
-                  <a ui-sref="login" class="ng-binding" href="/login">Login</a>
-                </li>
-                <!-- end ngRepeat: choice in $ctrl.forms -->
-              </ul>
-            </li>
-
-            <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
-
-              <a href="" uib-dropdown-toggle ng-click="$ctrl.btnOpenSettingsModal()" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-
-                <i class="fa fa-cog"></i>
               </a>
 
               <ul class="dropdown-menu animated fadeInDown" uib-dropdown-menu="" aria-labelledby="simple-dropdown">
@@ -76,51 +160,8 @@
                 </li>
               </ul>
             </li>
-
-
-            <li class="dropdown" uib-dropdown="" on-toggle="toggled(open)">
-              <a href="" id="simple-dropdown" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-info-circle"></i>
-              </a>
-
-              <ul class="dropdown-menu" uib-dropdown-menu="" aria-labelledby="simple-dropdown">
-                <li class="title">
-                  Form
-                </li>
-
-                <!-- ngRepeat: choice in $ctrl.forms -->
-                <li ng-repeat="choice in $ctrl.forms" class="message ng-scope">
-                  <a ui-sref="about" class="ng-binding" href="/about">About</a>
-                </li>
-                <!-- end ngRepeat: choice in $ctrl.forms -->
-                <li ng-repeat="choice in $ctrl.forms" class="message ng-scope">
-                  <a ui-sref="login" class="ng-binding" href="/login">Login</a>
-                </li>
-                <!-- end ngRepeat: choice in $ctrl.forms -->
-              </ul>
-            </li>
           </ul>
 
-        </div>
-      </div>
-
-
-      <div>
-        <button class="btn btn-primary">Instant</button>
-        <small>( {{$ctrl.selectedKey}}, {{$ctrl.selectedY}} )</small> {{$ctrl.selectedListData}}
-      </div>
-
-      <!-- graph -->
-      <dynamicgraph graph-data="$ctrl.graphData" labels="$ctrl.labels"></dynamicgraph>
-
-    </div>
-
-    <div class="col-sm-3 heading">
-      <div class="row x_title">
-        <div class="col-sm-12" style="padding-top: 5px;">
-
-          <h4 class="title pull-left">Views</h4>
-          <span class="pull-right fa fa-refresh text-primary"></span>
         </div>
       </div>
 
@@ -169,7 +210,7 @@
       </div>
     </div>
   </div>
-  
+
 
   <div class="row dashboardPanel">
     <div class="col-sm-8">

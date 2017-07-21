@@ -5,8 +5,6 @@ import uiModal from 'angular-ui-bootstrap/src/modal';
 import SweetAlert from '../../services/sweetAlertService';
 import JsonFileDatabase from '../../services/jsonFileDatabase';
 
-console.log(JsonFileDatabase);
-
 import './about.styl';
 
 let aboutComponent = {

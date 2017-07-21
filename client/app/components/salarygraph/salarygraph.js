@@ -15,23 +15,36 @@ let salarygraphModule = angular.module('salarygraph', [
   uiRouter,
   uiSelect
 ])
-.service(SalaryGraphService.getClassName(), SalaryGraphService)
-.service(SalaryGraphParser.getClassName(), SalaryGraphParser)
-.service(SalaryGraphDataConverter.getClassName(), SalaryGraphDataConverter)
+  .service(SalaryGraphService.getClassName(), SalaryGraphService)
+  .service(SalaryGraphParser.getClassName(), SalaryGraphParser)
+  .service(SalaryGraphDataConverter.getClassName(), SalaryGraphDataConverter)
 
-.config(($stateProvider) => {
-  "ngInject";
-  $stateProvider
-    .state('salarygraph', {
-      url: '/salarygraph',
-      component: 'salarygraph'
-    });
-})
+  .config(($stateProvider) => {
+    "ngInject";
+    $stateProvider
+      .state('salarygraph', {
+        url: '/salarygraph',
+        component: 'salarygraph'
+      });
 
-.component('stockTable', stockTable)
-.component('salaryGraphSettingsComponent', salaryGraphSettingsComponent)
-.component('salarygraph', salarygraphComponent)
+    //https://ui-router.github.io/guide/ng1/route-to-component
+    $stateProvider
+      .state('salarygraph.detail', {
+        url: '/:id',
+        component: 'salarygraph',
+        resolve: {
+          a: function ($transition$) {
+            console.log($transition$.params().id, 'luv anus');
+            return $transition$.params().id;
+          }
+        }
+      });
+  })
 
-.name;
+  .component('stockTable', stockTable)
+  .component('salaryGraphSettingsComponent', salaryGraphSettingsComponent)
+  .component('salarygraph', salarygraphComponent)
+
+  .name;
 
 export default salarygraphModule;

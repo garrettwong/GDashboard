@@ -4,8 +4,10 @@
  */
 class SalarygraphController {
 
-  constructor($http, $timeout, $uibModal, SalaryGraphService, SalaryGraphParser, SalaryGraphDataConverter) {
+  constructor($http, $timeout, $uibModal, $stateParams, SalaryGraphService, SalaryGraphParser, SalaryGraphDataConverter) {
     this.name = 'salarygraph';
+
+    console.log('salarygraphcontroller', $stateParams.id, ' was passed');
 
     // assign reference parameters
     this.$http = $http;
