@@ -1,6 +1,7 @@
 import template from './stockTable.html';
 import './stockTable.styl';
 
+/* Simple Color Based Rendering for Stock Table */
 let stockTableComponent = {
   restrict: 'E',
 

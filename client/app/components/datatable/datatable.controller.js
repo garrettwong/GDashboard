@@ -1,7 +1,5 @@
 /*
  * https://datatables.net/download/npm
- * 
- * 
  */
 class DatatableController {
   constructor($timeout) {
@@ -86,6 +84,8 @@ class DatatableController {
 
       data: this.rows,
 
+      
+
       "order": [[1, 'asc']]
     });
 
@@ -121,23 +121,25 @@ class DatatableController {
 
   /* Formatting function for row details - modify as you need */
   format(d) {
-    // `d` is the original data object for the row
-    return '<div class="slider">' +
-      '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
-      '<tr>' +
-      '<td>Full name:</td>' +
-      '<td>' + d.name + '</td>' +
-      '</tr>' +
-      '<tr>' +
-      '<td>Extension number:</td>' +
-      '<td>' + d.extn + '</td>' +
-      '</tr>' +
-      '<tr>' +
-      '<td>Extra info:</td>' +
-      '<td>And any further details here (images etc)...</td>' +
-      '</tr>' +
-      '</table>' +
-      '</div>';
+    // d is the data object
+    return `
+      <div class="slider">
+        <table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">
+          <tr>
+            <td>Name:</td>
+            <td>${d.name}</td>
+          </tr>
+          <tr>
+            <td>Position:</td>
+            <td>${d.position}</td>
+          </tr>
+          <tr>
+          <td>Extra info:</td>
+          <td>And any further details here (images etc)</td>
+          </tr>
+        </table>
+        </div>
+      </div>`;
   }
 
 }

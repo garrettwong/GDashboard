@@ -1,5 +1,5 @@
-import template from './salaryGraphSettings.html';
-import './salaryGraphSettings.styl';
+import template from './salarygraphSettings.html';
+import './salarygraphSettings.styl';
 
 let salaryGraphSettingsComponent = {
   template: template,

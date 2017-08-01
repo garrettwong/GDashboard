@@ -5,6 +5,8 @@ import SalaryGraphService from './salarygraph.service';
 import SalaryGraphParser from './salarygraph.parser';
 import SalaryGraphDataConverter from './salarygraph.dataconverter';
 
+import TableExamplesService from '../tableExamples/tableExamples.service';
+
 import uiModal from 'angular-ui-bootstrap/src/modal';
 
 let salarygraphComponent = {
@@ -16,6 +18,9 @@ let salarygraphComponent = {
     '$timeout',
     '$uibModal',
     '$stateParams',
+    
+    TableExamplesService.getClassName(),
+
     SalaryGraphService.getClassName(), 
     SalaryGraphParser.getClassName(),
     SalaryGraphDataConverter.getClassName(),

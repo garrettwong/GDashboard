@@ -1,47 +1,13 @@
 class TableExamplesController {
-  constructor() {
+  constructor(TableExamplesService) {
     this.name = 'tableExamples';
 
-    this.columns = [
-      {
-        title: "Name",
-        data: 'name',
-        type: 'text',
-        cyber: {
-          a: 'b', c: 'dee'
-        }
-      },
-      {
-        title: 'Positioned',
-        data: 'position',
-        type: 'select'
-      },
-      {
-        title: 'Salary',
-        data: 'salary',
-        type: 'text'
-      },
-      {
-        title: 'Office',
-        data: 'office',
-        type: 'radio'
-      }
-    ];
-
-    this.dataset = [{
-        "name": "Garrett Wong",
-        "position": "System Architect",
-        "salary": "$120,800",
-        "office": "Irvine"
-      },
-
-      {
-        "name": "Brian Wong",
-        "position": "Doctor Architect",
-        "salary": "$231,420",
-        "office": "Memphis"
-      },
-    ];
+    console.log('TableExamplesController', TableExamplesService);
+    
+    this.columns = TableExamplesService.getColumns();
+    this.dataset = TableExamplesService.getData();
+    
+    console.log('data validation', this.columns, this.dataset);
   }
 
   /*

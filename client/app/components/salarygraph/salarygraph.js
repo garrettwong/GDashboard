@@ -4,7 +4,8 @@ import uiSelect from 'ui-select';
 import 'ui-select/dist/select.css';
 
 import stockTable from './stockTable/stockTable.component';
-import salaryGraphSettingsComponent from './salaryGraphSettings/salaryGraphSettings.component';
+import salaryGraphSettingsComponent from './salarygraphSettings/salaryGraphSettings.component';
+import salarygraphProfileComponent from './salarygraphSettings/salarygraphProfile/salaryGraphProfile.component';
 
 import salarygraphComponent from './salarygraph.component';
 import SalaryGraphService from './salarygraph.service';
@@ -15,10 +16,12 @@ let salarygraphModule = angular.module('salarygraph', [
   uiRouter,
   uiSelect
 ])
+  // services
   .service(SalaryGraphService.getClassName(), SalaryGraphService)
   .service(SalaryGraphParser.getClassName(), SalaryGraphParser)
   .service(SalaryGraphDataConverter.getClassName(), SalaryGraphDataConverter)
 
+  // routes
   .config(($stateProvider) => {
     "ngInject";
     $stateProvider
@@ -41,8 +44,10 @@ let salarygraphModule = angular.module('salarygraph', [
       });
   })
 
+  // components
   .component('stockTable', stockTable)
   .component('salaryGraphSettingsComponent', salaryGraphSettingsComponent)
+  .component('salarygraphProfile', salarygraphProfileComponent)
   .component('salarygraph', salarygraphComponent)
 
   .name;

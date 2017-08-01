@@ -1,21 +1,20 @@
 <div>
-
   <!-- dashboard view -->
   <div class="row dashboardPanel">
     <div class="col-sm-9 heading">
 
       <div class="" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+          <!-- tabs -->
           <li role="presentation" class="active"><a href="#salaryGraph" role="tab" id="salaryGraph-tab" data-toggle="tab" aria-expanded="true">Salary Graph</a></li>
-
           <li role="presentation" class=""><a href="#companyMap" role="tab" id="companyMap-tab" data-toggle="tab" aria-expanded="false">Company Map</a></li>
+          <li role="presentation" class=""><a href="#computeTable" role="tab" id="computeTable-tab" data-toggle="tab" aria-expanded="false">Compute Table</a></li>
+          <li role="presentation" class=""><a href="#salaryAnalytics" role="tab" id="salaryAnalytics-tab" data-toggle="tab" aria-expanded="false">Salary Analytics</a></li>
+
         </ul>
 
         <div id="myTabContent" class="tab-content">
-
-
           <div role="tabpanel" class="tab-pane fade active in" id="salaryGraph" aria-labelledby="salaryGraph-tab">
-
 
             <div class="row x_title">
               <div class="col-md-10" style="padding-top:5px;">
@@ -79,9 +78,8 @@
                   <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
 
                     <a href="" uib-dropdown-toggle ng-click="$ctrl.btnOpenSettingsModal()" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-
-                <i class="fa fa-cog"></i>
-              </a>
+                      <i class="fa fa-cog"></i>
+                    </a>
 
                     <ul class="dropdown-menu animated fadeInDown" uib-dropdown-menu="" aria-labelledby="simple-dropdown">
                       <li class="title">
@@ -93,8 +91,8 @@
 
                   <li class="dropdown" uib-dropdown="" on-toggle="toggled(open)">
                     <a href="" id="simple-dropdown" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-info-circle"></i>
-              </a>
+                      <i class="fa fa-info-circle"></i>
+                    </a>
 
                     <ul class="dropdown-menu" uib-dropdown-menu="" aria-labelledby="simple-dropdown">
                       <li class="title">
@@ -113,14 +111,12 @@
                     </ul>
                   </li>
                 </ul>
-
               </div>
             </div>
 
-            <div>
-              <button class="btn btn-primary">Instant</button>
+            <small>
               <small>( {{$ctrl.selectedKey}}, {{$ctrl.selectedY}} )</small> {{$ctrl.selectedListData}}
-            </div>
+            </small>
 
             <!-- component: dynamicgraph -->
             <dynamicgraph graph-data="$ctrl.graphData" labels="$ctrl.labels"></dynamicgraph>
@@ -129,11 +125,51 @@
           <div role="tabpanel" class="tab-pane fade" id="companyMap" aria-labelledby="companyMap-tab">
             ASDF
           </div>
+
+          <div role="tabpanel" class="tab-pane fade" id="computeTable" aria-labelledby="computeTable-tab">
+            <!-- component: computeTable -->
+            <h4 class="iconTitle">Compute Table <small>( {{$ctrl.selectedKey[0]}}, {{$ctrl.selectedY}} )</small></h4>
+
+            <div class="input-group">
+              <div class="input-group-btn">
+                <!-- Buttons -->
+              </div>
+
+              <input type="text" ng-model="$ctrl.selectedListData.title" class="form-control" />
+            </div>
+
+            <div style="max-height:400px; height: 400px; overflow-y: scroll;">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>{{$ctrl.selectedKey[0]}}</th>
+                    <th ng-repeat="series in $ctrl.series">{{series}}</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr ng-repeat="gLabel in $ctrl.graphDataObjects | filter:$ctrl.selectedListData.title track by $index">
+                    <td>{{gLabel.label}}</td>
+                    <td>{{gLabel.value}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane fade" id="salaryAnalytics" aria-labelledby="salaryAnalytics-tab">
+
+
+            <!-- component: datatable -->
+            <datatable columns="$ctrl.columns" rows="$ctrl.dataset"></datatable>
+          </div>
+
+
         </div>
       </div>
     </div>
 
-
+    <!-- Right Panel -->
     <div class="col-sm-3 heading">
       <div class="row x_title">
         <div class="col-sm-10" style="padding-top: 5px;">
@@ -148,17 +184,10 @@
               <i class="fa fa-times icon"></i>
             </button>
 
-            <li class="dropdown" uib-dropdown="" on-toggle="toggled(open)">
-
-              <a href="" uib-dropdown-toggle="" ng-click="$ctrl.btnOpenSettingsModal()" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            <li>
+              <a href class="dropdown-toggle">
                 <i class="fa fa-refresh"></i>
               </a>
-
-              <ul class="dropdown-menu animated fadeInDown" uib-dropdown-menu="" aria-labelledby="simple-dropdown">
-                <li class="title">
-                  Form
-                </li>
-              </ul>
             </li>
           </ul>
 
@@ -178,41 +207,6 @@
 
 
   <div class="row dashboardPanel">
-    <div class="col-sm-12">
-
-      <!-- component: computeTable -->
-      <h4 class="iconTitle">Compute Table <small>( {{$ctrl.selectedKey[0]}}, {{$ctrl.selectedY}} )</small></h4>
-
-      <div class="input-group">
-        <div class="input-group-btn">
-          <!-- Buttons -->
-        </div>
-
-        <input type="text" ng-model="$ctrl.selectedListData.title" class="form-control" />
-      </div>
-
-      <div style="max-height:400px; height: 400px; overflow-y: scroll;">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Company Name</th>
-              <th ng-repeat="series in $ctrl.series">{{series}}</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr ng-repeat="gLabel in $ctrl.graphDataObjects | filter:$ctrl.selectedListData.title track by $index">
-              <td>{{gLabel.label}}</td>
-              <td>{{gLabel.value}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="row dashboardPanel">
     <div class="col-sm-8">
       <h4 class="iconTitle">Graph Analytics</h4>
 
@@ -224,6 +218,5 @@
       <!-- component: piechartAjs -->
       <piechart-ajs></piechart-ajs>
     </div>
-
   </div>
 </div>

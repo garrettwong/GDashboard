@@ -1,5 +1,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+
+import tableExamplesService from './tableExamples.service';
 import tableExamplesComponent from './tableExamples.component';
 
 let tableExamplesModule = angular.module('tableExamples', [
@@ -7,6 +9,9 @@ let tableExamplesModule = angular.module('tableExamples', [
 ])
 
 .config(routeConfig)
+
+.service('TableExamplesService', tableExamplesService)
+
 .component('tableExamples', tableExamplesComponent)
 
 .name;
@@ -25,3 +30,4 @@ function routeConfig($stateProvider) {
         },
       });
 }
+

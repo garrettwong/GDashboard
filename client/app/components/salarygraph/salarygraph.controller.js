@@ -4,8 +4,13 @@
  */
 class SalarygraphController {
 
-  constructor($http, $timeout, $uibModal, $stateParams, SalaryGraphService, SalaryGraphParser, SalaryGraphDataConverter) {
+  constructor($http, $timeout, $uibModal, $stateParams, TableExamplesService, SalaryGraphService, SalaryGraphParser, SalaryGraphDataConverter) {
     this.name = 'salarygraph';
+
+
+    this.columns = TableExamplesService.getColumns();
+    this.dataset = TableExamplesService.getData();
+
 
     console.log('salarygraphcontroller', $stateParams.id, ' was passed');
 
