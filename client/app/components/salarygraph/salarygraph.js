@@ -3,6 +3,7 @@ import uiRouter from 'angular-ui-router';
 import uiSelect from 'ui-select';
 import 'ui-select/dist/select.css';
 
+import companyMap from './companyMap/companyMap.component';
 import stockTable from './stockTable/stockTable.component';
 import salaryGraphSettingsComponent from './salarygraphSettings/salaryGraphSettings.component';
 import salarygraphProfileComponent from './salarygraphSettings/salarygraphProfile/salaryGraphProfile.component';
@@ -45,6 +46,7 @@ let salarygraphModule = angular.module('salarygraph', [
   })
 
   // components
+  .component('companyMap', companyMap)
   .component('stockTable', stockTable)
   .component('salaryGraphSettingsComponent', salaryGraphSettingsComponent)
   .component('salarygraphProfile', salarygraphProfileComponent)

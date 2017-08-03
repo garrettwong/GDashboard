@@ -9,7 +9,9 @@ import DataTable from '../datatable/datatable';
 import Users from './users/users';
 import Fruits from './fruits/fruits';
 import RegistrationForm from './registrationForm/registrationForm';
+
 import Login from './login/login';
+import RegisterNewUser from './registerNewUser/registerNewUser';
 
 let componentModule = angular.module(moduleName, [
   // dependencies
@@ -19,7 +21,9 @@ let componentModule = angular.module(moduleName, [
   Users,
   Fruits,
   RegistrationForm,
+
   Login,
+  RegisterNewUser,
 ])
   
 .name;

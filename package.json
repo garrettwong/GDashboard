@@ -29,6 +29,7 @@
     "express-session": "^1.14.2",
     "fs": "0.0.1-security",
     "jquery": "^3.1.1",
+    "jqvmap": "^1.5.1",
     "karma-sinon": "^1.0.5",
     "moment": "^2.15.1",
     "ng-js-tree": "0.0.10",

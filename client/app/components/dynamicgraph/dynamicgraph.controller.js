@@ -57,7 +57,7 @@ class DynamicgraphController {
     }
 
     $onChanges(val) {
-        console.log('$onChanges', val);
+        // console.log('$onChanges', val);
     }
 
     onClick(points, evt) {

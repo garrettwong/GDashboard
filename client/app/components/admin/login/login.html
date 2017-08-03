@@ -1,130 +1,148 @@
-<div class="" role="tabpanel" data-example-id="togglable-tabs">
-  <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-    <li role="presentation" class="active">
-      <a href="#tab_content1" id="login-tab" role="tab" data-toggle="tab" aria-expanded="true">Login</a>
-    </li>
-    <li role="presentation" class="">
-      <a href="#tab_content2" role="tab" id="register-tab" data-toggle="tab" aria-expanded="false">Register</a>
-    </li>
-  </ul>
+<div class="row">
+  <!-- left -->
+  <div class="col-sm-6">
 
-  <div id="myTabContent" class="tab-content">
 
-    <!-- first tab -->
-    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="login-tab">
+    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#tab_content1" id="login-tab" role="tab" data-toggle="tab" aria-expanded="true">Login</a>
+        </li>
 
-      <div class="row top_tiles">
-        <div class="animated flipInY col-lg-4 col-md-4 col-sm-12 col-xs-12">
-          <div class="tile-stats">
-            <div style="padding:5px 20px;">
-              <section class="login-content">
-                <form>
-                  <h1>Login</h1>
-                  
-                  <div>
-                    <input type="text" class="form-control" placeholder="Username" required="">
-                  </div>
-                  <div>
-                    <input type="password" class="form-control" placeholder="Password" required="">
-                  </div>
-                  <div>
-                    <a class="btn btn-default submit" href="index.html">Log in</a>
-                    <a class="reset_pass" href="#">Lost your password?</a>
-                  </div>
+        <li role="presentation" class="">
+          <a href="#tab_content2" role="tab" id="register-tab" data-toggle="tab" aria-expanded="false">Register</a>
+        </li>
+      </ul>
+
+      <div id="myTabContent" class="tab-content">
+
+        <!-- first tab -->
+        <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="login-tab">
+
+          <div class="row top_tiles">
+            <div class="animated flipInY col-sm-12 col-xs-12">
+              <div class="tile-stats">
+                <div style="padding:5px 20px;">
+                  <section class="login-content">
+                    <form>
+                      <h1>Login</h1>
+
+                      <div>
+                        <input type="text" class="form-control" placeholder="Username" required ng-model="$ctrl.username">
+                      </div>
+
+                      <div>
+                        <input type="password" class="form-control" placeholder="Password" required ng-model="$ctrl.password">
+                      </div>
+
+                      <div>
+                        <a class="btn btn-default submit" ng-click="$ctrl.login()">Log in</a>
+                        <a class="reset_pass" href="#">Lost your password?</a>
+                      </div>
+
+                      <div class="clearfix"></div>
+                    </form>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- ./tabpanel -->
+
+
+
+
+        <!-- second tab: register -->
+        <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="register-tab">
+          <div class="row top_tiles">
+            <div class="animated flipInY col-sm-12 col-xs-12">
+              <div class="tile-stats">
+                <div style="padding:5px 20px;">
+                  <section class="login-content">
+
+                    <!-- register new user -->
+                    <form name="registerNewUserForm">
+                      <h1>Create Account</h1>
+
+                      <div>
+                        <input type="text" class="form-control" placeholder="Username" required ng-model="$ctrl.username">
+                      </div>
+
+                      <div>
+                        <input type="email" class="form-control" placeholder="Email" required ng-model="$ctrl.email">
+                      </div>
+
+                      <div>
+                        <input type="password" class="form-control" placeholder="Password" required ng-model="$ctrl.password">
+                      </div>
+
+                      <div>
+                        <a class="btn btn-default submit" ng-click="$ctrl.registerNewUser(registerNewUserForm.$valid)">Submit</a>
+                      </div>
+
+                      <div class="clearfix"></div>
+
+                    </form>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- right -->
+  <div class="col-sm-6">
+
+    <!-- login with external register -->
+    <div class="row top_tiles">
+      <div class="animated flipInY col-sm-12 col-xs-12">
+        <div class="tile-stats">
+          <div style="padding:5px 20px;">
+            <section class="login-content">
+              <form>
+                <h1>Login with External Register</h1>
+
+                <div>
+                  <input type="text" class="form-control" placeholder="Username" required ng-model="$ctrl.username">
+                </div>
+
+                <div>
+                  <input type="password" class="form-control" placeholder="Password" required ng-model="$ctrl.password">
+                </div>
+
+                <div>
+                  <a class="btn btn-default submit" ng-click="$ctrl.login()">Log in</a>
+                  <a class="reset_pass" href="#">Lost your password?</a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="separator">
+                  <p class="change_link">New to site?
+                    <a ui-sref="registerNewUser" class="to_register"> Create Account</a>
+                  </p>
 
                   <div class="clearfix"></div>
+                  <br>
 
-                  <div class="separator">
-                    <p class="change_link">New to site?
-                      <a href="#signup" class="to_register"> Create Account </a>
-                    </p>
-
-                    <div class="clearfix"></div>
-                    <br>
-
-                  </div>
-                </form>
-              </section>
-            </div>
+                </div>
+              </form>
+            </section>
           </div>
         </div>
       </div>
-
-      <div class="login-wrapper">
-        <div class="animate form login_form">
-          <section class="login-content">
-            <form>
-              <h1>Login</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" required="">
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Password" required="">
-              </div>
-              <div>
-                <a class="btn btn-default submit" href="index.html">Log in</a>
-                <a class="reset_pass" href="#">Lost your password?</a>
-              </div>
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
-                <p class="change_link">New to site?
-                  <a href="#signup" class="to_register"> Create Account </a>
-                </p>
-
-                <div class="clearfix"></div>
-                <br>
-
-              </div>
-            </form>
-          </section>
-        </div>
-      </div>
     </div>
+    <!-- ./row.top_tiles -->
 
-
-
-    <!-- second tab -->
-    <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="register-tab">
-
-      <div class="login-wrapper">
-
-        <div id="register" class="animate form registration_form">
-          <section class="login-content">
-            <form>
-              <h1>Create Account</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" required="">
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Email" required="">
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Password" required="">
-              </div>
-              <div>
-                <a class="btn btn-default submit" href="index.html">Submit</a>
-              </div>
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
-                <p class="change_link">Already a member ?
-                  <a href="#signin" class="to_register"> Log in </a>
-                </p>
-
-                <div class="clearfix"></div>
-                <br>
-
-              </div>
-            </form>
-          </section>
-        </div>
-      </div>
-
-
-    </div>
 
   </div>
 </div>

@@ -42,6 +42,8 @@ class UsersController {
 
     this.jsonFileDatabase.post(this.name, obj).then((response) => {
       console.log('successfully added object', response.data);
+
+      this.users.rows.push(obj);
     });
   }
 

@@ -26,15 +26,15 @@ class DatatableController {
   }
 
   $onChanges(changesObj) {
-    console.log('data table $onChanges', changesObj);
+    // console.log('data table $onChanges', changesObj);
   }
 
   $doCheck() {
     // on col header change
-    console.log('something changed', this);
+    //console.log('something changed', this);
 
     if (!angular.equals(this.previous.columns, this.columns)) {
-      console.log('data $doCheck', this.columns, this.rows);
+      //console.log('data $doCheck', this.columns, this.rows);
 
       for(var kIdx = 0; kIdx < this.columns.length; kIdx++) {
         // for each property ensure that it exists on all objects
