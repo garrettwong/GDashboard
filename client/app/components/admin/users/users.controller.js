@@ -4,14 +4,17 @@ class UsersController {
         fullName: 'Garrett Wong',
         email: 'Garrett.Wong@garrettwong.com',
         phone: '949-407-2304',
-        age: 28
+        age: 28,
+        id: 1,
+        imageUrl: '',
+        imageBytes: ''
       }];
   */
   constructor(JsonFileDatabase) {
     this.name = 'users';
 
     this.users = {
-      headers: ['Full Name', 'Email', 'Phone', 'Age', 'ID'],
+      headers: ['Full Name', 'Email', 'Phone', 'Age', 'ID', 'imageUrl', 'imageBytes'],
       rows: []
     }
 
@@ -34,7 +37,6 @@ class UsersController {
     }, (error) => {
       console.log(error);
     });
-    
   }
 
   addNew(obj) {
