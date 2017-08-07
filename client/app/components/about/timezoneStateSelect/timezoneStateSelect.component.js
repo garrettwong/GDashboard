@@ -3,6 +3,8 @@ import template from './timezoneStateSelect.html';
 import controller from './timezoneStateSelect.controller';
 import './timezoneStateSelect.styl';
 
+import StateService from './stateService';
+
 let timezoneStateSelectComponent = {
   restrict: 'E',
   bindings: {
@@ -10,7 +12,7 @@ let timezoneStateSelectComponent = {
     onChange: '&'
   },
   template,
-  controller: [controller]
+  controller: [StateService.getClassName(), controller]
 };
 
 export default timezoneStateSelectComponent;
