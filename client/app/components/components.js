@@ -24,15 +24,7 @@ import TestEffortTable from './testefforttable/testefforttable';
 import GanntDates from './GanntDates/GanntDates';
 import TestEffortDashboard from './TestEffortDashboard/TestEffortDashboard';
 
-import DivTable from './divtable/divtable';
-import Tree from './tree/tree';
-import ForceGraph from './forcegraph/forcegraph';
-import ForceDirectedTree from './forcedirectedtree/forcedirectedtree';
-import BranchedRandomWalk from './branchedrandomwalk/branchedrandomwalk';
-import TreeMap from './treemap/treemap';
-import CollapsibleTree from './collapsibleTree/collapsibleTree';
-import SortableBarChart from './sortableBarChart/sortableBarChart';
-import SlideAndZoomAreaGraph from './slideandzoomareagraph/slideandzoomareagraph';
+import d3visualizations from './d3visualizations/d3visualizations';
 
 import SalaryGraph from './salarygraph/salarygraph';
 import DynamicGraph from './dynamicgraph/dynamicgraph';
@@ -82,15 +74,7 @@ let componentModule = angular.module('app.components', [
   TestEffortDashboard,
   
   // visualization
-  DivTable,
-  Tree,
-  ForceGraph,
-  ForceDirectedTree,
-  BranchedRandomWalk,
-  TreeMap,
-  CollapsibleTree,
-  SortableBarChart,
-  SlideAndZoomAreaGraph,
+  d3visualizations,
   
   SalaryGraph,
   DynamicGraph,
