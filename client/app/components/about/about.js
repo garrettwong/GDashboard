@@ -8,6 +8,7 @@ import aboutComponent from './about.component';
 import simpleInput from './simpleInput/simpleInput';
 import formSamples from './formSamples/formSamples';
 import quoteInput from './quoteInput/quoteInput';
+import timezoneStateSelect from './timezoneStateSelect/timezoneStateSelect';
 
 let aboutModule = angular.module('about', [
   uiRouter,
@@ -16,7 +17,8 @@ let aboutModule = angular.module('about', [
   // subcomponents
   simpleInput,
   formSamples,
-  quoteInput
+  quoteInput,
+  timezoneStateSelect
 ])
 
 .config(($stateProvider) => {

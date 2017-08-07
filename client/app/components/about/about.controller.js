@@ -1,72 +1,15 @@
 class AboutController {
-  constructor($uibModal, SweetAlert, JsonFileDatabase) {
-
-    var model = this;
-
+  constructor($uibModal, SweetAlert, JsonFileDatabase, StateService) {
     this.SweetAlert = SweetAlert;
+    this.StateService = StateService;
 
-    console.log($uibModal);
-
-    model.items = ['a', 'b', 'c'];
-
-    model.animationsEnabled = true;
-
+    this.StateService.getStates().then((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    })
 
     this.initCollapsePane();
-
-
-    /*
-     * @function open
-     * @description opens modal via controller method
-     */
-    model.open = function (size, parentSelector) {
-      var parentElem = parentSelector ?
-        angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
-
-      console.log(model.items);
-
-      var modalInstance = $uibModal.open({
-        animation: model.animationsEnabled,
-        ariaLabelledBy: 'modal-title',
-        ariaDescribedBy: 'modal-body',
-        templateUrl: 'controllerModal.html',
-        controller: 'AboutModalController',
-        controllerAs: 'model',
-        size: size,
-        appendTo: parentElem,
-        resolve: {
-          items: function () {
-            return model.items;
-          }
-        }
-      });
-
-      modalInstance.result.then(function (selectedItem) {
-        model.selected = selectedItem;
-      }, function () {
-        
-      });
-    };
-
-
-
-    model.openComponentModal = function () {
-      var modalInstance = $uibModal.open({
-        animation: model.animationsEnabled,
-        component: 'modalComponent',
-        resolve: {
-          items: function () {
-            return model.items;
-          }
-        }
-      });
-
-      modalInstance.result.then(function (selectedItem) {
-        model.selected = selectedItem;
-      }, function () {
-        
-      });
-    };
   }
 
   initCollapsePane() {
@@ -87,6 +30,10 @@ class AboutController {
 
         $ICON.toggleClass('fa-chevron-up fa-chevron-down');
     });
+  }
+
+  onChangeTimezoneStateSelect() {
+    this.SweetAlert.swal('Changing value from: ', this.timezoneStateSelectValue, 'info');
   }
 
 }

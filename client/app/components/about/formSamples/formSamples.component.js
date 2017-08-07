@@ -6,7 +6,7 @@ let formSamplesComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller
+  controller: ['SweetAlert', controller]
 };
 
 export default formSamplesComponent;

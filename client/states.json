@@ -1,0 +1,260 @@
+[
+  {
+    "short": "AK",
+    "name": "Alaska",
+    "timezone": "Alaskan/Hawaiian Time Zone"
+  },
+  {
+    "short": "HI",
+    "name": "Hawaii",
+    "timezone": "Alaskan/Hawaiian Time Zone"
+  },
+
+  {
+    "short": "CA",
+    "name": "California",
+    "timezone": "Pacific Time Zone"
+  },
+  {
+    "short": "NV",
+    "name": "Nevada",
+    "timezone": "Pacific Time Zone"
+  },
+  {
+    "short": "OR",
+    "name": "Oregon",
+    "timezone": "Pacific Time Zone"
+  },
+  {
+    "short": "WA",
+    "name": "Washington",
+    "timezone": "Pacific Time Zone"
+  },
+
+
+
+  {
+    "short": "AZ",
+    "name": "Arizona",
+    "timezone": "Mountain Time Zone"
+  },
+  {
+    "short": "CO",
+    "name": "Colorado",
+    "timezone": "Mountain Time Zone"
+  },
+  {
+    "short": "ID",
+    "name": "Idaho",
+    "timezone": "Mountain Time Zone"
+  },
+  {
+    "short": "MT",
+    "name": "Montana",
+    "timezone": "Mountain Time Zone"
+  },
+  {
+    "short": "NE",
+    "name": "Nebraska",
+    "timezone": "Mountain Time Zone"
+  },
+  {
+    "short": "NM",
+    "name": "New Mexico",
+    "timezone": "Mountain Time Zone"
+  },
+  {
+    "short": "ND",
+    "name": "North Dakota",
+    "timezone": "Mountain Time Zone"
+  },
+  {
+    "short": "UT",
+    "name": "Utah",
+    "timezone": "Mountain Time Zone"
+  },
+  {
+    "short": "WY",
+    "name": "Wyoming",
+    "timezone": "Mountain Time Zone"
+  },
+
+
+  {
+    "short": "AL",
+    "name": "Alabama",
+    "timezone": "Central Time Zone"
+  },
+  {
+    "short": "AR",
+    "name": "Arkansas",
+    "timezone": "Central Time Zone"
+  },
+  {
+    "short": "IL",
+    "name": "Illinois",
+    "timezone": "Central Time Zone"
+  },
+  {
+    "short": "IA",
+    "name": "Iowa",
+    "timezone": "Central Time Zone"
+  },
+  {
+    "short": "KS",
+    "name": "Kansas",
+    "timezone": "Central Time Zone"
+  },
+  {
+    "short": "KY",
+    "name": "Kentucky",
+    "timezone": "Central Time Zone"
+  },
+  {
+    "short": "LA",
+    "name": "Louisiana",
+    "timezone": "Central Time Zone"
+  },
+  {
+    "short": "MN",
+    "name": "Minnesota",
+    "timezone": "Central Time Zone"
+  },
+  {
+    "short": "MS",
+    "name": "Mississippi",
+    "timezone": "Central Time Zone"
+  },
+  {
+    "short": "MO",
+    "name": "Missouri",
+    "timezone": "Central Time Zone"
+  },
+  {
+    "short": "OK",
+    "name": "Oklahoma",
+    "timezone": "Central Time Zone"
+  },
+  {
+    "short": "SD",
+    "name": "South Dakota",
+    "timezone": "Central Time Zone"
+  },
+  {
+    "short": "TX",
+    "name": "Texas",
+    "timezone": "Central Time Zone"
+  },
+  {
+    "short": "TN",
+    "name": "Tennessee",
+    "timezone": "Central Time Zone"
+  },
+  {
+    "short": "WI",
+    "name": "Wisconsin",
+    "timezone": "Central Time Zone"
+  },
+
+  
+  {
+    "short": "CT",
+    "name": "Connecticut",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "DE",
+    "name": "Delware",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "FL",
+    "name": "Florida",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "GA",
+    "name": "Georgia",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "IN",
+    "name": "Indiana",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "ME",
+    "name": "Maine",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "MD",
+    "name": "Maryland",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "MA",
+    "name": "Massachusetts",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "MI",
+    "name": "Michigan",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "NH",
+    "name": "New Hampshire",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "NJ",
+    "name": "New Jersey",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "NY",
+    "name": "New York",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "NC",
+    "name": "North Carolina",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "OH",
+    "name": "Ohio",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "PA",
+    "name": "Pennsylvania",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "RI",
+    "name": "Rhode Island",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "SC",
+    "name": "South Carolina",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "VT",
+    "name": "Vermont",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "VA",
+    "name": "Virginia",
+    "timezone": "Eastern Time Zone"
+  },
+  {
+    "short": "WV",
+    "name": "West Virginia",
+    "timezone": "Eastern Time Zone"
+  }
+]

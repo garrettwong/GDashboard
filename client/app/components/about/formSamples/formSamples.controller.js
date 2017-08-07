@@ -1,8 +1,13 @@
 class FormSamplesController {
-  constructor() {
+  constructor(SweetAlert) {
     this.name = 'formSamples';
+    this.swal = SweetAlert.swal;
 
-    // dates
+    this.initDateOptions();
+  }
+
+  initDateOptions() {
+    // date bindings
     this.dt = '';
     this.dt2 = '';
 
@@ -34,6 +39,14 @@ class FormSamplesController {
     this.popup2 = {
       opened: false
     };
+  }
+
+  showFormDetails(isValid) {
+    if (!isValid) {
+      this.swal('Form not filled out', 'Error', 'error');
+    } else {
+      this.swal('Form Details', JSON.stringify(this), 'info');
+    }
   }
 }
 

@@ -8,7 +8,7 @@ let quoteInputComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller: [SweetAlert.getClassName(), controller]
+  controller: [SweetAlert.getClassName(), '$uibModal', controller]
 };
 
 export default quoteInputComponent;

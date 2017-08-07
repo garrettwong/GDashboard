@@ -1,16 +1,28 @@
 <div class="simple-input">
 
+  <label for="" class="form-control">Date Picker binding</label>
+
   <div style="display:inline-block;">
     <div uib-datepicker ng-model="model.dt" class="well well-sm" datepicker-options="model.options"></div>
   </div>
 
-  <div>
+  <div style="display:inline-block;">
     <button type="button" class="btn btn-sm btn-info" ng-click="model.today()">Today</button>
-    <button type="button" class="btn btn-sm btn-default" ng-click="model.setDate(2009, 7, 24)">2009-08-24</button>
+    
+    <button type="button" class="btn btn-sm btn-warning" ng-click="model.setDate(2009, 7, 24)">Set Date: 8-24-2009</button>
+    
     <button type="button" class="btn btn-sm btn-danger" ng-click="model.clear()">Clear</button>
-    <button type="button" class="btn btn-sm btn-default" ng-click="model.toggleMin()" uib-tooltip="After today restriction">Min date</button>
+    
+    <button type="button" class="btn btn-sm btn-default" ng-click="model.toggleMin()" uib-tooltip="After today restriction">
+      Set Min date
+    </button>
 
-    <button type="button" class="btn btn-primary" ng-click="model.getValue()" uib-tooltip="Get Value">Get Value Test</button>
+    <button type="button" 
+            class="btn btn-primary" 
+            uib-tooltip="View Selected Date"
+            ng-click="model.getValue()">
+      <i class="fa fa-calendar"></i>
+    </button>
   </div>
 
 </div>

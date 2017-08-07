@@ -1,16 +1,29 @@
 <form class="form">
+  <!-- Input Binding -->
   <div class="form-group">
-    <label>What is your name?</label>
+    <label>Input binding:</label>
+
     <input type="text" class="form-control" ng-model="$ctrl.phrase">
+
+    <span>{{$ctrl.phrase}}</span>
   </div>
 
+  <hr />
+
+  <!-- Textarea Binding -->
   <div class="form-group">
-    <label for="">Click to see a random quote</label>
-    <button class="btn btn-warning" ng-click="$ctrl.getQuote()">Get Quote</button>
+    <label>Textarea binding:</label>
+
+    <textarea class="form-control" ng-model="$ctrl.phrase"></textarea>
+
+    <span>{{$ctrl.phrase}}</span>
   </div>
 
+  <hr />
+
+  <!-- Radio Buttons -->
   <div class="form-group">
-    <label for="">Options:</label>
+    <label for="">Radio Button binding:</label>
 
     <input type="radio" ng-model="$ctrl.selectedRadio" value="Red Pill"> Red
     <input type="radio" ng-model="$ctrl.selectedRadio" value="Blue Pill"> Blue
@@ -20,4 +33,42 @@
       {{$ctrl.selectedRadio}}
     </div>
   </div>
+
+  <hr />
+
+  <!-- Checkbox Buttons -->
+  <div class="form-group">
+    <label for="">Checkbox binding:</label>
+
+    <input type="checkbox" ng-model="$ctrl.checkbox1" value="Gold"> Gold
+    <input type="checkbox" ng-model="$ctrl.checkbox2" value="Silver"> Silver
+    <input type="checkbox" ng-model="$ctrl.checkbox3" value="Copper"> Copper
+
+    <div>
+      {{$ctrl.checkbox1 + '_' + $ctrl.checkbox2 + '_' + $ctrl.checkbox3}}
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- Sweet Alert Binding -->
+  <div class="form-group">
+    <label for="">Button Click binding:</label>
+    <button class="btn btn-info" ng-click="$ctrl.getQuote()">See Quote</button>
+  </div>
+
+  <hr />
+
+
+  <!-- Modal Buttons -->
+  <div class="form-group">
+    <label for="">Modal binding:</label>
+
+    <button type="button" class="btn btn-info" ng-click="$ctrl.open()">Open me!</button>
+    <button type="button" class="btn btn-success" ng-click="$ctrl.openComponentModal()">Open a component modal!</button>
+    
+    <div ng-show="$ctrl.selected">Modal selection values: {{ $ctrl.selected }}</div>
+  </div>
+
+  <hr />
 </form>

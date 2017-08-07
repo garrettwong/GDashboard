@@ -1,44 +1,71 @@
 <div class="simple-form">
     <div class="simple-form-wrapper">
 
-        <h4>https://colorlib.com/polygon/gentelella/form.html#</h4>
-        <form class="form-horizontal form-label-left input_mask">
+        <form class="form-horizontal form-label-left input_mask" name="formSample">
             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="First Name">
+                <input type="text" 
+                        class="form-control has-feedback-left" 
+                        id="inputSuccess2" 
+                        placeholder="First Name"
+                        ng-model="$ctrl.firstName">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
             </div>
 
             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control" id="inputSuccess3" placeholder="Last Name">
+                <input type="text" 
+                        class="form-control" 
+                        id="inputSuccess3" 
+                        placeholder="Last Name"
+                        ng-model="$ctrl.lastName">
                 <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
             </div>
 
             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email">
+                <input type="text" 
+                        class="form-control has-feedback-left" 
+                        id="inputSuccess4" 
+                        placeholder="Email"
+                        ng-model="$ctrl.email">
                 <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
             </div>
 
             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control" id="inputSuccess5" placeholder="Phone">
+                <input type="text" 
+                        class="form-control" 
+                        id="inputSuccess5" 
+                        placeholder="Phone"
+                        ng-model="$ctrl.phone">
                 <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Default Input</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" placeholder="Default Input">
+                    <input type="text" 
+                        class="form-control" 
+                        placeholder="Default Input"
+                        ng-model="$ctrl.defaultInput">
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Disabled Input </label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" disabled="disabled" placeholder="Disabled Input">
+                    <input type="text" 
+                            class="form-control" 
+                            disabled="disabled" 
+                            placeholder="Disabled Input"
+                            ng-model="$ctrl.disabledInput">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Read-Only Input</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" readonly="readonly" placeholder="Read-Only Input">
+                    <input type="text" 
+                            class="form-control" 
+                            readonly="readonly" 
+                            placeholder="Read-Only Input"
+                            ng-model="$ctrl.readOnlyInput">
                 </div>
             </div>
 
@@ -48,7 +75,10 @@
                 </label>
 
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                    <input class="date-picker form-control col-md-7 col-xs-12" 
+                            required="required" 
+                            type="text"
+                            ng-model="$ctrl.requiredInput">
                 </div>
             </div>
 
@@ -61,8 +91,12 @@
                     <!-- date pickers -->
                     <div class="col-md-6">
                         <p class="input-group">
-                            <input type="text" class="form-control" uib-datepicker-popup="{{$ctrl.format}}" ng-model="dt" is-open="$ctrl.popup1.opened"
-                                datepicker-options="$ctrl.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                            <input type="text" class="form-control" uib-datepicker-popup="{{$ctrl.format}}" 
+                                is-open="$ctrl.popup1.opened"
+                                datepicker-options="$ctrl.dateOptions" 
+                                ng-required="true" close-text="Close" 
+                                alt-input-formats="altInputFormats"
+                                ng-model="dt"
                             />
                             <span class="input-group-btn">
                         <button type="button" class="btn btn-default btn-date" ng-click="$ctrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -72,8 +106,15 @@
 
                     <div class="col-md-6">
                         <p class="input-group">
-                            <input type="text" class="form-control" uib-datepicker-popup ng-model="dt2" is-open="$ctrl.popup2.opened" datepicker-options="$ctrl.dateOptions"
-                                ng-required="true" close-text="Close" />
+
+                            <input type="text" class="form-control" 
+                                uib-datepicker-popup 
+                                is-open="$ctrl.popup2.opened" 
+                                datepicker-options="$ctrl.dateOptions"
+                                ng-required="true" 
+                                close-text="Close" 
+                                ng-model="dt2" />
+
                             <span class="input-group-btn">
                         <button type="button" class="btn btn-default btn-date" ng-click="$ctrl.open2()"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
@@ -84,15 +125,23 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Format: <span class="muted-text">(manual alternate <em>{{altInputFormats[0]}}</em>)</span></label>
-                        <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>
+                        <select class="form-control" 
+                            ng-model="format" 
+                            ng-options="f for f in formats">
+                            <option></option>
+                        </select>
                     </div>
                 </div>
             </div>
 
             <div class="ln_solid"></div>
+
             <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    {{formSample.$valid}}
+                    <button type="submit" 
+                            class="btn btn-info pull-right"
+                            ng-click="$ctrl.showFormDetails(formSample.$valid)">Submit</button>
                 </div>
             </div>
         </form>
