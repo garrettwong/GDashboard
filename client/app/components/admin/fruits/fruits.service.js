@@ -10,5 +10,8 @@ export default class FruitsService {
     return this.jsonFileDatabase.getAll('fruits');
   }
 
+  add(fruitName) {
+    return this.jsonFileDatabase.post('fruits', { name: fruitName })
+  }
   
 }

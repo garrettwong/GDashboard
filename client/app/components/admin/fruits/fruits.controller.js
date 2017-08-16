@@ -155,22 +155,32 @@ class FruitsController {
   }
 
   openAddNew() {
-    this.items = [1];
-    this.$uibModal.open({
+    let modalInstance = this.$uibModal.open({
       animation: true,
-      component: 'fruitsModalComponent',
-      resolve: {
-        items: function () {
-          console.log('durrr');
-          
-          return ['haro'];
-        }
-      }
+      component: 'fruitsModalComponent'
+    });
+
+    // component return values
+    modalInstance.result.then((newFruit) => {
+      console.log(newFruit);
+
+      this.fruitService.add(newFruit)
+        .then(() => {
+          this.getFruitData().then(() => {
+            this.dataTableSetup();
+          });
+
+        });
+
+
+
+    }, () => {
+
     });
   }
-  
+
   openAdmin() {
-      alert('open admin');
+    alert('open admin');
   }
 
 

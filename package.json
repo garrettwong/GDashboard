@@ -32,6 +32,7 @@
     "jqvmap": "^1.5.1",
     "karma-sinon": "^1.0.5",
     "moment": "^2.15.1",
+    "mongodb": "^2.2.31",
     "ng-js-tree": "0.0.10",
     "nodemon": "^1.11.0",
     "normalize.css": "^3.0.3",

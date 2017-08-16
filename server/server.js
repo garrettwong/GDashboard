@@ -4,6 +4,16 @@ var express = require('express'),
     session = require('express-session'),
     errorhandler = require('errorhandler'),
     csrf = require('csurf');
+
+let Calculator = require('./utilities/calculator.js');
+let FileWriter = require('./utilities/fileWriter.js');
+
+// let SpawnMongoProcess = require('./utilities/spawnMongoProcess.js');
+let MongoDbRepository = require('./utilities/mongoDbRepository.js');
+// let Subprocess = require('./utilities/subprocess.js');
+// let processGrep = require('./utilities/processGrep.js');
+let killProcessOnPort = require('./utilities/killProcessOnPort.js');
+
 app = express();
 
 // app.set('views', __dirname + '/views');
@@ -25,8 +35,7 @@ var fs = require("fs"),
 
 //assume that config.json is in application root
 var jsonDatabaseFile = 'database.json';
-json = getConfig(jsonDatabaseFile);
-
+    json = getConfig(jsonDatabaseFile);
 
 // cors
 app.use(function (req, res, next) {
@@ -35,7 +44,6 @@ app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     next();
 });
-
 
 // get
 app.get('/', function (req, res) {
@@ -80,7 +88,12 @@ app.post(baseUrl + ':route', function (req, res) {
         req.body.id = json[routeName].findMaxId() + 1;
 
         json[routeName].push(req.body);
-        writeJsonFileAsync(jsonDatabaseFile, json);
+        FileWriter.writeJsonFileAsync(jsonDatabaseFile, json);
+
+        MongoDbRepository.post('test', json);
+
+        let res = MongoDbRepository.get('test');
+        console.log('Mongo result', res);
     }
 
     res.json(req.body);
@@ -106,7 +119,7 @@ app.put(baseUrl + ':route/:id', function (req, res) {
             json[routeName][idx] = req.body;
         }
 
-        writeJsonFileAsync(jsonDatabaseFile, json);
+        FileWriter.writeJsonFileAsync(jsonDatabaseFile, json);
     }
 
     res.json(req.body);
@@ -128,7 +141,7 @@ app.delete(baseUrl + ':route/:id', function (req, res) {
             json[routeName].splice(idx, 1);
         }
 
-        writeJsonFileAsync(jsonDatabaseFile, json);
+        FileWriter.writeJsonFileAsync(jsonDatabaseFile, json);
     }
 
     res.json(req.body);
@@ -147,7 +160,7 @@ app.get(baseUrl + 'customers/:id', function (req, res) {
 
     if (!json.customers) {
         json.customers = [];
-        writeJsonFileAsync('config.json', json);
+        FileWriter.writeJsonFileAsync('config.json', json);
     }
 
     for (var i = 0; i < json.customers.length; i++) {
@@ -170,7 +183,7 @@ app.post(baseUrl + 'customers', function (req, res) {
 
     json.customers.push(customer);
 
-    writeJsonFileAsync('config.json', json);
+    FileWriter.writeJsonFileAsync('config.json', json);
 
     res.json(customer);
 });
@@ -216,37 +229,21 @@ app.listen(port, function () {
     console.log(`listening on ${port}`);
 });
 
-
-
-// helper functions
-function readJsonFileSync(filepath, encoding) {
-    if (typeof (encoding) == 'undefined') {
-        encoding = 'utf8';
-    }
-    var file = fs.readFileSync(filepath, encoding);
-    return JSON.parse(file);
-}
-
-function writeJsonFileAsync(filepath, json) {
-    console.log(filepath);
-    fs.writeFile(filepath, JSON.stringify(json), function (err) {
-        if (err) return console.log(err);
-    });
-}
-
+// Convert JSON file to a JSON object
 function getConfig(file) {
     var filepath = __dirname + '/' + file;
 
     filepath = filepath.replace('server/', '/').replace('//', '/');
 
     console.log(filepath);
-    return readJsonFileSync(filepath);
+
+    return FileWriter.readJsonFileSync(filepath);
 }
 
 function createRouteIfNotDef(json, routeName) {
     if (json[routeName] === undefined) {
         json[routeName] = [];
-        writeJsonFileAsync(jsonDatabaseFile, json);
+        FileWriter.writeJsonFileAsync(jsonDatabaseFile, json);
     }
 }
 Array.prototype.findById = function (id) {

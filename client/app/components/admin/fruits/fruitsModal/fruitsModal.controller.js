@@ -2,22 +2,24 @@ class FruitsModalController {
   constructor($uibModalInstance, items) {
     var model = this;
 
-    console.log('modal', items, this);
-
-
-    model.items = items;
-
-    model.selected = {
-      item: model.items[0]
-    };
-
-    model.ok = function () {
-      $uibModalInstance.close(model.selected.item);
-    };
+    this.$uibModalInstance = $uibModalInstance;
 
     model.cancel = function () {
       $uibModalInstance.dismiss('cancel');
     };
+  }
+
+  ok() {
+    console.log('okay button clicked', this.newFruitName);
+
+    this.$uibModalInstance.close(this.newFruitName);
+  }
+
+  ok2() {
+    alert('gay');
+  }
+  cancel() {
+
   }
 }
 
