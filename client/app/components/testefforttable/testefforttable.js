@@ -10,7 +10,7 @@ let testefforttableModule = angular.module('testefforttable', [
 ])
 .filter('mmddyyyy', function() {
   return function(dateStr) {
-    console.log(moment(dateStr));
+    // console.log(moment(dateStr));
 
     return moment(dateStr).format('MM/DD/YYYY');
   };

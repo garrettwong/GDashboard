@@ -9,23 +9,24 @@ class PiechartController {
     let chartLayer = svg.append('g').classed('chartLayer', true);
 
     // initiate data
-    d3.csv('piechartdata.csv', cast, main);
+    // d3.csv('piechartsdata.csv', cast, main);
+    d3.csv('cryptocurrency_holdings.csv', 
+      (d) => {
+        d.value = +d.value;
+        return d;
+      }, (data) => {
+        setSize(data);
 
-    function cast(d) {
-      d.value = +d.value;
-      return d;
-    }
-
-    function main(data) {
-      setSize(data);
-      drawChart(data);
-    }
+        drawChart(data);
+      });
 
     function setSize(data) {
       width = document.querySelector('#piechartcontainer').clientWidth;
+      console.log('WIDTH', width);
+
       height = document.querySelector('#piechartcontainer').clientHeight;
 
-      margin = { top: 40, left: 0, bottom: 40, right: 0};
+      margin = { top: 40, left: 40, bottom: 40, right: 40};
 
       chartWidth = width - (margin.left+margin.right);
       chartHeight = height - (margin.top+margin.bottom);
@@ -47,16 +48,16 @@ class PiechartController {
         (data);
 
       let arc = d3.arc()
-        .outerRadius(chartHeight/2)
-        .innerRadius(chartHeight/4)
-        .padAngle(0.03)
+        .outerRadius(chartHeight/3)
+        .innerRadius(chartHeight/3.5)
+        .padAngle(0.05)
         .cornerRadius(8);
 
       let pieG = chartLayer.selectAll('g')
         .data([data])
         .enter()
         .append('g')
-        .attr('transform', 'translate(' + [chartWidth/2, chartHeight/2] + ')');
+        .attr('transform', 'translate(' + [chartWidth/2, chartHeight/3] + ')');
 
       let block = pieG.selectAll('.arc')
         .data(arcs);
@@ -73,13 +74,15 @@ class PiechartController {
         .attr('dx', 55)
         .attr('dy', -5)
         .append('textPath')
-        .attr('xlink:href', function(d, i) { return '#arc-' + i; })
-        .text(function(d) { console.log(d); return d.data.name; });
+        .attr('xlink:href', function(d, i) { 
+          return '#arc-' + i; 
+        })
+        .text(function(d) { 
+          console.log(d); 
+          return d.data.name; 
+        });
 
-      // newBlock
-      //   .attr('fill', function(d, i) { return d3.interpolateCool(Math.random()); });
-
-      // d3indepth.com for interpolate scale functions
+      // interpolate scale functions: d3indepth.com
       blockPath
         .on('mouseover', function(d, i) {
           console.log(d3.select(this), d, i);
@@ -93,11 +96,13 @@ class PiechartController {
       // append text middle of graph
       svg.append('g')
         .append('text')
-        .attr('dx', chartWidth/2 - 75)
-        .attr('dy', chartHeight/2 + 50)
+        .attr('dx', chartWidth/2 - 25)
+        .attr('dy', chartHeight/3 + 50)
         .attr('stroke', '#0E1B42')
         .attr('stroke-width', '1.2')
-        .text(function(d) { return 'Lines of communictation' });
+        .text(function(d) { 
+          return 'Crypto Currency Holdings'
+        });
     }
   }
 }

@@ -16,4 +16,5 @@ class Calculator {
     }
 }
 
+// export
 module.exports = new Calculator();

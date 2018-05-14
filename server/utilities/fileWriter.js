@@ -18,4 +18,5 @@ class FileWriter {
 
 }
 
+// export
 module.exports = new FileWriter();

@@ -13,4 +13,5 @@ class RedisService {
     }
 }
 
+// export
 module.exports = RedisService;

@@ -7,6 +7,7 @@ var express = require('express'),
 
 let Calculator = require('./utilities/calculator.js');
 let FileWriter = require('./utilities/fileWriter.js');
+require('./utilities/arrayExtensions.js');
 
 // let SpawnMongoProcess = require('./utilities/spawnMongoProcess.js');
 let MongoDbRepository = require('./utilities/mongoDbRepository.js');
@@ -16,7 +17,7 @@ let killProcessOnPort = require('./utilities/killProcessOnPort.js');
 
 app = express();
 
-// app.set('views', __dirname + '/views');
+//app.set('views', __dirname + '/views');
 app.set('view engine', 'html');
 app.use(session({
     secret: 'asdf',
@@ -73,6 +74,11 @@ app.get(baseUrl + ':route/:id', function (req, res) {
     createRouteIfNotDef(json, routeName);
 
     console.log(json[routeName]);
+
+    // get mongo
+
+    let mongoResult = MongoDbRepository.get('test');
+    console.log('mongo result', mongoResult);
 
     res.json(json[routeName].findById(objectId));
 });
@@ -146,8 +152,6 @@ app.delete(baseUrl + ':route/:id', function (req, res) {
 
     res.json(req.body);
 });
-
-
 
 
 // customer examples
@@ -246,27 +250,3 @@ function createRouteIfNotDef(json, routeName) {
         FileWriter.writeJsonFileAsync(jsonDatabaseFile, json);
     }
 }
-Array.prototype.findById = function (id) {
-    for (var i = 0; i < this.length; i++) {
-        if (this[i].id == id) {
-            return this[i];
-        }
-    }
-    return null;
-};
-Array.prototype.findIndexById = function (id) {
-    for (var i = 0; i < this.length; i++) {
-        console.log(this[i].id + ' vs ' + id)
-        if (this[i].id == id) {
-            return i;
-        }
-    }
-    return -1;
-};
-Array.prototype.findMaxId = function () {
-    var maxId = 1;
-    for (var i = 0; i < this.length; i++) {
-        maxId = maxId > this[i].id ? maxId : this[i].id;
-    }
-    return parseInt(maxId);
-};

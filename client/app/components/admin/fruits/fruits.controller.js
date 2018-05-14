@@ -28,7 +28,7 @@ class FruitsController {
   getFruitData() {
     // set this.rows
     this.fruitService.getAll().then((response) => {
-      console.log('fruits received', response.data);
+      // console.log('fruits received', response.data);
       this.rows = response.data;
     });
   }

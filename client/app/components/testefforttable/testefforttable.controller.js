@@ -103,11 +103,11 @@ scroll event
             // row.milestones[mIdx].start = model.scale(startTime);
             // row.milestones[mIdx].end = model.scale(endTime);
 
-            console.log(row.milestones, 'mileson');
+            // console.log('milestones', row.milestones);
           }
         }
 
-        console.log(model.rows);
+        // console.log(model.rows);
 
       }, function errorCallback(response) {
         // called asynchronously if an error occurs

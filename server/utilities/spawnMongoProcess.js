@@ -19,4 +19,5 @@ class SpawnMongoDb {
     }
 }
 
+// export
 module.exports = new SpawnMongoDb();
