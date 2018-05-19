@@ -10,7 +10,7 @@ let tableExamplesModule = angular.module('tableExamples', [
 
 .config(routeConfig)
 
-.service('TableExamplesService', tableExamplesService)
+.service('TableExamplesService', ['$http', tableExamplesService])
 
 .component('tableExamples', tableExamplesComponent)
 

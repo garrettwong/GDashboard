@@ -87,6 +87,7 @@ export default class CryptoService {
                 minCoin = arr[i].name;
             }
         }
+        
         return this.formattedValueWithCoin(min, minCoin);
     }
 

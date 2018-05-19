@@ -27,12 +27,12 @@ class DynamicFormController {
 
     this.dataset = this.dataset || [{
         "name": "Garrett Wong",
-        "position": "System Architect"
+        "position": "Construction"
       },
 
       {
         "name": "Brian Wong",
-        "position": "Doctor Architect"
+        "position": "Architect"
       },
     ];
   }

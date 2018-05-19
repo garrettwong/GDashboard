@@ -9,6 +9,10 @@ let Calculator = require('./utilities/calculator.js');
 let FileWriter = require('./utilities/fileWriter.js');
 require('./utilities/arrayExtensions.js');
 
+let MG = require('./models/mongooseBase.js');
+console.log('Mongoosinator', MG);
+MG.addBook({ title: 'Green Eggs and Ham', author: 'Dr Suess', genre: 'Childrens' });
+
 // let SpawnMongoProcess = require('./utilities/spawnMongoProcess.js');
 let MongoDbRepository = require('./utilities/mongoDbRepository.js');
 // let Subprocess = require('./utilities/subprocess.js');
@@ -54,7 +58,7 @@ app.get('/', function (req, res) {
 // api
 var baseUrl = '/api/';
 
-// getAll()
+// getAll() - http://localhost:3001/fruits
 app.get(baseUrl + ':route', function (req, res) {
     var routeName = req.params.route;
 
@@ -96,10 +100,21 @@ app.post(baseUrl + ':route', function (req, res) {
         json[routeName].push(req.body);
         FileWriter.writeJsonFileAsync(jsonDatabaseFile, json);
 
+        console.log('adding to some database ??? ' , json);
         MongoDbRepository.post('test', json);
 
+        // MongoDbRepository.get('test') returns a cursor
         let res = MongoDbRepository.get('test');
-        console.log('Mongo result', res);
+        // console.log('Mongo result', res);
+        res.forEach(function(doc, a) {
+            // handle
+            console.log('jin');
+            console.log(doc);
+            console.log(a);
+          }, function(err) {
+            // done or error
+            console.log('error' , err);
+          });
     }
 
     res.json(req.body);

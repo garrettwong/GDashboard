@@ -44,4 +44,4 @@ class MongoDbRepository {
 }
 
 // export
-module.exports = new MongoDbRepository('mongodb://localhost:27017');
+module.exports = new MongoDbRepository('mongodb://localhost/test');

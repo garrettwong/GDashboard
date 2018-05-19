@@ -2,7 +2,9 @@
  * @class TableExamplesService
  */
 export default class TableExamplesService {
-  constructor() { }
+  constructor($http) {
+    this.$http = $http;
+  }
 
   static getClassName() { return 'TableExamplesService'; }
   getClassName() { return TableExamplesService.getClassName(); }
@@ -36,35 +38,45 @@ export default class TableExamplesService {
   }
 
   getData() {
+    console.log('hi HTTP', this.$http);
+
+    // call the express js mongo API and get the data from the professionalPersons data source
+
+    // 1. create express js API endpoint
+
+    // 2. consume data and modify as a promise instead of data directly
+
+    
+
     this.data = [{
       "name": "Garrett Wong",
       "position": "Software Architect",
-      "salary": "$117,200",
+      "salary": "$255,000",
       "office": "Irvine, CA"
     },
     {
       "name": "Brian Wong",
       "position": "Doctor Architect",
       "salary": "$231,420",
-      "office": "Memphis, TN"
+      "office": "Manhattan, New York"
     },
     {
       "name": "Eric Koo",
       "position": "Data Analytst",
-      "salary": "$119,420",
-      "office": "Berkeley, CA"
+      "salary": "$419,220",
+      "office": "San Luis Obisbo, CA"
     },
     {
       "name": "Bryan Lim",
-      "position": "Data Analytst",
-      "salary": "$114,310",
+      "position": "Data Scientist",
+      "salary": "$144,310",
       "office": "San Francisco, CA"
     },
     {
       "name": "Jinfull Jeng",
       "position": "Peace Corps",
-      "salary": "$8,310",
-      "office": "Republic of Comoros"
+      "salary": "$198,310",
+      "office": "Johannesberg, South Africa"
     }];
 
     return this.data;
