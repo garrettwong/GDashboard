@@ -1,7 +1,15 @@
 <div>
   
   <!-- component: dynamic-form -->
-  <dynamic-form columns="$ctrl.columns" dataset="$ctrl.dataset"></dynamic-form>
+  <dynamic-form 
+    columns="$ctrl.columns" 
+    dataset="$ctrl.dataset" 
+
+    add-column-header-item-func="$ctrl.addColumnHeader($ctrl.columnHeaderItem)"
+    column-header-item="$ctrl.columnHeaderItem"
+    
+    add-dataset-item-func="$ctrl.addDatasetItem($ctrl.datasetItem)"
+    dataset-item="$ctrl.datasetItem"></dynamic-form>
 
   <!-- component: datatable -->
   <datatable columns="$ctrl.columns" rows="$ctrl.dataset"></datatable>

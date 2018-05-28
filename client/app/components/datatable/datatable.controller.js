@@ -11,8 +11,6 @@ class DatatableController {
   }
 
   $onInit() {
-    //
-    console.log('this', this);
 
     this.$timeout(() => {
       this.dataTableSetup();
@@ -51,7 +49,7 @@ class DatatableController {
 
     // on data change
     if (!angular.equals(this.previous.rows, this.rows)) {
-      console.log('rows $doCheck', this.rows);
+      //console.log('rows $doCheck', this.rows);
 
       this.previous.rows = angular.copy(this.rows);
 
@@ -77,15 +75,9 @@ class DatatableController {
       columnExtensions = columnExtensions.concat(this.columns);
     }
 
-    console.log('col', JSON.stringify(this.rows), JSON.stringify(columnExtensions));
-
     this.dtRef = $('#a74029').DataTable({
       columns: columnExtensions,
-
       data: this.rows,
-
-      
-
       "order": [[1, 'asc']]
     });
 

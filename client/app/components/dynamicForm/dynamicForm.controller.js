@@ -1,40 +1,14 @@
 class DynamicFormController {
   /*
-    * @desc setup default data
-    */
-  constructor() {
-    
-    this.dataRowToAdd = {a:1};
+  * @desc setup default data
+  */
+  constructor(SweetAlert) {
+    this.sweetAlert = SweetAlert;
 
-    this.columns = this.columns || [
-      {
-        title: "Name",
-        data: 'name',
-        type: 'textarea',
-        isCool: true,
-        location: {
-          city: 'Irvine',
-          zip: 92612
-        },
-        relationships: [1, 2, { name: 'Vince' }]
-      },
-      {
-        title: 'Position',
-        data: 'position',
-        type: 'select'
-      }
-    ];
+    this.datasetItem = { a: 1 };
 
-    this.dataset = this.dataset || [{
-        "name": "Garrett Wong",
-        "position": "Construction"
-      },
-
-      {
-        "name": "Brian Wong",
-        "position": "Architect"
-      },
-    ];
+    this.columns = this.columns || [];
+    this.dataset = this.dataset || [];
   }
 
   /*
@@ -43,32 +17,45 @@ class DynamicFormController {
    * @description - converts to camel case and also removes whitespace
    */
   _formatter(val) {
-    // Hello World, should be converted to helloWorld
     let newStr = val.replace(' ', '');
 
     return newStr.substr(0, 1).toLowerCase() + newStr.substr(1);
   }
 
+  /*
+   * @function addColumnHeader
+   * @param columnHeader
+   * @param type
+   * @description adds a new column header for datatable
+   */
   addColumnHeader(columnHeader, type) {
     let newColumn = {
       title: columnHeader,
       data: this._formatter(columnHeader),
       type: type || 'text'
     };
-    this.columns.push(newColumn);
+
+    this.addColumnHeaderItemFunc(newColumn).then((response) => {
+      console.log(response);
+      
+      this.columns.push(newColumn);
+    });
   }
 
-  // addData() {
-  //   alert('wait');
-
-  //   console.log('addDataRow', this.dataRowToAdd);
-
-  //   this.dataset.push( this.dataRowToAdd );
-  // }
+  /*
+   * @function addData()
+   * @description - adds a new row to the datatables array, dataset
+   */
   addData() {
     console.log('addDataRow', this);
 
-    this.dataset.push( angular.copy(this.dataRowToAdd) );
+    this.addDatasetItemFunc(this.datasetItem).then((response) => {
+      console.log(response);
+      
+      this.dataset.push(angular.copy(this.datasetItem));
+    }, (error) => {
+      this.sweetAlert.swal('Error: ', error.data.message, 'error');
+    });
   }
 }
 

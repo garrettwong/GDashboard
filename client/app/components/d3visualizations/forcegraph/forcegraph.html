@@ -1,13 +1,19 @@
-<div>
-  <input ng-model="$ctrl.config.radius" type="text" placeholder="radius" />
-  <button ng-click="$ctrl.update()">Update Graph</button>
-</div>
+<div class="row dashboardPanel">
+  <div class="col-sm-12">
 
-<div>
-  <label for="">Use Images</label>
-  <input type="checkbox" ng-model="$ctrl.config.useImages" ng-click="$ctrl.update()" />
-</div>
+    <div>
+      <input ng-model="$ctrl.config.radius" type="text" placeholder="radius" />
+      <button ng-click="$ctrl.update()">Update Graph</button>
+    </div>
 
-<div>
-  <svg width="960" height="600"></svg>
+    <div>
+      <label for="">Use Images</label>
+      <input type="checkbox" ng-model="$ctrl.config.useImages" ng-click="$ctrl.update()" />
+    </div>
+
+    <div>
+      <svg width="960" height="600"></svg>
+    </div>
+
+  </div>
 </div>

@@ -9,76 +9,38 @@ export default class TableExamplesService {
   static getClassName() { return 'TableExamplesService'; }
   getClassName() { return TableExamplesService.getClassName(); }
 
+  /*
+   * @func getColumns
+   * @desc getes a list of columns representing the dataset that 
+   * allows data tables to map the array of data to the table
+   */
   getColumns() {
-    this.columns = [{
-      title: "Name",
-      data: 'name',
-      type: 'text',
-      cyber: {
-        a: 'b', c: 'dee'
-      }
-    },
-    {
-      title: 'Position',
-      data: 'position',
-      type: 'select'
-    },
-    {
-      title: 'Salary',
-      data: 'salary',
-      type: 'text'
-    },
-    {
-      title: 'Office',
-      data: 'office',
-      type: 'radio'
-    }];
-
-    return this.columns;
+    return this.$http.get('http://localhost:3001/api/DataTable/Columns/People');
   }
 
+  /*
+   * @func addColumn
+   * @desc adds a col
+   * allows data tables to map the array of data to the table
+   */
+  addColumn(item) {
+    return this.$http.post('http://localhost:3001/api/DataTable/Columns/People', item);
+  }
+
+  /*
+   * @func getData
+   * @desc gets a list of items from the api
+   */
   getData() {
-    console.log('hi HTTP', this.$http);
+    return this.$http.get('http://localhost:3001/api/People');
+  }
 
-    // call the express js mongo API and get the data from the professionalPersons data source
-
-    // 1. create express js API endpoint
-
-    // 2. consume data and modify as a promise instead of data directly
-
-    
-
-    this.data = [{
-      "name": "Garrett Wong",
-      "position": "Software Architect",
-      "salary": "$255,000",
-      "office": "Irvine, CA"
-    },
-    {
-      "name": "Brian Wong",
-      "position": "Doctor Architect",
-      "salary": "$231,420",
-      "office": "Manhattan, New York"
-    },
-    {
-      "name": "Eric Koo",
-      "position": "Data Analytst",
-      "salary": "$419,220",
-      "office": "San Luis Obisbo, CA"
-    },
-    {
-      "name": "Bryan Lim",
-      "position": "Data Scientist",
-      "salary": "$144,310",
-      "office": "San Francisco, CA"
-    },
-    {
-      "name": "Jinfull Jeng",
-      "position": "Peace Corps",
-      "salary": "$198,310",
-      "office": "Johannesberg, South Africa"
-    }];
-
-    return this.data;
+  /*
+   * @func addData
+   * @desc adds an item to the api
+   * @param item
+   */
+  addData(item) {
+    return this.$http.post('http://localhost:3001/api/People', item);
   }
 }

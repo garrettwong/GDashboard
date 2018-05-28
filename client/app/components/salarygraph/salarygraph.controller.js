@@ -7,10 +7,22 @@ class SalarygraphController {
   constructor($http, $timeout, $uibModal, $stateParams, TableExamplesService, SalaryGraphService, SalaryGraphParser, SalaryGraphDataConverter) {
     this.name = 'salarygraph';
 
+    this.tableExamplesService = TableExamplesService;
 
-    this.columns = TableExamplesService.getColumns();
-    this.dataset = TableExamplesService.getData();
+    this.columns = [];
+    this.dataset = [];
+    
+    this.tableExamplesService.getColumns().then((response) => {
+      if (response.status === 200) {
+        this.columns = response.data;
+      }    
+    });
 
+    this.tableExamplesService.getData().then((response) => {
+      if (response.status === 200) {
+        this.dataset = response.data;
+      }    
+    });
 
     console.log('salarygraphcontroller', $stateParams.id, ' was passed');
 

@@ -9,15 +9,19 @@ let Calculator = require('./utilities/calculator.js');
 let FileWriter = require('./utilities/fileWriter.js');
 require('./utilities/arrayExtensions.js');
 
-let MG = require('./models/mongooseBase.js');
-console.log('Mongoosinator', MG);
-MG.addBook({ title: 'Green Eggs and Ham', author: 'Dr Suess', genre: 'Childrens' });
+
 
 // let SpawnMongoProcess = require('./utilities/spawnMongoProcess.js');
-let MongoDbRepository = require('./utilities/mongoDbRepository.js');
-// let Subprocess = require('./utilities/subprocess.js');
-// let processGrep = require('./utilities/processGrep.js');
 let killProcessOnPort = require('./utilities/killProcessOnPort.js');
+
+// === begin repositories and data access
+let MongoDbRepository = require('./repositories/mongoDbRepository.js');
+
+let MongooseBase = require('./models/mongooseBase.js');
+//MongooseBase.addBook({ title: 'Green Eggs and Ham', author: 'Dr Suess', genre: 'Childrens' });
+MongooseBase.addBook({ title: 'The Giving Tree', author: 'Shel Silverstein', genre: 'Childrens' });
+MongooseBase.addBook({ title: 'Guardian\'s of the Galaxys', author: 'Stan Lee', genre: 'Comic' });
+// === end repositories and data access
 
 app = express();
 
@@ -50,13 +54,21 @@ app.use(function (req, res, next) {
     next();
 });
 
-// get
+
+// === start ROUTES 
+
+// default GET /
 app.get('/', function (req, res) {
     res.render('index.html');
 });
 
 // api
 var baseUrl = '/api/';
+
+let intrinsicRouter = require('./routes/intrinsicRouter.js');
+let peopleRouter = require('./routes/peopleRouter.js');
+app.use('/', intrinsicRouter);
+app.use('/', peopleRouter);
 
 // getAll() - http://localhost:3001/fruits
 app.get(baseUrl + ':route', function (req, res) {
@@ -244,6 +256,8 @@ app.get('*', function (req, res) {
     res.render('index');
 });
 
+// === end ROUTES 
+
 app.listen(port, function () {
     console.log(`listening on ${port}`);
 });
@@ -256,7 +270,22 @@ function getConfig(file) {
 
     console.log(filepath);
 
-    return FileWriter.readJsonFileSync(filepath);
+    let res;
+
+    try {
+        res = FileWriter.readJsonFileSync(filepath);
+    } catch (exception) {
+        // rewrite file
+        console.log(__dirname + '/_databaseSeed.json');
+        
+        let json = FileWriter.readJsonFileSync(__dirname + '/_databaseSeed.json');
+
+        FileWriter.writeJsonFileSync(filepath, json);
+        
+        res = FileWriter.readJsonFileSync(filepath);
+    }
+
+    return res;
 }
 
 function createRouteIfNotDef(json, routeName) {

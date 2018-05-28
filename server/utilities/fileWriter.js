@@ -11,9 +11,13 @@ class FileWriter {
     }
 
     writeJsonFileAsync(filepath, json) {
-        fs.writeFile(filepath, JSON.stringify(json), function (err) {
+        return fs.writeFile(filepath, JSON.stringify(json), function (err) {
             if (err) return console.log(err);
         });
+    }
+
+    writeJsonFileSync(filepath, json) {
+        fs.writeFileSync(filepath, JSON.stringify(json));
     }
 
 }

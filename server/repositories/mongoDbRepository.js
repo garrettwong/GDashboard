@@ -1,4 +1,5 @@
 const MongoClient = require('mongodb').MongoClient
+const Config = require('../models/config.js');
 
 class MongoDbRepository {
   constructor(dbAddress) {
@@ -19,8 +20,8 @@ class MongoDbRepository {
     });
   }
 
-  get(collection) {
-    return this.db.collection(collection).find();
+  get(collection, filter) {
+    return this.db.collection(collection).find(filter);
   }
 
   post(collection, data, cb) {
@@ -44,4 +45,4 @@ class MongoDbRepository {
 }
 
 // export
-module.exports = new MongoDbRepository('mongodb://localhost/test');
+module.exports = new MongoDbRepository(Config.mongoDbServerDatabase);

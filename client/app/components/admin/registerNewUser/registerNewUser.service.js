@@ -16,8 +16,9 @@ class RegisterNewUserService {
     };
   }
 
+  // user: {}
   registerUser(user) {
-    let url = '/api/user/register';
+    let url = 'http://localhost:3001/api/People';
 
     console.log(user);
 
