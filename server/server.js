@@ -18,9 +18,17 @@ let killProcessOnPort = require('./utilities/killProcessOnPort.js');
 let MongoDbRepository = require('./repositories/mongoDbRepository.js');
 
 let MongooseBase = require('./models/mongooseBase.js');
+MongooseBase.getStocks((response, data) => {
+    console.log('surge')
+
+    console.log(response, data);
+
+
+});
+
 //MongooseBase.addBook({ title: 'Green Eggs and Ham', author: 'Dr Suess', genre: 'Childrens' });
-MongooseBase.addBook({ title: 'The Giving Tree', author: 'Shel Silverstein', genre: 'Childrens' });
-MongooseBase.addBook({ title: 'Guardian\'s of the Galaxys', author: 'Stan Lee', genre: 'Comic' });
+// MongooseBase.addBook({ title: 'The Giving Tree', author: 'Shel Silverstein', genre: 'Childrens' });
+// MongooseBase.addBook({ title: 'Guardian\'s of the Galaxys', author: 'Stan Lee', genre: 'Comic' });
 // === end repositories and data access
 
 app = express();
@@ -67,8 +75,11 @@ var baseUrl = '/api/';
 
 let intrinsicRouter = require('./routes/intrinsicRouter.js');
 let peopleRouter = require('./routes/peopleRouter.js');
+let stockRouter = require('./routes/stockRouter2.js');
 app.use('/', intrinsicRouter);
 app.use('/', peopleRouter);
+app.use('/', stockRouter);
+
 
 // getAll() - http://localhost:3001/fruits
 app.get(baseUrl + ':route', function (req, res) {

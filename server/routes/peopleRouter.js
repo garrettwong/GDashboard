@@ -35,6 +35,32 @@ router.post('/api/People', function(req, res) {
     });
 });
 
+router.get('/api/DataTable/Columns/People', function(req, res) {
+  console.log('DataTable/Columns/People');
+
+  let people = MongoDbRepository.get('DataTable_Columns_People')
+    .toArray(function(err, results) {
+        res.json(results);
+    });
+});
+
+router.post('/api/DataTable/Columns/People', function(req, res) {
+  console.log('DataTable/Columns/People');
+  console.log(req.body);
+
+  let column = req.body;
+
+  MongoDbRepository.post('DataTable_Columns_People', column, function(err, results) { 
+    res.json(column);
+  });
+});
+
+module.exports = router;
+
+
+
+
+// seed data to be refactored
 let columns = [{
   title: "Name",
   data: 'name',
@@ -55,26 +81,6 @@ let columns = [{
   data: 'office',
   type: 'radio'
 }];
-
-router.get('/api/DataTable/Columns/People', function(req, res) {
-  console.log('DataTable/Columns/People');
-
-  let people = MongoDbRepository.get('DataTable_Columns_People')
-    .toArray(function(err, results) {
-        res.json(results);
-    });
-});
-
-router.post('/api/DataTable/Columns/People', function(req, res) {
-  console.log('DataTable/Columns/People');
-  console.log(req.body);
-
-  let column = req.body;
-
-  MongoDbRepository.post('DataTable_Columns_People', column, function(err, results) { 
-    res.json(column);
-  });
-});
 
 let people = [{
     "name": "James Wong",
@@ -106,5 +112,3 @@ let people = [{
     "salary": "$198,310",
     "office": "Johannesberg, South Africa"
   }];
-
-module.exports = router;

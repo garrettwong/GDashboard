@@ -20,11 +20,23 @@ class SalarygraphController {
 
     this.tableExamplesService.getData().then((response) => {
       if (response.status === 200) {
-        this.dataset = response.data;
-      }    
+        this.dataset = response.data.map((data, index) => {
+          // console.log(this.columns);
+          let obj = {};
+          for(let key in this.columns) {
+            //console.log(this.columns[key]);
+            let dataFieldKey = this.columns[key]['data'];
+            obj[dataFieldKey] = data[dataFieldKey];
+            if (!obj[dataFieldKey]) {
+              obj[dataFieldKey] = '';
+            }
+          }
+          return obj;
+        });
+      }
     });
 
-    console.log('salarygraphcontroller', $stateParams.id, ' was passed');
+    // console.log('salarygraphcontroller', $stateParams.id, ' was passed');
 
     // assign reference parameters
     this.$http = $http;
@@ -45,7 +57,10 @@ class SalarygraphController {
     this.graphDataObjects = [];
 
     // side bar - graph view data
-    this.listData = SalaryGraphService.getFilterListData();
+    SalaryGraphService.getFilterListData().then((response) => {
+      this.listData = response.data;
+      // console.log(response)
+    });
     
     // initial call to kick off getting data
     this.httpGET_inputFile('./static/ngaio2016.tsv');
@@ -66,7 +81,7 @@ class SalarygraphController {
 
       // component return values
       modalInstance.result.then(function (selectedItem) {
-        console.log(selectedItem);
+        // console.log(selectedItem);
         //model.selected = selectedItem;
       }, function () {
         
@@ -80,10 +95,10 @@ class SalarygraphController {
    */
   httpGET_inputFile(pathToDataFile) {
     this.$http.get(pathToDataFile).then((response) => {
-      console.log(`result of ${pathToDataFile}`, response);
+      // console.log(`result of ${pathToDataFile}`, response);
 
       let parsedResult = this._salaryGraphParser.parseData(response.data, 'tsv');
-      console.log(parsedResult);
+      // console.log(parsedResult);
 
       // set controller values
       this.keys = parsedResult.headers;
@@ -102,7 +117,7 @@ class SalarygraphController {
    */
   onClickListElement() {    
     this.$timeout(() => {
-      console.log('calling updateGraph() with ', this.selectedListData);
+      // console.log('calling updateGraph() with ', this.selectedListData);
       this.updateGraph(this.selectedListData.title);
     }, 0);
   }
@@ -128,9 +143,9 @@ class SalarygraphController {
    * @param filter 
    */
   updateGraph(filter) {
-    console.log('Selected Y:', this.selectedY);
-    console.log('data to format', this.data);
-    console.log('sorting data by ', this.selectedKey[0]);
+    // console.log('Selected Y:', this.selectedY);
+    // console.log('data to format', this.data);
+    // console.log('sorting data by ', this.selectedKey[0]);
 
     this.data.sort((a,b) => this.sortBySelectedKey);
 
@@ -139,6 +154,8 @@ class SalarygraphController {
 
     // get the formatted graph data
     let formattedGraphData = this.getFormattedGraphData();
+
+    console.log(formattedGraphData, 'formatted graph data');
 
     // set values
     this.labels = formattedGraphData.labels;
@@ -191,7 +208,7 @@ class SalarygraphController {
 
     // iterate through the graph data array
     this.data.forEach((data, i) => {
-      console.log('data element', data);
+      // console.log('data element', data);
 
       // get selected index
       let labelVal = data[xProperty];
@@ -249,6 +266,9 @@ class SalarygraphController {
     // [{"label":"Quora","value":10416},{"label":"AT&T","value":3813}]
     // labels and graphData should be in-sync in terms of index positional value
     this.graphDataObjects = [];
+
+    console.log(this.graphData)
+    console.log(this.graphData[0]);
 
     // graphData[0] is the first key used... we woud like to extend this to support all keys
     this.graphData[0].forEach((d, i) => {

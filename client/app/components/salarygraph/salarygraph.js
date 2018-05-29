@@ -18,7 +18,7 @@ let salarygraphModule = angular.module('salarygraph', [
   uiSelect
 ])
   // services
-  .service(SalaryGraphService.getClassName(), SalaryGraphService)
+  .service(SalaryGraphService.getClassName(), ['$http', SalaryGraphService])
   .service(SalaryGraphParser.getClassName(), SalaryGraphParser)
   .service(SalaryGraphDataConverter.getClassName(), SalaryGraphDataConverter)
 

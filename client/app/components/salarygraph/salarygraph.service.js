@@ -3,8 +3,8 @@
  * @description parses the ngaio2016.csv salaries data set
  */
 export default class SalaryGraphService {
-  constructor() {
-
+  constructor($http) {
+    this.$http = $http;
   }
 
   static getClassName() { return 'SalaryGraphService'; }
@@ -18,6 +18,14 @@ export default class SalaryGraphService {
   }
 
   getFilterListData() {
+    return this.$http.get('http://localhost:3001/api/Stock');
+  }
+}
+
+// class for seeding/test purposes only
+class SalaryGraphSeedService {
+  getFilterListData() {
+    // return wrapped fake $http promise
     let data = [
       {
         title: 'Google',

@@ -40,7 +40,7 @@
                             <td>
                                 <a href="https://finance.yahoo.com/quote/{{row.symbol}}/" target="_blank">{{row.symbol}}</a>
                             </td>
-                            <td class="hidden-phone">{{row.value}}</td>
+                            <td class="hidden-phone">{{row.value | currency:"$":0}}</td>
                             <td class="vertical-align-mid">
                                 <div class="progress">
                                     <div class="progress-bar {{row.sales > 25 ? 'progress-bar-success' : 'progress-bar-danger'}}" data-transitiongoal="{{row.sales}}" aria-valuenow="{{row.sales}}" style="width: {{row.sales}}%;"></div>

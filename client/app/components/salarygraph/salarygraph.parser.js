@@ -23,10 +23,10 @@ export default class SalaryGraphParser {
     let headers = this.parseHeaders(dataSet, dataFileFormat);
     let dataRows = this.parseDataRows(dataSet, dataFileFormat);
 
-    console.log('SalaryGraphParser headers: ', headers);
-    console.log('SalaryGraphParser header count: ', headers.length);
-    console.log('SalaryGraphParser dataRows: ', dataRows);
-    console.log('SalaryGraphParser dataRows count: ', dataRows.length);
+    // console.log('SalaryGraphParser headers: ', headers);
+    // console.log('SalaryGraphParser header count: ', headers.length);
+    // console.log('SalaryGraphParser dataRows: ', dataRows);
+    // console.log('SalaryGraphParser dataRows count: ', dataRows.length);
 
     return {
       headers,

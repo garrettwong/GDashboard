@@ -17,10 +17,10 @@ class TableExamplesController {
           if (response.status === 200) {
             // also need to normalize data set to have the same columns as columns
             this.dataset = response.data.map((data, index) => {
-              console.log(this.columns);
+              // console.log(this.columns);
               let obj = {};
               for(let key in this.columns) {
-                console.log(this.columns[key]);
+                //console.log(this.columns[key]);
                 let dataFieldKey = this.columns[key]['data'];
                 obj[dataFieldKey] = data[dataFieldKey];
                 if (!obj[dataFieldKey]) {
@@ -34,7 +34,7 @@ class TableExamplesController {
       }
     });
 
-    console.log('data validation', this.columns, this.dataset);
+    // console.log('data validation', this.columns, this.dataset);
   }
 
   /*
