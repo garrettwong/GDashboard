@@ -130,3 +130,11 @@ For example, running `gulp component --name signup --parent auth` will create a 
 Running `gulp component --name footer --parent ../common` creates a `footer` component at `client/app/common/footer`.  
 
 Because the argument to `--name` applies to the folder name **and** the actual component name, make sure to camelcase the component names.
+
+# Dependencies
+gulp@3.9.1
+node@8.11.3
+npm@5.6.0
+webpack@1.13.3
+
+
